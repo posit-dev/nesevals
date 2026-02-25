@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 nesevals provides tooling for evaluating next edit suggestion (NES) scaffolds across different edit history formats, output formats, and models.
 
 ```{r plot, message = FALSE, warning = FALSE, echo = FALSE}
+#| fig-alt: "A scatter plot titled 'NES Scaffold Performance vs. Latency'. The x-axis shows median latency in milliseconds starting at 0, and the y-axis shows mean model-graded quality score. The chart shows that Qwen3-8B (Baseten) achieves competitive scores at very low latency (under 200ms), while Claude Haiku 4.5 (Anthropic) achieves the highest score (around 4.5) at a much higher latency (~1500ms). GPT-OSS 20B (Groq) reaches a score near 4.3 at moderate latency (~550ms). GPT-4.1 Nano and GPT-5 Nano (both OpenAI) cluster around a score of 3.5 at high latency. Zeta (Baseten) has the lowest score near 1.4. A group of additional Qwen3-8B scaffolds (Baseten) clusters at low latency with scores between roughly 3.1 and 3.4."
 library(nesevals)
 library(ggplot2)
 library(ggrepel)
