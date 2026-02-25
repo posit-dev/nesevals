@@ -21,8 +21,10 @@ Depends:
     R (>= 4.1)
 LazyData: true
 Suggests:
+    ggforce,
+    ggplot2,
+    ggrepel,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/posit-dev/nesevals, https://posit-dev.github.io/nesevals/
+URL: https://github.com/posit-dev/nesevals
 BugReports: https://github.com/posit-dev/nesevals/issues
-Config/Needs/website: tidyverse/tidytemplate

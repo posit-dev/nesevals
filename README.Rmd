@@ -43,3 +43,63 @@ library(nesevals)
 
 glimpse(nes_results)
 ```
+
+```{r}
+#| message: false
+#| echo: false
+#| label: results-plot
+library(ggplot2)
+library(ggrepel)
+library(ggforce)
+
+qwen_cluster <- nes_results |>
+  dplyr::filter(model == "qwen3-8b", median_latency_ms < 200, mean_score < 3.5)
+
+label_data <- nes_results |>
+  dplyr::filter(model %in% c("claude-haiku-4-5-20251001", "openai/gpt-oss-20b", "qwen3-8b", "zeta",
+                              "gpt-4.1-nano-2025-04-14", "gpt-5-nano")) |>
+  dplyr::slice_max(mean_score, by = model, n = 1) |>
+  dplyr::mutate(label = dplyr::case_when(
+    model == "claude-haiku-4-5-20251001" ~ "Claude Haiku 4.5 (Anthropic)",
+    model == "openai/gpt-oss-20b"        ~ "GPT-OSS 20B (Groq)",
+    model == "qwen3-8b"                  ~ "Qwen3-8B (Baseten)",
+    model == "zeta"                      ~ "Zeta (Baseten)",
+    model == "gpt-4.1-nano-2025-04-14"  ~ "GPT-4.1 Nano (OpenAI)",
+    model == "gpt-5-nano"               ~ "GPT-5 Nano (OpenAI)"
+  ))
+
+hull_label <- data.frame(
+  median_latency_ms = max(qwen_cluster$median_latency_ms),
+  mean_score        = mean(qwen_cluster$mean_score),
+  label             = "Other Qwen3-8B\nscaffolds (Baseten)"
+)
+
+ggplot(nes_results) +
+  aes(x = median_latency_ms, y = mean_score) +
+  geom_mark_hull(
+    data = qwen_cluster,
+    expand = unit(3, "mm"),
+    color = "black",
+    fill = NA
+  ) +
+  geom_point() +
+  geom_text_repel(
+    data = label_data,
+    aes(label = label)
+  ) +
+  geom_text_repel(
+    data = hull_label,
+    aes(label = label),
+    nudge_x = 400,
+    segment.curvature = -0.1
+  ) +
+  labs(
+    title = "NES Scaffold Performance vs. Latency",
+    x = "Median Latency (ms)",
+    y = "Mean Model-Graded Quality Score"
+  ) +
+  theme_minimal() +
+  expand_limits(x = 0)
+```
+
+
