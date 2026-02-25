@@ -36,6 +36,8 @@ pak::pak("posit-dev/nesevals")
 The package ships with a data frame `nes_results` that summarizes experimental results:
 
 ```{r results}
+#| message: false
+#| warning: false
 library(dplyr)
 library(nesevals)
 
