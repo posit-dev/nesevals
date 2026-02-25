@@ -22,15 +22,6 @@ experimental results:
 
 ``` r
 library(dplyr)
-#> Warning: package 'dplyr' was built under R version 4.5.2
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(nesevals)
 
 glimpse(nes_results)
