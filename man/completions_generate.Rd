@@ -19,7 +19,7 @@ completions_generate(
 }
 \arguments{
 \item{samples}{A data frame of evaluation samples in the same format as
-\link{samples}.}
+\link{nes_samples}.}
 
 \item{model}{Either a string naming a Baseten model (\code{"qwen3-8b"} or
 \code{"zeta"}) or an ellmer \link[ellmer:Chat]{ellmer::Chat} object (e.g. from

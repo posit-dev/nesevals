@@ -1,7 +1,7 @@
 #' Evaluation samples
 #'
 #' @description
-#' `samples` is a data frame of 85 NES evaluation samples, each with a
+#' `nes_samples` is a data frame of 85 NES evaluation samples, each with a
 #' contiguous target change.
 #'
 #' `samples_view()` opens an HTML viewer displaying samples' input excerpts
@@ -18,16 +18,16 @@
 #'   \item{tags}{List-column of character vectors.}
 #' }
 #'
-#' @param x The `samples` data frame.
+#' @param x The `nes_samples` data frame.
 #' @param n Initial row index to display.
 #' @returns `x`, invisibly.
 #'
-#' @rdname samples
-"samples"
+#' @rdname nes_samples
+"nes_samples"
 
 #' @export
-#' @rdname samples
-samples_view <- function(x = samples, n = 1L) {
+#' @rdname nes_samples
+samples_view <- function(x = nes_samples, n = 1L) {
   n <- as.integer(n)
   if (n < 1L || n > nrow(x)) {
     cli::cli_abort("{.arg n} must be between 1 and {nrow(x)}.")

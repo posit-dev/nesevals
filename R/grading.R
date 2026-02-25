@@ -13,7 +13,7 @@
 #'   [completions_read()], with at least columns `sample_id`, `replicate`, and
 #'   `response`.
 #' @param samples A data frame of evaluation samples in the same format as
-#'   [nesevals::samples]. Must contain all `sample_id` values present in
+#'   [nesevals::nes_samples]. Must contain all `sample_id` values present in
 #'   `completions`.
 #' @param name Character. Name for the saved scores file. Defaults to the
 #'   `"name"` attribute of `completions` (set automatically by

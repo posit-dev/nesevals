@@ -17,7 +17,7 @@ completions_grade(
 \code{response}.}
 
 \item{samples}{A data frame of evaluation samples in the same format as
-\link{samples}. Must contain all \code{sample_id} values present in
+\link{nes_samples}. Must contain all \code{sample_id} values present in
 \code{completions}.}
 
 \item{name}{Character. Name for the saved scores file. Defaults to the

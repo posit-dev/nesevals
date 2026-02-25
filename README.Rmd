@@ -19,3 +19,25 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 nesevals provides tooling for evaluating next edit suggestion (NES) scaffolds across different edit history formats, output formats, and models.
+
+## Installation
+
+Install the package with:
+
+```r
+# if needed:
+# install.packages("pak")
+
+pak::pak("posit-dev/nesevals")
+```
+
+## Example
+
+The package ships with a data frame `nes_results` that summarizes experimental results:
+
+```{r results}
+library(dplyr)
+library(nesevals)
+
+glimpse(nes_results)
+```

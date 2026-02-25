@@ -6,7 +6,7 @@
 #' `inst/results/completions/` and `inst/results/metadata/`.
 #'
 #' @param samples A data frame of evaluation samples in the same format as
-#'   [nesevals::samples].
+#'   [nesevals::nes_samples].
 #' @param model Either a string naming a Baseten model (`"qwen3-8b"` or
 #'   `"zeta"`) or an ellmer [ellmer::Chat] object (e.g. from
 #'   [ellmer::chat_openai()] or [ellmer::chat_claude()]). When a Chat object
