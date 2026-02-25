@@ -4,3 +4,7 @@
 ^\.claude$
 ^README\.Rmd$
 ^inst/results$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
