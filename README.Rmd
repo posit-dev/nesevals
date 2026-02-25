@@ -20,35 +20,8 @@ knitr::opts_chunk$set(
 
 nesevals provides tooling for evaluating next edit suggestion (NES) scaffolds across different edit history formats, output formats, and models.
 
-## Installation
-
-Install the package with:
-
-```r
-# if needed:
-# install.packages("pak")
-
-pak::pak("posit-dev/nesevals")
-```
-
-## Example
-
-The package ships with a data frame `nes_results` that summarizes experimental results:
-
-```{r results}
-#| message: false
-#| warning: false
-library(dplyr)
+```{r plot, message = FALSE, warning = FALSE, echo = FALSE}
 library(nesevals)
-
-glimpse(nes_results)
-```
-
-```{r}
-#| message: false
-#| warning: false
-#| echo: false
-#| label: results-plot
 library(ggplot2)
 library(ggrepel)
 library(ggforce)
@@ -100,7 +73,28 @@ ggplot(nes_results) +
     y = "Mean Model-Graded Quality Score"
   ) +
   theme_minimal() +
+  theme(panel.background = element_rect(fill = "grey98")) +
   expand_limits(x = 0)
 ```
 
+## Installation
 
+Install the package with:
+
+```r
+# if needed:
+# install.packages("pak")
+
+pak::pak("posit-dev/nesevals")
+```
+
+## Example
+
+The package ships with a data frame `nes_results` that summarizes experimental results:
+
+```{r results, message = FALSE, warning = FALSE}
+library(dplyr)
+library(nesevals)
+
+glimpse(nes_results)
+```
