@@ -46,6 +46,7 @@ glimpse(nes_results)
 
 ```{r}
 #| message: false
+#| warning: false
 #| echo: false
 #| label: results-plot
 library(ggplot2)

@@ -47,6 +47,4 @@ glimpse(nes_results)
 #> $ mean_output_tokens <dbl> 140, 169, 108, 107, 95, 119, 219, 219, 225, 130, 12…
 ```
 
-    #> Warning: package 'ggplot2' was built under R version 4.5.2
-
 <img src="man/figures/README-results-plot-1.png" alt="" width="100%" />
