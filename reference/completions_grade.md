@@ -17,7 +17,8 @@ completions_grade(
   completions,
   samples,
   name = attr(completions, "name"),
-  max_active = 5L
+  max_active = 5L,
+  results_dir = NULL
 )
 ```
 
@@ -49,6 +50,13 @@ completions_grade(
 - max_active:
 
   Integer. Maximum number of simultaneous LLM grading requests.
+
+- results_dir:
+
+  Directory where results are stored. When `NULL` (the default), falls
+  back to `getOption("nesevals.results_dir")`, then `inst/results/`
+  inside the package source tree, then `nesevals-results/` in the
+  current working directory.
 
 ## Value
 

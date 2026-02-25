@@ -6,7 +6,7 @@ Load a previously saved completions result set from
 ## Usage
 
 ``` r
-completions_read(name)
+completions_read(name, results_dir = NULL)
 ```
 
 ## Arguments
@@ -17,6 +17,13 @@ completions_read(name)
   `"qwen3-8b_diffs_editable-region_zeta-supercomplete"`. This
   corresponds to the filename (without `.json`) under
   `inst/results/completions/`.
+
+- results_dir:
+
+  Directory where results are stored. When `NULL` (the default), falls
+  back to `getOption("nesevals.results_dir")`, then `inst/results/`
+  inside the package source tree, then `nesevals-results/` in the
+  current working directory.
 
 ## Value
 

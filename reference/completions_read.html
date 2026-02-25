@@ -41,7 +41,7 @@ inst/results/completions/."></head><body>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">completions_read</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">completions_read</span><span class="op">(</span><span class="va">name</span>, results_dir <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -53,6 +53,13 @@ inst/results/completions/."></head><body>
 <code>"qwen3-8b_diffs_editable-region_zeta-supercomplete"</code>. This
 corresponds to the filename (without <code>.json</code>) under
 <code>inst/results/completions/</code>.</p></dd>
+
+
+<dt id="arg-results-dir">results_dir<a class="anchor" aria-label="anchor" href="#arg-results-dir"></a></dt>
+<dd><p>Directory where results are stored. When <code>NULL</code>
+(the default), falls back to <code>getOption("nesevals.results_dir")</code>, then
+<code>inst/results/</code> inside the package source tree, then
+<code>nesevals-results/</code> in the current working directory.</p></dd>
 
 </dl></div>
     <div class="section level2">

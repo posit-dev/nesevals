@@ -17,7 +17,8 @@ completions_generate(
     "rewrite_region_5bt"),
   include_variables = TRUE,
   n_replicates = 1L,
-  context_lines = 1L
+  context_lines = 1L,
+  results_dir = NULL
 )
 ```
 
@@ -68,6 +69,13 @@ completions_generate(
 
   Integer. Number of context lines for before/after and narrative edit
   history formats.
+
+- results_dir:
+
+  Directory where results are stored. When `NULL` (the default), falls
+  back to `getOption("nesevals.results_dir")`, then `inst/results/`
+  inside the package source tree, then `nesevals-results/` in the
+  current working directory.
 
 ## Value
 

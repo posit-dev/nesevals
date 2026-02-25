@@ -54,7 +54,8 @@ with response latency. Results are written to JSON files under
 <span>    <span class="st">"rewrite_region_5bt"</span><span class="op">)</span>,</span>
 <span>  include_variables <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  n_replicates <span class="op">=</span> <span class="fl">1L</span>,</span>
-<span>  context_lines <span class="op">=</span> <span class="fl">1L</span></span>
+<span>  context_lines <span class="op">=</span> <span class="fl">1L</span>,</span>
+<span>  results_dir <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -102,6 +103,13 @@ which system prompt file to use from <code>inst/prompts/</code>.</p></dd>
 <dt id="arg-context-lines">context_lines<a class="anchor" aria-label="anchor" href="#arg-context-lines"></a></dt>
 <dd><p>Integer. Number of context lines for before/after and
 narrative edit history formats.</p></dd>
+
+
+<dt id="arg-results-dir">results_dir<a class="anchor" aria-label="anchor" href="#arg-results-dir"></a></dt>
+<dd><p>Directory where results are stored. When <code>NULL</code>
+(the default), falls back to <code>getOption("nesevals.results_dir")</code>, then
+<code>inst/results/</code> inside the package source tree, then
+<code>nesevals-results/</code> in the current working directory.</p></dd>
 
 </dl></div>
     <div class="section level2">
