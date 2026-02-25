@@ -2,3 +2,19 @@ url: https://posit-dev.github.io/nesevals/
 template:
   bootstrap: 5
 
+reference:
+- title: Data
+  contents:
+  - nes_results
+  - nes_samples
+- title: Generate, grade, and read completions
+  contents:
+  - completions_generate
+  - completions_grade
+  - completions_load_test
+  - completions_read
+- title: Prompt formatting
+  contents:
+  - format_edit_history
+  - format_user_query
+  - format_variables

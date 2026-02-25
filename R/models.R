@@ -26,7 +26,7 @@
 #' model_url("qwen3-8b")
 #' }
 #'
-#' @export
+#' @keywords internal
 model_url <- function(model = c("qwen3-8b", "zeta")) {
   model <- match.arg(model)
 
