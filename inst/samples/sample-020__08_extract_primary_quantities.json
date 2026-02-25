@@ -1,0 +1,47 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```08_extract_primary_quantities.R\n        ## Combined female/male arrays to match Ben's code\n        binded_array_all <- abind::abind(temp_x$female, \n                                         temp_x$male,\n<|editable_region_start|>\n                                         along = 2.5)\n        dimnames(binded_array_all) <- list(\n            \"child age\" = dimnames(binded_array_all)[[1]],\n            \"focal age\" = dimnames(binded_array_all)[[2]],\n            \"focal sex\" = c(\"female\", <|user_cursor_is_here|>\n            year = dimnames(binded_array_all)[[4]],\n            simulation = 1:NROW(binded_array_all[1, 1, 1, 1, ])\n        )\n        meta_df <- temp_x$metainfo\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "temp_x",
+        "type": "list [$female, $male, $metainfo]"
+      },
+      {
+        "name": "binded_array_all",
+        "type": "array [18, 96, 2, 25, 1000]"
+      },
+      {
+        "name": "COD",
+        "type": "str: \"cancer\""
+      },
+      {
+        "name": "R",
+        "type": "str: \"black\""
+      },
+      {
+        "name": "F_ALL",
+        "type": "str: \"/projects/parental_loss/output/simulations/black_all_cause.RDS\""
+      },
+      {
+        "name": "param_grid",
+        "type": "tbl_df [12, 4]",
+        "value": "Columns:\n* race_eth: chr\n* cause: chr\n* f_path: chr\n* sensitivity: lgl"
+      },
+      {
+        "name": "lt.US.long",
+        "type": "tbl_df [89,280, 9]",
+        "value": "Columns:\n* year: dbl\n* race_eth: chr\n* sex: chr\n* age: dbl\n* cause: chr\n* dth: dbl\n* theta_0: dbl\n* theta_1: dbl\n* theta_2: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n                                         along = 2.5)\n        dimnames(binded_array_all) <- list(\n            \"child age\" = dimnames(binded_array_all)[[1]],\n            \"focal age\" = dimnames(binded_array_all)[[2]],\n            \"focal sex\" = c(\"female\", \"male\"),\n            year = dimnames(binded_array_all)[[4]],\n            simulation = 1:NROW(binded_array_all[1, 1, 1, 1, ])\n        )\n        meta_df <- temp_x$metainfo\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

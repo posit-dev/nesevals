@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-01-14T10:22:31.450Z):\nP1.py\n@@ -85,8 +85,9 @@\n         ridge.fit(X_scaled, y)\n         coef_ridge.append(ridge.coef_)\n         \n         # Lasso\n         lasso = Lasso(alpha=alpha, max_iter=2000)\n         lasso.fit(X_scaled, y)\n+        c\n     \n     # OLS (sin regularización)\n\nEdit 2 (2025-01-14T10:22:31.782Z):\nP1.py\n@@ -85,8 +85,9 @@\n         ridge.fit(X_scaled, y)\n         coef_ridge.append(ridge.coef_)\n         \n         # Lasso\n         lasso = Lasso(alpha=alpha, max_iter=2000)\n         lasso.fit(X_scaled, y)\n+        coef_l\n     \n     # OLS (sin regularización)\n\nEdit 3 (2025-01-14T10:22:32.118Z):\nP1.py\n@@ -85,8 +85,9 @@\n         ridge.fit(X_scaled, y)\n         coef_ridge.append(ridge.coef_)\n         \n         # Lasso\n         lasso = Lasso(alpha=alpha, max_iter=2000)\n         lasso.fit(X_scaled, y)\n+        coef_lasso.\n     \n     # OLS (sin regularización)\n\nEdit 4 (2025-01-14T10:22:32.556Z):\nP1.py\n@@ -85,8 +85,9 @@\n         ridge.fit(X_scaled, y)\n         coef_ridge.append(ridge.coef_)\n         \n         # Lasso\n         lasso = Lasso(alpha=alpha, max_iter=2000)\n         lasso.fit(X_scaled, y)\n+        coef_lasso.app\n     \n     # OLS (sin regularización)\n\nEdit 5 (2025-01-14T10:22:33.012Z):\nP1.py\n@@ -85,8 +85,9 @@\n         ridge.fit(X_scaled, y)\n         coef_ridge.append(ridge.coef_)\n         \n         # Lasso\n         lasso = Lasso(alpha=alpha, max_iter=2000)\n         lasso.fit(X_scaled, y)\n+        coef_lasso.append(lasso.\n     \n     # OLS (sin regularización)",
+    "excerpt": "```P1.py\ndef analyze_coefficients(X, y, true_coefficients, alpha_values):\n    \"\"\"\n    Analiza cómo cambian las magnitudes de los coeficientes con la regularización.\n    \"\"\"\n    # Estandarizar datos\n    scaler = StandardScaler()\n    X_scaled = scaler.fit_transform(X)\n    \n    # Almacenar coeficientes\n    coef_ridge = []\n<|editable_region_start|>\n    coef_lasso = []\n    \n    for alpha in alpha_values:\n        # Ridge\n        ridge = Ridge(alpha=alpha)\n        ridge.fit(X_scaled, y)\n        coef_ridge.append(ridge.coef_)\n        \n        # Lasso\n        lasso = Lasso(alpha=alpha, max_iter=2000)\n        lasso.fit(X_scaled, y)\n        coef_lasso.append(lasso.<|user_cursor_is_here|>\n    \n    # OLS (sin regularización)\n    ols = LinearRegression()\n    ols.fit(X_scaled, y)\n<|editable_region_end|>\n    coef_ols = ols.coef_\n```\n",
+    "variables": [
+      {
+        "name": "X",
+        "type": "ndarray (500, 10)"
+      },
+      {
+        "name": "y",
+        "type": "ndarray (500,)"
+      },
+      {
+        "name": "alpha_values",
+        "type": "list [20]"
+      },
+      {
+        "name": "scaler",
+        "type": "StandardScaler"
+      },
+      {
+        "name": "X_scaled",
+        "type": "ndarray (500, 10)"
+      },
+      {
+        "name": "coef_ridge",
+        "type": "list [15]"
+      },
+      {
+        "name": "lasso",
+        "type": "Lasso",
+        "value": "Attributes:\n* coef_: ndarray (10,)\n* alpha: float64"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    coef_lasso = []\n    \n    for alpha in alpha_values:\n        # Ridge\n        ridge = Ridge(alpha=alpha)\n        ridge.fit(X_scaled, y)\n        coef_ridge.append(ridge.coef_)\n        \n        # Lasso\n        lasso = Lasso(alpha=alpha, max_iter=2000)\n        lasso.fit(X_scaled, y)\n        coef_lasso.append(lasso.coef_)\n    \n    # OLS (sin regularización)\n    ols = LinearRegression()\n    ols.fit(X_scaled, y)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

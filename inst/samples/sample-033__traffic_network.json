@@ -1,0 +1,49 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-01T14:22:31.102Z):\n```traffic_network.R\n@@ -4,9 +4,9 @@\n percentage_traffic_work <-\n   L_nodes |>\n   dplyr::summarise(\n     traffic_work = sum(traffic_work, na.rm = TRUE),\n     .by = \"city_trp_lgl\"\n-  )\n+  ) |>\n \n \n ## Compare distributions ----\n```\n\nEdit 2 (2025-12-01T14:22:34.455Z):\n```traffic_network.R\n@@ -4,9 +4,10 @@\n percentage_traffic_work <-\n   L_nodes |>\n   dplyr::summarise(\n     traffic_work = sum(traffic_work, na.rm = TRUE),\n     .by = \"city_trp_lgl\"\n-  ) |>\n+  ) |>\n+  tidyr::pivot_wider(\n \n \n ## Compare distributions ----\n```\n\nEdit 3 (2025-12-01T14:22:38.891Z):\n```traffic_network.R\n@@ -5,9 +5,10 @@\n   L_nodes |>\n   dplyr::summarise(\n     traffic_work = sum(traffic_work, na.rm = TRUE),\n     .by = \"city_trp_lgl\"\n   ) |>\n   tidyr::pivot_wider(\n+    names_from = \"city_trp_lgl\",\n+  )\n \n \n ## Compare distributions ----\n```",
+    "excerpt": "```traffic_network.R\n## Weighted coverage ----\n<|editable_region_start|>\n# Traffic work is what counts\npercentage_traffic_work <-\n  L_nodes |>\n  dplyr::summarise(\n    traffic_work = sum(traffic_work, na.rm = TRUE),\n    .by = \"city_trp_lgl\"\n  ) |>\n  tidyr::pivot_wider(\n    names_from = \"city_trp_lgl\",<|user_cursor_is_here|>\n  )\n\n\n## Compare distributions ----\n# Functional road class\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "L_nodes",
+        "type": "tbl_df [1247, 8]",
+        "value": "Columns:\n* id: dbl\n* traffic_work: dbl\n* city_trp: dbl\n* city_trp_lgl: lgl\n* functional_road_class: chr\n* length_m: dbl\n* aadt: dbl\n* geometry: sfc_POINT"
+      },
+      {
+        "name": "L_graph",
+        "type": "igraph"
+      },
+      {
+        "name": "selected_neighbors",
+        "type": "tbl_df [89, 9]",
+        "value": "Columns:\n* id: dbl\n* traffic_work: dbl\n* city_trp: dbl\n* city_trp_lgl: lgl\n* functional_road_class: chr\n* length_m: dbl\n* aadt: dbl\n* geometry: sfc_POINT\n* neighbors: list"
+      },
+      {
+        "name": "selected_nodes_and_neighbors",
+        "type": "tbl_df [312, 1]",
+        "value": "Columns:\n* nodes: dbl"
+      },
+      {
+        "name": "percentage_nodes_sampled",
+        "type": "dbl"
+      },
+      {
+        "name": "distance_matrix",
+        "type": "matrix [1247, 1247]"
+      },
+      {
+        "name": "shortest_distances",
+        "type": "tbl_df [1247, 1248]",
+        "value": "Columns:\n* V1: dbl\n* V2: dbl\n* ...\n* V1247: dbl\n* shortest: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# Traffic work is what counts\npercentage_traffic_work <-\n  L_nodes |>\n  dplyr::summarise(\n    traffic_work = sum(traffic_work, na.rm = TRUE),\n    .by = \"city_trp_lgl\"\n  ) |>\n  tidyr::pivot_wider(\n    names_from = \"city_trp_lgl\",\n    values_from = \"traffic_work\"\n  )\n\n\n## Compare distributions ----\n# Functional road class\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

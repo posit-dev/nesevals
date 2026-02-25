@@ -1,0 +1,32 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:32:45.112Z):\n```estimate-size.r\n@@ -18,8 +18,9 @@\n       \"win_x64\" = \"Windows x64\",\n       \"win_ia32\" = \"Windows 32-bit\",\n       \"linux_x64\" = \"Linux x64\",\n+      \"linux_\n       platform\n     )\n     \n     cat(sprintf(\"  %-35s %12s\\n\", paste0(platform_name, \":\"), \n```\n\nEdit 2 (2025-11-24T14:32:45.892Z):\n```estimate-size.r\n@@ -18,9 +18,9 @@\n       \"win_x64\" = \"Windows x64\",\n       \"win_ia32\" = \"Windows 32-bit\",\n       \"linux_x64\" = \"Linux x64\",\n-      \"linux_\n+      \"linux_a\n       platform\n     )\n     \n     cat(sprintf(\"  %-35s %12s\\n\", paste0(platform_name, \":\"), \n```",
+    "excerpt": "```estimate-size.r\n  bundle_sizes <- list()\n  for (platform in names(electron_overhead)) {\n    overhead <- electron_overhead[[platform]]\n    total <- app_content_size + overhead\n    bundle_sizes[[platform]] <- total\n    \n<|editable_region_start|>\n    platform_name <- switch(platform,\n      \"mac_arm64\" = \"macOS ARM64 (Apple Silicon)\",\n      \"mac_x64\" = \"macOS x64 (Intel)\",\n      \"win_x64\" = \"Windows x64\",\n      \"win_ia32\" = \"Windows 32-bit\",\n      \"linux_x64\" = \"Linux x64\",\n      \"linux_a<|user_cursor_is_here|>\n      platform\n    )\n    \n    cat(sprintf(\"  %-35s %12s\\n\", paste0(platform_name, \":\"), \n                format_size(total)))\n  }\n<|editable_region_end|>\n  \n  results$bundle_sizes <- bundle_sizes\n  results$electron_overhead <- electron_overhead\n```\n",
+    "variables": [
+      {
+        "name": "format_size",
+        "type": "function"
+      },
+      {
+        "name": "electron_overhead",
+        "type": "list [6]"
+      },
+      {
+        "name": "app_content_size",
+        "type": "dbl"
+      },
+      {
+        "name": "results",
+        "type": "list [3]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    platform_name <- switch(platform,\n      \"mac_arm64\" = \"macOS ARM64 (Apple Silicon)\",\n      \"mac_x64\" = \"macOS x64 (Intel)\",\n      \"win_x64\" = \"Windows x64\",\n      \"win_ia32\" = \"Windows 32-bit\",\n      \"linux_x64\" = \"Linux x64\",\n      \"linux_arm64\" = \"Linux ARM64\",\n      platform\n    )\n    \n    cat(sprintf(\"  %-35s %12s\\n\", paste0(platform_name, \":\"), \n                format_size(total)))\n  }\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

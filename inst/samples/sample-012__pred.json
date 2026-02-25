@@ -1,0 +1,36 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T14:22:31.112Z):\n```pred.py\n@@ -65,9 +65,9 @@\n         # TODO 预测值等权,可以按需进行权重分配\n         result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n-        others.append(result)\n+        others.\n\n     return pl.concat(others)\n \n \n result = predict()\n```\n\nEdit 2 (2025-12-19T14:22:33.847Z):\n```pred.py\n@@ -65,9 +65,9 @@\n         # TODO 预测值等权,可以按需进行权重分配\n         result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n         others.\n\n-    return pl.concat(others)\n+\n\n \n result = predict()\n print(result)\n```\n\nEdit 3 (2025-12-19T14:22:38.201Z):\n```pred.py\n@@ -65,9 +65,9 @@\n         # TODO 预测值等权,可以按需进行权重分配\n         result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n-        others.\n+        others.a\n\n\n \n result = predict()\n print(result)\n```\n\nEdit 4 (2025-12-19T14:22:38.512Z):\n```pred.py\n@@ -65,9 +65,9 @@\n         # TODO 预测值等权,可以按需进行权重分配\n         result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n-        others.a\n+        others.ap\n\n\n \n result = predict()\n print(result)\n```\n\nEdit 5 (2025-12-19T14:22:38.798Z):\n```pred.py\n@@ -65,9 +65,9 @@\n         # TODO 预测值等权,可以按需进行权重分配\n         result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n-        others.ap\n+        others.app\n\n\n \n result = predict()\n print(result)\n```",
+    "excerpt": "```pred.py\n        for i, model in enumerate(models):\n            num_iteration = model.best_iteration if hasattr(model, 'best_iteration') else None\n            pred_proba = model.predict(X_test, num_iteration=num_iteration)\n            print(\"预测概率范围:\", pred_proba.min(), \"~\", pred_proba.max())\n            if method != Method.RealWorld:\n<|editable_region_start|>\n                print(\"AUC分数:\", roc_auc_score(y_test, pred_proba))\n                print(classification_report(y_test, (pred_proba > 0.5).astype(int), zero_division=np.nan))\n            y_preds[f'y_pred_{i}'] = pred_proba\n        # TODO 预测值等权,可以按需进行权重分配\n        result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n        others.app<|user_cursor_is_here|>\n\n    return pl.concat(others)\n\n\nresult = predict()\nprint(result)\n<|editable_region_end|>\n\n# %%\naxvlines = ()\nfactor = 'y_pred'\n```\n",
+    "variables": [
+      {
+        "name": "models",
+        "type": "list [5]"
+      },
+      {
+        "name": "df",
+        "type": "DataFrame [125000, 42]",
+        "value": "Columns:\n* date: datetime[μs]\n* asset: str\n* label: int64\n* fwd_ret: float64\n* feature_1: float64\n* feature_2: float64\n* feature_3: float64"
+      },
+      {
+        "name": "pl",
+        "type": "module"
+      },
+      {
+        "name": "method",
+        "type": "Method.Unbalance"
+      },
+      {
+        "name": "label_drop_nulls",
+        "type": "bool"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n                print(\"AUC分数:\", roc_auc_score(y_test, pred_proba))\n                print(classification_report(y_test, (pred_proba > 0.5).astype(int), zero_division=np.nan))\n            y_preds[f'y_pred_{i}'] = pred_proba\n        # TODO 预测值等权,可以按需进行权重分配\n        result = other.with_columns(y_pred=pl.from_dict(y_preds).mean_horizontal())\n        others.append(result)\n\n    return pl.concat(others)\n\n\nresult = predict()\nprint(result)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop"
+  ]
+}

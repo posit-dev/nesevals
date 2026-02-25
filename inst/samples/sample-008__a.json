@@ -1,0 +1,30 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:00:17.365Z):\na.py\n@@ -12,8 +12,9 @@\n     res = find_sign_change_interval(expr)\n     if res:\n         a_guess, b_guess = res\n+        entrada_a.delete(0, tk.END); entrada_a.insert(0, f\"{a_guess:.6g}\")\n         try:\n             etiqueta_intervalo.config(text=f\"Intervalo detectado: [{a_guess:.6g}, {b_guess:.6g}]\")\n         except Exception:\n             pass\n\nEdit 2 (2025-12-19T19:00:19.584Z):\na.py\n@@ -13,8 +13,9 @@\n     if res:\n         a_guess, b_guess = res\n         entrada_a.delete(0, tk.END); entrada_a.insert(0, f\"{a_guess:.6g}\")\n+        entrada_b\n         try:\n             etiqueta_intervalo.config(text=f\"Intervalo detectado: [{a_guess:.6g}, {b_guess:.6g}]\")\n         except Exception:\n             pass\n\nEdit 3 (2025-12-19T19:00:20.444Z):\na.py\n@@ -13,9 +13,9 @@\n     if res:\n         a_guess, b_guess = res\n         entrada_a.delete(0, tk.END); entrada_a.insert(0, f\"{a_guess:.6g}\")\n-        entrada_b\n+        entrada_b.de\n         try:\n             etiqueta_intervalo.config(text=f\"Intervalo detectado: [{a_guess:.6g}, {b_guess:.6g}]\")\n         except Exception:\n             pass",
+    "excerpt": "```a.py\ndef _try_set_interval():\n    \"\"\"Intentar fijar a y b autom\u00e1ticamente si est\u00e1n en valores por defecto.\"\"\"\n    global _interval_after_id\n    _interval_after_id = None\n<|editable_region_start|>\n    expr = entrada_ecuacion.get().strip()\n    # solo sobrescribimos si el usuario no cambi\u00f3 a/b (valores por defecto)\n    cur_a = entrada_a.get().strip()\n    cur_b = entrada_b.get().strip()\n    if cur_a not in ('', '0') or cur_b not in ('', '1'):\n        return\n    res = find_sign_change_interval(expr)\n    if res:\n        a_guess, b_guess = res\n        entrada_a.delete(0, tk.END); entrada_a.insert(0, f\"{a_guess:.6g}\")\n        entrada_b.de<|user_cursor_is_here|>\n        try:\n            etiqueta_intervalo.config(text=f\"Intervalo detectado: [{a_guess:.6g}, {b_guess:.6g}]\")\n        except Exception:\n            pass\n    else:\n<|editable_region_end|>\n        try:\n            etiqueta_intervalo.config(text=\"No se encontr\u00f3 intervalo con cambio de signo en rangos probados.\")\n        except Exception:\n            pass\n```\n",
+    "variables": [
+      {
+        "name": "find_sign_change_interval",
+        "type": "function"
+      },
+      {
+        "name": "entrada_a",
+        "type": "Entry"
+      },
+      {
+        "name": "entrada_b",
+        "type": "Entry"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    expr = entrada_ecuacion.get().strip()\n    # solo sobrescribimos si el usuario no cambi\u00f3 a/b (valores por defecto)\n    cur_a = entrada_a.get().strip()\n    cur_b = entrada_b.get().strip()\n    if cur_a not in ('', '0') or cur_b not in ('', '1'):\n        return\n    res = find_sign_change_interval(expr)\n    if res:\n        a_guess, b_guess = res\n        entrada_a.delete(0, tk.END); entrada_a.insert(0, f\"{a_guess:.6g}\")\n        entrada_b.delete(0, tk.END); entrada_b.insert(0, f\"{b_guess:.6g}\")\n        try:\n            etiqueta_intervalo.config(text=f\"Intervalo detectado: [{a_guess:.6g}, {b_guess:.6g}]\")\n        except Exception:\n            pass\n    else:\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

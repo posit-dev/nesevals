@@ -1,0 +1,33 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T15:38:17.067Z):\n```inst/solver/README.md\n@@ -1,1 +1,1 @@\n-This is the \"scratch\" directory where solvers will work (a)\n+This is the \"scratch\" directory where solvers will work ()\n```\n\nEdit 2 (2025-11-24T15:38:17.457Z):\n```inst/solver/README.md\n@@ -1,1 +1,1 @@\n-This is the \"scratch\" directory where solvers will work ()\n+This is the \"scratch\" directory where solvers will work \n```\n\nEdit 3 (2025-11-24T15:38:17.717Z):\n```inst/solver/README.md\n@@ -1,1 +1,1 @@\n-This is the \"scratch\" directory where solvers will work \n+This is the \"scratch\" directory where solvers will work .\n```\n\nEdit 4 (2025-11-24T15:38:18.235Z):\n```inst/solver/README.md\n@@ -1,1 +1,1 @@\n-This is the \"scratch\" directory where solvers will work .\n+This is the \"scratch\" directory where solvers will work.\n```\n\nEdit 5 (2025-11-24T15:41:02.598Z):\n```R/helper-solver.R\n@@ -29,16 +29,8 @@\n     side_dir <- eval(parse(text = input$dir))\n     prepare_solver_directory(side_dir)\n   })\n \n-  withr::defer({\n-    purrr::walk(solver_dirs, function(dir) {\n-      if (dir.exists(dir)) {\n-        unlink(dir, recursive = TRUE)\n-      }\n-    })\n-  })\n-\n   res_chats <- purrr::map2(inputs, solver_dirs, function(input, solver_dir) {\n     withr::local_dir(solver_dir)\n     ch_i <- solver_chat$clone()\n     ch_i <- configure_solver_client(ch_i, solver_dir)\n@@ -47,29 +39,13 @@\n \n     ch_i\n   })\n \n-  r_dirs <- purrr::map(solver_dirs, function(solver_dir) {\n-    r_dir <- file.path(solver_dir, \"R\")\n-    if (dir.exists(r_dir)) {\n-      temp_r <- tempfile(pattern = \"helper_r_\")\n-      dir.create(temp_r, recursive = TRUE)\n-      file.copy(\n-        list.files(r_dir, full.names = TRUE),\n-        temp_r,\n-        recursive = TRUE\n-      )\n-      temp_r\n-    } else {\n-      NULL\n-    }\n-  })\n-\n   list(\n     result = purrr::map_chr(res_chats, function(c) c$last_turn()@text),\n     solver_chat = res_chats,\n-    solver_metadata = purrr::map(r_dirs, function(r_dir) {\n-      list(r_directory = r_dir)\n+    solver_metadata = purrr::map(solver_dirs, function(solver_dir) {\n+      list(solver_directory = solver_dir)\n     })\n   )\n }\n \n```\n\nEdit 6 (2025-11-24T15:41:34.977Z):\n```R/helper-solver.R\n@@ -16,10 +16,10 @@\n #' @return A list with the following components:\n #' \\describe{\n #'   \\item{result}{Character vector of model responses, one for each input.}\n #'   \\item{solver_chat}{List of Chat objects used to generate each response.}\n-#'   \\item{solver_metadata}{List containing the modified R/ directory for each\n-#'     input, which will be used by the scorer.}\n+#'   \\item{solver_metadata}{List containing the solver working directory for each\n+#'     input, which will be used and cleaned up by the scorer.}\n #' }\n #'\n #' @export\n helper_solver <- function(inputs, ..., solver_chat) {\n```\n\nEdit 7 (2025-11-24T15:43:10.234Z):\n```R/helper-solver.R\n@@ -34,8 +34,9 @@\n     withr::local_dir(solver_dir)\n     ch_i <- solver_chat$clone()\n     ch_i <- configure_solver_client(ch_i, solver_dir)\n \n+    \n     ch_i$chat(input$prompt, echo = FALSE)\n \n     ch_i\n   })\n```\n\nEdit 8 (2025-11-24T15:43:11.399Z):\n```R/helper-solver.R\n@@ -34,9 +34,9 @@\n     withr::local_dir(solver_dir)\n     ch_i <- solver_chat$clone()\n     ch_i <- configure_solver_client(ch_i, solver_dir)\n \n-    \n+    browser\n     ch_i$chat(input$prompt, echo = FALSE)\n \n     ch_i\n   })\n```\n\nEdit 9 (2025-11-24T15:43:11.654Z):\n```R/helper-solver.R\n@@ -34,9 +34,9 @@\n     withr::local_dir(solver_dir)\n     ch_i <- solver_chat$clone()\n     ch_i <- configure_solver_client(ch_i, solver_dir)\n \n-    browser\n+    browser()\n     ch_i$chat(input$prompt, echo = FALSE)\n \n     ch_i\n   })\n```\n\nEdit 10 (2025-11-24T15:44:28.729Z):\n```R/helper-solver.R\n@@ -66,10 +66,8 @@\n   solver_dir\n }\n \n configure_solver_client <- function(client, working_dir) {\n-  withr::local_dir(working_dir)\n-\n   client$set_tools(side:::sidekick_tools(socket_url = NULL))\n   client$set_system_prompt(readLines(system.file(\"agents/main.md\", package = \"side\")))\n \n   client\n```",
+    "excerpt": "```R/helper-solver.R\n\n  fs::dir_copy(side_dir, temp_dir)\n\n  solver_dir <- file.path(temp_dir, basename(side_dir))\n\n<|editable_region_start|>\n  file.create(file.path(solver_dir, \".here\"))\n\n  solver_dir\n}\n\nconfigure_solver_client <- function(client, working_dir) {<|user_cursor_is_here|>\n  client$set_tools(side:::sidekick_tools(socket_url = NULL))\n  client$set_system_prompt(readLines(system.file(\"agents/main.md\", package = \"side\")))\n\n  client\n}\n<|editable_region_end|>\n\ncheck_inherits <- function(x, class, call = rlang::caller_env()) {\n  if (!inherits(x, class)) {\n    cli::cli_abort(\n      \"{.arg solver_chat} must be a {.cls {class}} object.\",\n```\n",
+    "variables": [
+      {
+        "name": "solver_chat",
+        "type": "Chat",
+        "value": "Columns:\n* private: \n* methods: "
+      },
+      {
+        "name": "inputs",
+        "type": "list [1]"
+      },
+      {
+        "name": "augment_dataset",
+        "type": "function"
+      },
+      {
+        "name": "ensemble_models",
+        "type": "function"
+      },
+      {
+        "name": "solver_dirs",
+        "type": "list [1]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  file.create(file.path(solver_dir, \".here\"))\n\n  solver_dir\n}\n\nconfigure_solver_client <- function(client) {\n  client$set_tools(side:::sidekick_tools(socket_url = NULL))\n  client$set_system_prompt(readLines(system.file(\"agents/main.md\", package = \"side\")))\n\n  client\n}\n<|editable_region_end|>",
+  "tags": [
+    "jittered_noop"
+  ]
+}

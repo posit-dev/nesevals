@@ -1,0 +1,42 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```100_dada.R\n  # DADA2 quality filtering on read-pairs\n\n  ##### filter_pairs_{.orient}_{.seqrun} #####\n  # character: file names with path of filtered read files (fastq.gz)\n  #\n  # additional quality filtering on read-pairs\n  tar_file_fast(\n    filter_pairs,\n<|editable_region_start|>\n    dada2_meta |>\n      dplyr::mutate(\n        trim_R1 = purrr::keep(trim, endsWith, \"_R1_trim.fastq.gz\"),\n        trim_R2 = purrr::keep(trim, endsWith, \"_R<|user_cursor_is_here|>\n      ) |>\n      dplyr::group_by(\n<|editable_region_end|>\n        dplyr::pick(any_of(c(\"seqrun\", filter_option_names)))\n      ) |>\n```\n",
+    "variables": [
+      {
+        "name": "dada2_meta",
+        "type": "tbl_df [48, 12]",
+        "value": "Columns:\n* seqrun: chr\n* orient: chr\n* sample_key: chr\n* filt_R1: chr\n* filt_R2: chr\n* trim_R1: chr\n* trim_R2: chr\n* maxEE_fwd: dbl\n* maxEE_rev: dbl\n* truncLen_fwd: int\n* truncLen_rev: int\n* filter_id: chr"
+      },
+      {
+        "name": "trim",
+        "type": "chr [96]"
+      },
+      {
+        "name": "filter_option_names",
+        "type": "chr [4]"
+      },
+      {
+        "name": "dada2_maxEE",
+        "type": "list [2]"
+      },
+      {
+        "name": "local_cpus",
+        "type": "function"
+      },
+      {
+        "name": "file_to_sample_key",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    dada2_meta |>\n      dplyr::mutate(\n        trim_R1 = purrr::keep(trim, endsWith, \"_R1_trim.fastq.gz\"),\n        trim_R2 = purrr::keep(trim, endsWith, \"_R2_trim.fastq.gz\")\n      ) |>\n      dplyr::group_by(\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

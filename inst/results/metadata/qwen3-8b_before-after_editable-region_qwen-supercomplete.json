@@ -1,0 +1,12 @@
+{
+  "name": "qwen3-8b_before-after_editable-region_qwen-supercomplete",
+  "model": "qwen3-8b",
+  "prompt": "qwen-supercomplete",
+  "edit_history_format": "before_after",
+  "output_format": "editable_region",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 80,
+  "generated_at": "2026-02-11 16:57:50.785341"
+}

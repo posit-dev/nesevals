@@ -1,0 +1,59 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-08T03:53:34.335Z):\n```scripts/generate-samples.R\n@@ -11,12 +11,12 @@\n   prompt_file <- file.path(\"prompts\", paste0(helper_type, \".md\"))\n   paste(readLines(prompt_file), collapse = \"\\n\")\n }\n \n-query_haiku <- function(system_prompt, user_message) {\n+query_sonnet <- function(system_prompt, user_message) {\n   chat <- chat_anthropic(\n     system_prompt = system_prompt,\n-    model = \"claude-haiku-4-5-20251001\",\n+    model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n   chat$chat(user_message)\n }\n@@ -27,9 +27,9 @@\n     user_input\n   )\n \n   chat <- chat_anthropic(\n-    model = \"claude-haiku-4-5-20251001\",\n+    model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n   trimws(chat$chat(prompt))\n }\n@@ -146,9 +146,9 @@\n         status_val(\"Generating output...\")\n \n         tryCatch({\n           system_prompt <- load_system_prompt(type)\n-          result <- query_haiku(system_prompt, user_input)\n+          result <- query_sonnet(system_prompt, user_input)\n \n           updateTextAreaInput(session, paste0(type, \"_output\"), value = result)\n \n           status_val(\"Generating filename...\")\n```\n\nEdit 2 (2025-12-08T03:53:35.806Z):\n```scripts/generate-samples.R\n@@ -175,8 +175,9 @@\n         tryCatch({\n           filepath <- save_sample(type, filename, user_input, target_output)\n           status_val(paste(\"Saved to\", filepath))\n \n+          updateTextAreaInput(session, paste0(type, \"_input\"), value = \"\")\n           updateTextAreaInput(session, paste0(type, \"_output\"), value = \"\")\n           updateTextInput(session, paste0(type, \"_filename\"), value = \"\")\n         }, error = function(e) {\n           status_val(paste(\"Error saving:\", e$message))\n```\n\nEdit 3 (2025-12-08T03:54:53.273Z):\n```scripts/generate-samples.R\n@@ -17,8 +17,9 @@\n     system_prompt = system_prompt,\n     model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n+  \n   chat$chat(user_message)\n }\n \n generate_filename <- function(helper_type, user_input) {\n```\n\nEdit 4 (2025-12-08T03:54:55.522Z):\n```scripts/generate-samples.R\n@@ -17,9 +17,9 @@\n     system_prompt = system_prompt,\n     model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n-  \n+  browser\n   chat$chat(user_message)\n }\n \n generate_filename <- function(helper_type, user_input) {\n```\n\nEdit 5 (2025-12-08T03:54:55.817Z):\n```scripts/generate-samples.R\n@@ -17,9 +17,9 @@\n     system_prompt = system_prompt,\n     model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n-  browser\n+  browser()\n   chat$chat(user_message)\n }\n \n generate_filename <- function(helper_type, user_input) {\n```\n\nEdit 6 (2025-12-08T03:55:11.651Z):\n```scripts/generate-samples.R\n@@ -17,9 +17,8 @@\n     system_prompt = system_prompt,\n     model = \"claude-sonnet-4-5-20250929\",\n     echo = \"none\"\n   )\n-  browser()\n   chat$chat(user_message)\n }\n \n generate_filename <- function(helper_type, user_input) {\n```\n\nEdit 7 (2025-12-08T03:56:32.316Z):\n```scripts/generate-samples.R\n@@ -14,9 +14,9 @@\n \n query_sonnet <- function(system_prompt, user_message) {\n   chat <- chat_anthropic(\n     system_prompt = system_prompt,\n-    model = \"claude-sonnet-4-5-20250929\",\n+    model = \"claude-3-7-sonnet\",\n     echo = \"none\"\n   )\n   chat$chat(user_message)\n }\n```\n\nEdit 8 (2025-12-08T03:56:42.134Z):\n```scripts/generate-samples.R\n@@ -27,9 +27,9 @@\n     user_input\n   )\n \n   chat <- chat_anthropic(\n-    model = \"claude-sonnet-4-5-20250929\",\n+    model = \"claude-haiku-4-5\",\n     echo = \"none\"\n   )\n   trimws(chat$chat(prompt))\n }\n```\n\nEdit 9 (2025-12-08T03:57:39.060Z):\n```scripts/generate-samples.R\n@@ -14,9 +14,9 @@\n \n query_sonnet <- function(system_prompt, user_message) {\n   chat <- chat_anthropic(\n     system_prompt = system_prompt,\n-    model = \"claude-3-7-sonnet\",\n+    model = claude-3-7-sonnet-20250219,\n     echo = \"none\"\n   )\n   chat$chat(user_message)\n }\n```\n\nEdit 10 (2025-12-08T03:57:40.690Z):\n```scripts/generate-samples.R\n@@ -14,9 +14,9 @@\n \n query_sonnet <- function(system_prompt, user_message) {\n   chat <- chat_anthropic(\n     system_prompt = system_prompt,\n-    model = claude-3-7-sonnet-20250219,\n+    model = \"claude-3-7-sonnet-20250219,\n     echo = \"none\"\n   )\n   chat$chat(user_message)\n }\n```",
+    "excerpt": "```scripts/generate-samples.R\nHELPER_TYPES <- c(\"cli\", \"testthat\", \"roxygen\", \"ggpal\")\n\nload_system_prompt <- function(helper_type) {\n  prompt_file <- file.path(\"prompts\", paste0(helper_type, \".md\"))\n<|editable_region_start|>\n  paste(readLines(prompt_file), collapse = \"\\n\")\n}\n\nquery_sonnet <- function(system_prompt, user_message) {\n  chat <- chat_anthropic(\n    system_prompt = system_prompt,\n    model = \"<|user_cursor_is_here|>claude-3-7-sonnet-20250219,\n    echo = \"none\"\n  )\n  chat$chat(user_message)\n}\n\ngenerate_filename <- function(helper_type, user_input) {\n<|editable_region_end|>\n  prompt <- sprintf(\n    \"Generate a descriptive 3-5 word filename (lowercase with hyphens, no extension) for this R code sample:\\n\\n%s\\n\\nRespond with ONLY the filename, nothing else.\",\n    user_input\n  )\n```\n",
+    "variables": [
+      {
+        "name": "HELPER_TYPES",
+        "type": "str [4]",
+        "value": "\"cli\" \"testthat\" \"roxygen\" \"ggpal\""
+      },
+      {
+        "name": "generate_filename",
+        "type": "function",
+        "value": "function (helper_type, user_input) "
+      },
+      {
+        "name": "load_system_prompt",
+        "type": "function",
+        "value": "function (helper_type) "
+      },
+      {
+        "name": "query_sonnet",
+        "type": "function",
+        "value": "function (system_prompt, user_message) "
+      },
+      {
+        "name": "system_prompt",
+        "type": "str",
+        "value": "\"# Transitioning to the cli R package\n\nYou are a terse assistant designed to help R package develope"
+      },
+      {
+        "name": "HELPER_TYPES",
+        "type": "list [5]",
+        "value": "['cli', 'testthat', 'roxygen', 'ggpal', 'anonymous']"
+      },
+      {
+        "name": "load_system_prompt",
+        "type": "function",
+        "value": "load_system_prompt(helper_type)"
+      },
+      {
+        "name": "generate_filename",
+        "type": "function",
+        "value": "generate_filename(helper_type, user_input)"
+      },
+      {
+        "name": "segment_customers",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  paste(readLines(prompt_file), collapse = \"\\n\")\n}\n\nquery_sonnet <- function(system_prompt, user_message) {\n  chat <- chat_anthropic(\n    system_prompt = system_prompt,\n    model = \"claude-3-7-sonnet-20250219\",\n    echo = \"none\"\n  )\n  chat$chat(user_message)\n}\n\ngenerate_filename <- function(helper_type, user_input) {\n<|editable_region_end|>",
+  "tags": [
+    "accepted",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

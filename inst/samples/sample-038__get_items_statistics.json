@@ -1,0 +1,35 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-05T21:20:15.459Z):\n```get_items_statistics.R\n@@ -33,8 +33,9 @@\n     ) |>\n     select(\n       item,\n       label,\n+      prob,\n     ) |>\n     arrange(item)\n```\n\nEdit 2 (2025-12-05T21:20:16.238Z):\n```get_items_statistics.R\n@@ -33,9 +33,10 @@\n     ) |>\n     select(\n       item,\n       label,\n       prob,\n+      win\n     ) |>\n     arrange(item)\n```\n\nEdit 3 (2025-12-05T21:20:16.923Z):\n```get_items_statistics.R\n@@ -33,10 +33,10 @@\n     ) |>\n     select(\n       item,\n       label,\n       prob,\n-      win\n+      winnin\n     ) |>\n     arrange(item)\n```\n\nEdit 4 (2025-12-05T21:20:18.202Z):\n```get_items_statistics.R\n@@ -33,10 +33,10 @@\n     ) |>\n     select(\n       item,\n       label,\n       prob,\n-      winnin\n+      winning_\n     ) |>\n     arrange(item)\n```",
+    "excerpt": "```get_items_statistics.R\n<|editable_region_start|>\n# 3. calculate statistics (times shown, times chosen, winrate) for each item\nitems_winrate <- items_pairs |>\n  pivot_longer(\n    cols = c(item1, item2),\n    names_to = \"option_index\",\n    values_to = \"item\"\n  ) |>\n  summarize(\n    times_shown = n(),\n    times_chosen = sum(item == chosen),\n    winning_rate = round(times_chosen / times_shown, 4),\n    .by = c(\"question\", \"item\")\n  ) |>\n  full_join(\n    items_active,\n    by = c(\"question\", \"item\")\n  ) |>\n  filter(!is.na(item))\n\nitems_active_stat_ls <- lapply(questions, function(q) {\n  message(paste0(\"Add statistics and calculate Score for question: \", q))\n\n  items_winrate <- items_winrate |>\n    filter(question == q) |>\n    # new probability to be shown: normalize between 0.5 and 1 depending on times_shown\n    mutate(\n      across(c(times_shown, times_chosen), ~ ifelse(is.na(.x), 0, .x)),\n      prob = 1 -\n        (times_shown - min(times_shown)) /\n          (max(times_shown) - min(times_shown)) *\n          0.5\n    ) |>\n    select(\n      item,\n      label,\n      prob,\n      winning_<|user_cursor_is_here|>\n    ) |>\n    arrange(item)\n<|editable_region_end|>\n\n  items <- na.omit(items_winrate$item)\n  names(items) <- items_winrate$label\n```\n",
+    "variables": [
+      {
+        "name": "questions",
+        "type": "str [3]",
+        "value": "\"society\", \"region\", \"work\""
+      },
+      {
+        "name": "items_active",
+        "type": "tbl_df [847, 4]",
+        "value": "Columns:\n* question: chr\n* item: chr\n* label: chr\n* time_added: dttm"
+      },
+      {
+        "name": "items_pairs",
+        "type": "tbl_df [12543, 4]",
+        "value": "Columns:\n* question: chr\n* chosen: int\n* item1: int\n* item2: int"
+      },
+      {
+        "name": "items_winrate",
+        "type": "tbl_df [847, 7]",
+        "value": "Columns:\n* question: chr\n* item: int\n* times_shown: int\n* times_chosen: int\n* winning_rate: dbl\n* label: chr\n* time_added: dttm"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# 3. calculate statistics (times shown, times chosen, winrate) for each item\nitems_winrate <- items_pairs |>\n  pivot_longer(\n    cols = c(item1, item2),\n    names_to = \"option_index\",\n    values_to = \"item\"\n  ) |>\n  summarize(\n    times_shown = n(),\n    times_chosen = sum(item == chosen),\n    winning_rate = round(times_chosen / times_shown, 4),\n    .by = c(\"question\", \"item\")\n  ) |>\n  full_join(\n    items_active,\n    by = c(\"question\", \"item\")\n  ) |>\n  filter(!is.na(item))\n\nitems_active_stat_ls <- lapply(questions, function(q) {\n  message(paste0(\"Add statistics and calculate Score for question: \", q))\n\n  items_winrate <- items_winrate |>\n    filter(question == q) |>\n    # new probability to be shown: normalize between 0.5 and 1 depending on times_shown\n    mutate(\n      across(c(times_shown, times_chosen), ~ ifelse(is.na(.x), 0, .x)),\n      prob = 1 -\n        (times_shown - min(times_shown)) /\n          (max(times_shown) - min(times_shown)) *\n          0.5\n    ) |>\n    select(\n      item,\n      label,\n      prob,\n      winning_rate,\n    ) |>\n    arrange(item)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered_noop"
+  ]
+}

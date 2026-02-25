@@ -1,0 +1,42 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-19T22:17:34.481Z):\n```ch5_datatidying.R\n@@ -17,8 +17,9 @@\n billboard_longer <- billboard |> \n   pivot_longer(\n     cols = starts_with(\"wk\"), \n     names_to = \"week\", \n     values_to = \"rank\",\n     values_drop_na = TRUE\n-  )\n+  ) |> \n+  mutate(\n+  )\n billboard_longer\n```\n\nEdit 2 (2025-11-19T22:17:36.815Z):\n```ch5_datatidying.R\n@@ -17,9 +17,10 @@\n billboard_longer <- billboard |> \n   pivot_longer(\n     cols = starts_with(\"wk\"), \n     names_to = \"week\", \n     values_to = \"rank\",\n     values_drop_na = TRUE\n   ) |> \n   mutate(\n+    week = \n   )\n billboard_longer\n```\n\nEdit 3 (2025-11-19T22:17:38.200Z):\n```ch5_datatidying.R\n@@ -17,10 +17,10 @@\n billboard_longer <- billboard |> \n   pivot_longer(\n     cols = starts_with(\"wk\"), \n     names_to = \"week\", \n     values_to = \"rank\",\n     values_drop_na = TRUE\n   ) |> \n   mutate(\n-    week = \n+    week = parse\n   )\n billboard_longer\n```",
+    "excerpt": "```ch5_datatidying.R\nbillboard |> \n  pivot_longer(\n    cols = starts_with(\"wk\"), \n    names_to = \"week\", \n    values_to = \"rank\",\n    values_drop_na = TRUE\n  )\n#> # A tibble: 5,307 × 5\n#>   artist track                   date.entered week   rank\n#>   <chr>  <chr>                   <date>       <chr> <dbl>\n#> 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87\n#> 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82\n#> 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72\n#> 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77\n#> 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87\n#> 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94\n#> # ℹ 5,301 more rows\n\n<|editable_region_start|>\nbillboard_longer <- billboard |> \n  pivot_longer(\n    cols = starts_with(\"wk\"), \n    names_to = \"week\", \n    values_to = \"rank\",\n    values_drop_na = TRUE\n  ) |> \n  mutate(\n    week = parse_<|user_cursor_is_here|>\n  )\nbillboard_longer\n#> # A tibble: 5,307 × 5\n#>   artist track                   date.entered  week  rank\n<|editable_region_end|>\n#>   <chr>  <chr>                   <date>       <dbl> <dbl>\n#> 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26       1    87\n#> 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26       2    82\n```\n",
+    "variables": [
+      {
+        "name": "billboard",
+        "type": "tbl_df [317, 79]",
+        "value": "Columns:\n* artist: chr\n* track: chr\n* date.entered: date\n* wk1: dbl\n* wk2: dbl\n* wk3: dbl\n* ... (76 week columns total)"
+      },
+      {
+        "name": "billboard_longer",
+        "type": "tbl_df [5307, 5]",
+        "value": "Columns:\n* artist: chr\n* track: chr\n* date.entered: date\n* week: chr\n* rank: dbl"
+      },
+      {
+        "name": "df",
+        "type": "tbl_df [3, 3]",
+        "value": "Columns:\n* id: chr\n* bp1: dbl\n* bp2: dbl"
+      },
+      {
+        "name": "parse_number",
+        "type": "function"
+      },
+      {
+        "name": "pivot_longer",
+        "type": "function"
+      },
+      {
+        "name": "tribble",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nbillboard_longer <- billboard |> \n  pivot_longer(\n    cols = starts_with(\"wk\"), \n    names_to = \"week\", \n    values_to = \"rank\",\n    values_drop_na = TRUE\n  ) |> \n  mutate(\n    week = parse_number(week)\n  )\nbillboard_longer\n#> # A tibble: 5,307 × 5\n#>   artist track                   date.entered  week  rank\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop"
+  ]
+}

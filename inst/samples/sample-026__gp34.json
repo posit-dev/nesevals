@@ -1,0 +1,30 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T19:14:38.909Z):\n```gp34.R\n@@ -89,5 +89,8 @@\n \n usethis::use_data(gp34_v1, overwrite = TRUE)\n \n+gp34_multivisit_only =\n+\n+usethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n \n ```\n\nEdit 2 (2025-11-24T19:14:42.156Z):\n```gp34.R\n@@ -91,6 +91,7 @@\n \n gp34_multivisit_only =\n+  gp34 |>\n \n usethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n \n ```\n\nEdit 3 (2025-11-24T19:14:47.892Z):\n```gp34.R\n@@ -91,7 +91,8 @@\n \n gp34_multivisit_only =\n   gp34 |>\n+  dplyr::filter(!is.na(`FXS ID`)) |>\n \n usethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n \n ```\n\nEdit 4 (2025-11-24T19:14:52.304Z):\n```gp34.R\n@@ -93,6 +93,6 @@\n   gp34 |>\n   dplyr::filter(!is.na(`FXS ID`)) |>\n+  dplyr::filter(.by = \n \n usethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n \n ```",
+    "excerpt": "```gp34.R\nlibrary(forcats)\nlibrary(lubridate)\nlibrary(dplyr)\nconflicted::conflict_prefer(\"label\", \"Hmisc\")\nconflicted::conflict_prefer(\"not\", \"magrittr\")\nconflicted::conflicts_prefer(dplyr::filter)\nconflicted::conflicts_prefer(dplyr::last)\nlibrary(tidyr)\n# dupes = gp3 |> semi_join(gp4, by = c(\"subj_id\", \"redcap_event_name\"))\n# if(nrow(dupes) != 0) browser(message(\"why are there duplicate records?\"))\n\nshared = intersect(names(gp3), names(gp4))\n\n# checking col classes\ntemp1 = sapply(X = gp3[, shared], F = class)\ntemp2 = sapply(X = gp4[, shared], F = class)\ntemp1[temp1 != temp2]\ntemp2[temp1 != temp2]\n\nshared[label(gp4[, shared]) != label(gp3[, shared])]\n\nsetdiff(names(gp3), names(gp4))\nsetdiff(names(gp4), names(gp3))\n\ngp34_raw <-\n  bind_rows(\"GP3\" = gp3, \"GP4\" = gp4, .id = \"Study\")\n\ngp34_raw |>\n  readr::write_rds(testthat::test_path(\"fixtures\", \"gp34_raw.rds\"))\n\n\ngp34_raw |>\n  head(0) |>\n  readr::write_rds(testthat::test_path(\"fixtures\", \"gp34_raw_nodata.rds\"))\n\ngp34 <- gp34_raw |> clean_data()\n\ngp34 |>\n  head(0) |>\n  readr::write_rds(testthat::test_path(\"fixtures\", \"gp34_nodata.rds\"))\n\n\ntrans =\n  gp34 |>\n  group_by(`FXS ID`) |>\n  dplyr::filter(n_distinct(Gender |> setdiff(NA)) > 1)\n\nif (nrow(trans) != 0)\n  browser(message('some values of Gender are inconsistent; valid?'))\n\ngp34 |>  dplyr::filter(if_any(where(is.character),\n                              .fn = ~ . == \"NA (888)\"))\n# couldn't find any of these; there might be some in factors\n\ndecreased_age =\n  gp34 |>\n  get_decreased_age()\n\nreadr::write_csv(decreased_age, \"inst/extdata/fxtas/decreased_age.csv\")\n\n# out of order:\n\ngp34 |> get_out_of_order()\n\n# split(f = ~`FXS ID`, drop = TRUE)\n\ndecreased_age2 = gp34 |> get_decreased_age2()\n\nreadr::write_csv(decreased_age2, \"inst/extdata/fxtas/decreased_age2.csv\")\n\n\nif (data_exists(\"gp34\")) {\n\n  test =\n    waldo::compare(y = gp34,\n                   x = fxtas::gp34,\n                   ignore_attr = \"problems\") |>\n    print()\n\n  if (length(test) > 0) {\n    browser(\"are you sure you want to overwrite?\")\n  }\n\n}\n\nusethis::use_data(gp34, overwrite = TRUE)\n\ngp34_v1 =\n  gp34 |>\n  get_visit1()\n\nusethis::use_data(gp34_v1, overwrite = TRUE)\n<|editable_region_start|>\n\ngp34_multivisit_only =\n  gp34 |>\n  dplyr::filter(!is.na(`FXS ID`)) |>\n  dplyr::filter(.by = `FXS<|user_cursor_is_here|>\n\nusethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "gp34",
+        "type": "tbl_df [2847, 156]",
+        "value": "Columns:\n* FXS ID: chr\n* Study: chr\n* Gender: fct(2)\n* Age at Visit: dbl\n* redcap_event_name: chr\n* CGG: dbl\n* FXTAS Stage: ord(6)\n* BDS-2 Total: dbl\n* SCL-90 GSI: dbl\n* Tremor AAN: fct(4)"
+      },
+      {
+        "name": "gp34_v1",
+        "type": "tbl_df [892, 156]",
+        "value": "Columns:\n* FXS ID: chr\n* Study: chr\n* Gender: fct(2)\n* Age at Visit: dbl\n* redcap_event_name: chr\n* CGG: dbl\n* FXTAS Stage: ord(6)\n* BDS-2 Total: dbl\n* SCL-90 GSI: dbl\n* Tremor AAN: fct(4)"
+      },
+      {
+        "name": "trans",
+        "type": "tbl_df [0, 156]",
+        "value": "Columns:\n* FXS ID: chr\n* Study: chr\n* Gender: fct(2)\n* Age at Visit: dbl\n* redcap_event_name: chr\n* CGG: dbl\n* FXTAS Stage: ord(6)\n* BDS-2 Total: dbl\n* SCL-90 GSI: dbl\n* Tremor AAN: fct(4)"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\ngp34_multivisit_only =\n  gp34 |>\n  dplyr::filter(!is.na(`FXS ID`)) |>\n  dplyr::filter(.by = `FXS ID`, n() > 1)\n\nusethis::use_data(gp34_multivisit_only, overwrite = TRUE)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered_noop"
+  ]
+}

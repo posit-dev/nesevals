@@ -1,0 +1,12 @@
+{
+  "name": "gpt-4.1-nano-2025-04-14_narrative_rewrite-region_rewrite-region",
+  "model": "gpt-4.1-nano-2025-04-14",
+  "prompt": "rewrite-region",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region",
+  "include_variables": true,
+  "n_replicates": 1,
+  "context_lines": 1,
+  "n_samples": 80,
+  "generated_at": "2026-02-13 10:35:03.840454"
+}

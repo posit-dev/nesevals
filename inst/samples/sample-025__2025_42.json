@@ -1,0 +1,32 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:22:31.102Z):\n```2025_42.R\n@@ -65,8 +65,11 @@\n   filter(year >= 1900, n_stations >= 12)\n \n # thresholds\n+thr <- list(\n+)\n+\n extreme_events <- annual_summary |>\n```\n\nEdit 2 (2025-11-24T14:22:38.447Z):\n```2025_42.R\n@@ -66,9 +66,9 @@\n \n # thresholds\n thr <- list(\n+  rain_hi = quantile(annual_summary$total_rain, 0.95, na.rm = TRUE),\n )\n \n extreme_events <- annual_summary |>\n```\n\nEdit 3 (2025-11-24T14:22:44.891Z):\n```2025_42.R\n@@ -66,9 +66,10 @@\n \n # thresholds\n thr <- list(\n   rain_hi = quantile(annual_summary$total_rain, 0.95, na.rm = TRUE),\n+  heat_hi = quantile(annual_summary$\n )\n \n extreme_events <- annual_summary |>\n```",
+    "excerpt": "```2025_42.R\n<|editable_region_start|>\n# thresholds\nthr <- list(\n  rain_hi = quantile(annual_summary$total_rain, 0.95, na.rm = TRUE),\n  heat_hi = quantile(annual_summary$m<|user_cursor_is_here|>\n)\n\n<|editable_region_end|>\nextreme_events <- annual_summary |>\n```\n",
+    "variables": [
+      {
+        "name": "met_data",
+        "type": "tbl_df [45,892 × 12]",
+        "value": "Columns:\n* station: chr\n* year: dbl\n* month: dbl\n* tmax: dbl\n* tmin: dbl\n* rain: dbl\n* sun: dbl\n* af: dbl\n* date: date\n* decade: dbl\n* season: chr\n* era: chr"
+      },
+      {
+        "name": "trends",
+        "type": "tbl_df [496 × 4]",
+        "value": "Columns:\n* year: dbl\n* variable: fct(4)\n* value: dbl\n* variable_label: chr"
+      },
+      {
+        "name": "annual_summary",
+        "type": "tbl_df [124 × 5]",
+        "value": "Columns:\n* year: dbl\n* total_rain: dbl\n* max_temp: dbl\n* min_temp: dbl\n* n_stations: int"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# thresholds\nthr <- list(\n  rain_hi = quantile(annual_summary$total_rain, 0.95, na.rm = TRUE),\n  heat_hi = quantile(annual_summary$max_temp, 0.95, na.rm = TRUE),\n)\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

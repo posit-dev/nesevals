@@ -1,0 +1,48 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:44:02.535Z):\n```fmri_starter.py\n@@ -8,7 +8,7 @@\n     if goodresp_prop > 0.6:\n         subIDs.append(sub)\n-usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)]\n+usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].\n\n # split into control and stress groups\n```\n\nEdit 2 (2025-12-19T18:44:02.895Z):\n```fmri_starter.py\n@@ -8,7 +8,7 @@\n     if goodresp_prop > 0.6:\n         subIDs.append(sub)\n-usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].\n+usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].r\n\n # split into control and stress groups\n```\n\nEdit 3 (2025-12-19T18:44:03.215Z):\n```fmri_starter.py\n@@ -8,7 +8,7 @@\n     if goodresp_prop > 0.6:\n         subIDs.append(sub)\n-usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].r\n+usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].res\n\n # split into control and stress groups\n```\n\nEdit 4 (2025-12-19T18:44:03.688Z):\n```fmri_starter.py\n@@ -8,7 +8,7 @@\n     if goodresp_prop > 0.6:\n         subIDs.append(sub)\n-usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].res\n+usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(\n\n # split into control and stress groups\n```\n\nEdit 5 (2025-12-19T18:44:04.102Z):\n```fmri_starter.py\n@@ -8,7 +8,7 @@\n     if goodresp_prop > 0.6:\n         subIDs.append(sub)\n-usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(\n+usable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(d\n\n # split into control and stress groups\n```",
+    "excerpt": "```fmri_starter.py\n# filter out subjects with low response rate\nsubIDs = []\nfor sub in list(usable_subinfo.subid):\n    behav_df = pd.read_csv(f'./data/behavior/catStats_sub{sub}.csv', sep='\\t')\n    goodresp_prop = len(behav_df[behav_df[\"rt\"] < 1])/len(behav_df)\n    if goodresp_prop > 0.6:\n<|editable_region_start|>\n        subIDs.append(sub)\nusable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(d<|user_cursor_is_here|>)\n\n# split into control and stress groups\nctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\nstress_subIDs = list(usable_subinfo[usable_subinfo.group == 1].subid)\n\nprint(\"Controls: \",len(ctrl_subIDs))\nprint(\"Stress: \",len(stress_subIDs))\n\n<|editable_region_end|>\nruns = [\"rest1\", \"rest2\", \"scene1\", \"scene2\", \"scene3\", \"scene4\", \"scene5\"]\n```\n",
+    "variables": [
+      {
+        "name": "subinfo",
+        "type": "DataFrame [94, 12]",
+        "value": "Columns:\n* subid: int64\n* group: int64\n* age: float64\n* sex: object\n* fmri_scenes_usable: int64\n* fmri_rest_usable: int64\n* cortisol_baseline: float64\n* cortisol_post: float64\n* stress_rating: float64\n* anxiety_score: float64\n* depression_score: float64\n* notes: object"
+      },
+      {
+        "name": "usable_subinfo",
+        "type": "DataFrame [71, 12]",
+        "value": "Columns:\n* subid: int64\n* group: int64\n* age: float64\n* sex: object\n* fmri_scenes_usable: int64\n* fmri_rest_usable: int64\n* cortisol_baseline: float64\n* cortisol_post: float64\n* stress_rating: float64\n* anxiety_score: float64\n* depression_score: float64\n* notes: object"
+      },
+      {
+        "name": "subIDs",
+        "type": "list [58]"
+      },
+      {
+        "name": "sub",
+        "type": "int"
+      },
+      {
+        "name": "behav_df",
+        "type": "DataFrame [240, 8]",
+        "value": "Columns:\n* trial: int64\n* category: object\n* stimulus: object\n* response: int64\n* rt: float64\n* accuracy: int64\n* block: int64\n* condition: object"
+      },
+      {
+        "name": "goodresp_prop",
+        "type": "float"
+      },
+      {
+        "name": "np",
+        "type": "module"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        subIDs.append(sub)\nusable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(drop=True)\n\n# split into control and stress groups\nctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\nstress_subIDs = list(usable_subinfo[usable_subinfo.group == 1].subid)\n\nprint(\"Controls: \",len(ctrl_subIDs))\nprint(\"Stress: \",len(stress_subIDs))\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

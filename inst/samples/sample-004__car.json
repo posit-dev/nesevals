@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-01-15T10:42:18.321Z):\n```car.py\n@@ -17,8 +17,9 @@\n l_b = Pin(5, Pin.OUT)\n \n def all_off():\n-    pass\n+    r_f.value(1)\n \n # ---- Initial State ----\n all_off()\n \n```\n\nEdit 2 (2025-01-15T10:42:21.547Z):\n```car.py\n@@ -17,8 +17,9 @@\n l_b = Pin(5, Pin.OUT)\n \n def all_off():\n     r_f.value(1)\n+    r_b.value(1)\n \n # ---- Initial State ----\n all_off()\n \n```",
+    "excerpt": "```car.py\nimport socket\nimport network\nimport time\nfrom machine import Pin, I2C\n\n# Start access point mode\nimport network\nap = network.WLAN(network.AP_IF)\nap.active(True)\nap.config(essid='ESP32-AP', password='')\n# ---- Motor Pins Setup ----\nr_f = Pin(15, Pin.OUT)\nr_b = Pin(18, Pin.OUT)\nl_f = Pin(4, Pin.OUT)\nl_b = Pin(5, Pin.OUT)\n\n<|editable_region_start|>\ndef all_off():\n    r_f.value(1)\n    r_b.value(1)\n    l_f.<|user_cursor_is_here|>\n\n# ---- Initial State ----\nall_off()\n\n# Create socket\naddr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]\ns = socket.socket()\ns.bind(addr)\n<|editable_region_end|>\ns.listen(1)\nprint('Listening on', addr)\n```\n",
+    "variables": [
+      {
+        "name": "socket",
+        "type": "module"
+      },
+      {
+        "name": "network",
+        "type": "module"
+      },
+      {
+        "name": "time",
+        "type": "module"
+      },
+      {
+        "name": "Pin",
+        "type": "type"
+      },
+      {
+        "name": "I2C",
+        "type": "type"
+      },
+      {
+        "name": "ap",
+        "type": "WLAN"
+      },
+      {
+        "name": "r_f",
+        "type": "Pin"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\ndef all_off():\n    r_f.value(1)\n    r_b.value(1)\n    l_f.value(1)\n    l_b.value(1)\n\n# ---- Initial State ----\nall_off()\n\n# Create socket\naddr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]\ns = socket.socket()\ns.bind(addr)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

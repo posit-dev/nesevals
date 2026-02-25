@@ -1,0 +1,35 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T19:22:10.104Z):\n```container_manager.py\n@@ -1,9 +1,9 @@\n     def adjust_names(file):\n-        with open(file) as f:\n+        with open(file, ) as f:\n             content = f.read()\n         for key, value in users.items():\n             content = content.replace(\"{%s}\" % key, str(value))\n         with open(file, \"w\") as f:\n             f.write(content)\n```\n\nEdit 2 (2026-01-07T19:22:11.083Z):\n```container_manager.py\n@@ -1,9 +1,9 @@\n     def adjust_names(file):\n-        with open(file, ) as f:\n+        with open(file, encoding=) as f:\n             content = f.read()\n         for key, value in users.items():\n             content = content.replace(\"{%s}\" % key, str(value))\n         with open(file, \"w\") as f:\n             f.write(content)\n```\n\nEdit 3 (2026-01-07T19:22:12.417Z):\n```container_manager.py\n@@ -1,9 +1,9 @@\n     def adjust_names(file):\n-        with open(file, encoding=) as f:\n+        with open(file, encoding=\"utf-8\") as f:\n             content = f.read()\n         for key, value in users.items():\n             content = content.replace(\"{%s}\" % key, str(value))\n         with open(file, \"w\") as f:\n             f.write(content)\n```",
+    "excerpt": "```container_manager.py\ndef install_config_files():\n    r\"\"\"\n    Install container's config files, adjusting names inside.\n    \"\"\"\n    log.info(\"copying configuration files\")\n    os.chdir(os.path.join(\"/home\", users[\"server\"],\n                          \"sagecell/contrib/vm/compute_node\"))\n\n<|editable_region_start|>\n    def adjust_names(file):\n        with open(file, encoding=\"utf-8\") as f:\n            content = f.read()\n        for key, value in users.items():\n            content = content.replace(\"{%s}\" % key, str(value))\n        with open(file, \"w\", enc<|user_cursor_is_here|>) as f:\n            f.write(content)\n<|editable_region_end|>\n\n    adjust_names(shutil.copy(\"config.py\", \"../../..\"))\n    for root, _, files in os.walk(\".\"):\n        if root == \".\":\n            continue\n        for file in files:\n            name = os.path.join(root, file)\n            adjust_names(shutil.copy(name, name[1:]))\n    check_call(\"systemctl enable sagecell\")\n```\n",
+    "variables": [
+      {
+        "name": "users",
+        "type": "dict [6]"
+      },
+      {
+        "name": "sage_optional_packages",
+        "type": "list [12]"
+      },
+      {
+        "name": "python_packages",
+        "type": "list [18]"
+      },
+      {
+        "name": "provider_html",
+        "type": "str"
+      },
+      {
+        "name": "log",
+        "type": "logging.Logger"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    def adjust_names(file):\n        with open(file, encoding=\"utf-8\") as f:\n            content = f.read()\n        for key, value in users.items():\n            content = content.replace(\"{%s}\" % key, str(value))\n        with open(file, \"w\", encoding=\"utf-8\") as f:\n            f.write(content)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "pattern-following",
+    "jittered_noop"
+  ]
+}

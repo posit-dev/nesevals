@@ -1,0 +1,34 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T15:11:02.000Z):\n```du2014.R\n@@ -13,6 +13,7 @@\n   ) |>\n   tidyr::unnest(cols = code) |>\n   dplyr::select(emotion, emotion_type, code) |>\n+  dplyr::mutate(source = \"du2014\", .before = 1) |>\n   dplyr::mutate(\n     .by = emotion,\n     config_num = dplyr::row_number(),\n     config_type = ifelse(config_num == 1, \"prototype\", \"variant\")\n   )\n```\n\nEdit 2 (2026-01-07T15:12:18.000Z):\n```du2014.R\n@@ -14,6 +14,7 @@\n   tidyr::unnest(cols = code) |>\n   dplyr::select(emotion, emotion_type, code) |>\n   dplyr::mutate(source = \"du2014\", .before = 1) |>\n+  dplyr::mutate(code = coding(code, error = FALSE))\n   dplyr::mutate(\n     .by = emotion,\n     config_num = dplyr::row_number(),\n     config_type = ifelse(config_num == 1, \"prototype\", \"variant\")\n   )\n```\n\nEdit 3 (2026-01-07T15:13:05.000Z):\n```du2014.R\n@@ -14,7 +14,7 @@\n   tidyr::unnest(cols = code) |>\n   dplyr::select(emotion, emotion_type, code) |>\n   dplyr::mutate(source = \"du2014\", .before = 1) |>\n-  dplyr::mutate(code = coding(code, error = FALSE))\n+  dplyr::mutate(code = coding(code, error = FALSE)) |>\n   dplyr::mutate(\n     .by = emotion,\n     config_num = dplyr::row_number(),\n     config_type = ifelse(config_num == 1, \"prototype\", \"variant\")\n   )\n```",
+    "excerpt": "```du2014.R\n## code to prepare `du2014` dataset goes here\ndu2014 <-\n  read.csv(\"data-raw/du2014_raw.csv\") |>\n  dplyr::mutate(\n    required2 = expand_strings(required, delim = \",\"),\n    optional2 = expand_strings(optional, delim = \",\"),\n    code = purrr::map2(\n      .x = required2,\n      .y = optional2,\n      expand_optional\n    )\n  ) |>\n  tidyr::unnest(cols = code) |>\n  dplyr::select(emotion, emotion_type, code) |>\n  dplyr::mutate(source = \"du2014\", .before = 1) |>\n<|editable_region_start|>\n  dplyr::mutate(code = coding(code, error = FALSE)) |>\n  tidyr::drop_<|user_cursor_is_here|>\n  dplyr::mutate(\n<|editable_region_end|>\n    .by = emotion,\n    config_num = dplyr::row_number(),\n    config_type = ifelse(config_num == 1, \"prototype\", \"variant\")\n  )\n\nusethis::use_data(du2014, overwrite = TRUE)\n```\n",
+    "variables": [
+      {
+        "name": "expand_strings",
+        "type": "function"
+      },
+      {
+        "name": "expand_optional",
+        "type": "function"
+      },
+      {
+        "name": "coding",
+        "type": "function"
+      },
+      {
+        "name": "du2014",
+        "type": "tbl_df [?, 4]",
+        "value": "Columns:\n* source: chr\n* emotion: chr\n* emotion_type: chr\n* code: chr"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  dplyr::mutate(code = coding(code, error = FALSE)) |>\n  tidyr::drop_na(code) |>\n  dplyr::mutate(\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

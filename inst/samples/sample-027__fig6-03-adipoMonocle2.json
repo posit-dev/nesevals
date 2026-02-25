@@ -1,0 +1,47 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:32:45.127Z):\n```fig6-03-adipoMonocle2.R\n@@ -71,6 +71,7 @@\n#                            verbose = FALSE)\n#   } else {\n-#\n+#     cds <- reduceDimension(cds,\n#   }\n#\n#   cds <- orderCells(cds)\n```\n\nEdit 2 (2025-11-24T14:32:52.891Z):\n```fig6-03-adipoMonocle2.R\n@@ -71,7 +71,8 @@\n#                            verbose = FALSE)\n#   } else {\n#     cds <- reduceDimension(cds,\n+#                            max_components = 2,\n#   }\n#\n#   cds <- orderCells(cds)\n```\n\nEdit 3 (2025-11-24T14:32:58.443Z):\n```fig6-03-adipoMonocle2.R\n@@ -72,6 +72,7 @@\n#   } else {\n#     cds <- reduceDimension(cds,\n#                            max_components = 2,\n+#                            num_dim = 30,\n#   }\n#\n#   cds <- orderCells(cds)\n```",
+    "excerpt": "```fig6-03-adipoMonocle2.R\n#\n#   if(regress_cellcycle & all(c(\"S.Score\", \"G2M.Score\") %in% colnames(p_data))){\n#     cds <- reduceDimension(cds,\n#                            max_components = 2,\n#                            num_dim = 20,\n#                            reduction_method = 'DDRTree',\n#                            residualModelFormulaStr = \"~S.Score + G2M.Score\",\n<|editable_region_start|>\n#                            verbose = FALSE)\n#   } else {\n#     cds <- reduceDimension(cds,\n#                            max_components = 2,\n#                            num_dim = 30,<|user_cursor_is_here|>\n#   }\n#\n#   cds <- orderCells(cds)\n#\n<|editable_region_end|>\n#   return(list(cds = cds, order_genes = ordering_genes))\n# }\n```\n",
+    "variables": [
+      {
+        "name": "seurat",
+        "type": "Seurat"
+      },
+      {
+        "name": "cds",
+        "type": "CellDataSet"
+      },
+      {
+        "name": "p_data",
+        "type": "data.frame [8423, 12]",
+        "value": "Columns:\n* orig.ident: chr\n* nCount_RNA: dbl\n* nFeature_RNA: dbl\n* percent.mt: dbl\n* S.Score: dbl\n* G2M.Score: dbl\n* Phase: chr\n* seurat_clusters: fct(15)\n* cell_type: chr\n* sample_id: chr\n* diet: chr\n* batch: chr"
+      },
+      {
+        "name": "ordering_genes",
+        "type": "chr [1847]"
+      },
+      {
+        "name": "regress_cellcycle",
+        "type": "lgl [1]"
+      },
+      {
+        "name": "reduceDimension",
+        "type": "function"
+      },
+      {
+        "name": "expr",
+        "type": "dgCMatrix [18532, 8423]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n#                            verbose = FALSE)\n#   } else {\n#     cds <- reduceDimension(cds,\n#                            max_components = 2,\n#                            num_dim = 30,\n#                            reduction_method = 'DDRTree',\n#                            verbose = FALSE)\n#   }\n#\n#   cds <- orderCells(cds)\n#\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

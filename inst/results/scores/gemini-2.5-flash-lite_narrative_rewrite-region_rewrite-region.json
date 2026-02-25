@@ -1,0 +1,722 @@
+[
+  {
+    "sample_id": "sample-001__P1",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-001__pvalues",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-002__sleep",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete line by adding ('WT', 'HET', 'HOM') to match the target, but it also added two extra lines (`final_dfs.append(df)` and `final_df = pl.concat(final_dfs)`) that are not present in the target output. This violates the requirement to reproduce only the editable region content.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-003__metrics",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-003__plot",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing most of the required code (the maindata assignment and surrounding structure). It only outputs a fragment starting mid-expression with .sort(...). This makes it syntactically broken and incomplete compared to the target.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-003",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. The target shows the title string should be completed to 'Personal vs. Community Ratings', but the model left it as 'Personal vs. Community ' (with trailing space). Since no edit was made when one was clearly expected based on the edit history showing progressive completion of the title string, this is a PARTIAL case.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-004__app",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__car",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the line with `l_f.value(1)`, which follows the pattern established in the edit history. However, it is missing the final line `l_b.value(1)` that appears in the target output. This is a truncation issue where the model stopped before completing the full expected edit.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-005__conda_packages",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 2,
+    "reasoning": "The model made almost the exact edit as the target, adding `package` inside the dictionary lookup `pins[package]`. However, it's missing the closing single quote in the f-string (target has `}'\"` while model has just `}\"`). This is a syntax error since the string literal is not properly closed.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-005__fmri_starter",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it's missing the first line 'subIDs.append(sub)' and also missing the complete line that should contain the edit. The output only shows 'rop=0)' which appears to be a fragment of 'drop=True)' (and with wrong value). This is a critical failure as the output is incomplete and cannot function as a replacement for the editable region.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-005",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-006__whole_hist_viz",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-007__Donem_projesi",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-007__plot_dots",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it only shows 'name_versions)))' followed by the closing lines, completely missing the first 3 lines of the target (the entire name_versions definition and the start of the timings assignment). This is a critical structural failure.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-008__2c",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly added `.fit()` to the model instantiation but failed to include the `return model` statement that is present in the target. This is a truncation issue - the output is missing the final line of the target.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-008__a",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output includes extra lines not present in the target (the entire else block and beyond). While the intended edit to complete the `entrada_b.delete(0, tk.END); entrada_b.insert(0, f\"{b_guess:.6g}\")` line is correct, the output extends beyond the editable region by including lines that should not be part of the rewrite.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-008",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model changed 'rerating' to 'rating' when the target was 'avg_rating'. The edit location is correct and syntax is valid, but the column name differs from the target. This is a partial credit case - right location, valid syntax, but wrong value.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-009__gen_report",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing the entire chart10 definition (the alt.Chart block) that appears in the target. While the model correctly identified and fixed the intended edit ('C' -> 'Count'), it failed to reproduce the full editable region as required.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-010__data_cleaner",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-011__temporal_analysis",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it only outputs 2 lines while the target has 12 lines. The output appears to be continuing the incomplete line from the input (completing 'date_p' to 'arsed').max().alias('last_date'),'), which is correct, but it fails to reproduce the rest of the required editable region.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-012__explore_foldseek",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__ml",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output is severely truncated, missing most of the required lines from the target. It only contains the completion of the truncated string 'ery Capacity')' and the final three lines, while the target requires 10 lines including the full section comment and all the plotting code.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-012__pred",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing most of the required lines from the target. It only outputs 'end(result)' followed by 'return pl.concat(others)' and the remaining lines, completely missing the critical lines that show the edit from 'others.app' to 'others.append(result)'.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-013__2",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__conda_packages",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__polars_extensions",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing most of the required code including the cases dictionary, the cols_width call, and the heading. The output only contains a closing brace and two closing parentheses, which makes it syntactically broken in this context.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-014__aggregations",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__container_manager",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__mvo",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is truncated - it's missing the first part of the line 'alpha1m=alpha1m.ren' and only outputs 'ame({...', making it syntactically invalid. The output should have been the complete first line 'alpha1m=alpha1m.rename({'1_mo_alpha':'alpha'})', but instead starts mid-word.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-015__2c",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__5",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing the first line '# Split input and output' and the beginning of the X assignment 'X = df[['. It only outputs the tail end of the intended edit. This makes it incomplete and unusable.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-015__dtable",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__week-01_eda",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the method call to `.value_counts()` as in the target, which matches the edit history pattern. However, it added an extra line `print(presence_of_ment_611)` that is not present in the target output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-016__main",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__dashboard",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__fmri_starter",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-018__cellchat",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it's missing the first 7 lines of the target output (the complete meta assignment starting from 'meta = obj@meta.data |>' through the beginning of dplyr::mutate). While the edit itself (completing 'samples = as.factor(as.character(samples))') is correct, the model failed to reproduce the full editable region as required.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-018",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. The target shows that the `working_dir` parameter should be removed from the `configure_solver_client` function signature (line 7), but the model left it unchanged. This is a no-edit case where an edit was expected.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-019",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output has broken syntax with 'result <- result' creating a self-referential assignment, and it places 'devtools::test()' on a separate line instead of keeping it on the same line as the assignment. The target changes 'test_results' to 'result', but the model fails to make this correction and also introduces syntax errors.",
+    "tags": ["syntax_error", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-020__08_extract_primary_quantities",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is truncated - it's missing the first 5 lines that are present in the target (the 'along = 2.5' line and the first 4 lines of the dimnames assignment). While the edit portion that IS present contains some changes ('year' instead of year, changed index from [[4]] to [[3]]), the truncation is a critical failure.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-021__estimate-size",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-021__sim",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-022__invasive_species",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly closed the function call with a closing parenthesis, fixing the syntax error. However, it did not add the 'overwrite = TRUE' parameter that was in the target. The output is syntactically valid and makes a reasonable edit, but is incomplete compared to the target.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__timing-grid",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it only outputs 2 lines when the target has 16 lines. The model should have reproduced the entire editable region with the completion 'standard_gr'. Additionally, the model used 'gr_calc' instead of 'standard_gr', which is a different name than the target but follows a reasonable naming pattern. However, the truncation is the primary issue.",
+    "tags": ["truncated", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-023",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly predicted the use of `unlink()` to delete files, which is the right function. However, the path differs: target uses \"inst/run/logs\" with `recursive = TRUE`, while model uses \"run/logs\" without the recursive parameter. This is a valid partial completion with the correct function but wrong parameters.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-024__old_2_CalculatePIF_PSest_withCI",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-025__2025_42",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete line by adding 'max_temp, 0.95, na.rm = TRUE)' which matches the target's intent. The only difference is the trailing comma after TRUE in the target vs no trailing comma in the model output. In R, trailing commas in lists are allowed but not required, making both versions functionally equivalent.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-026__bayesian_reporting",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-026__gp34",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "Grading failed",
+    "tags": []
+  },
+  {
+    "sample_id": "sample-027__fig6-03-adipoMonocle2",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated. It removed the entire `else` block content including the `reduceDimension` function call that was being built up over the edit history. The target shows the completion should add `reduction_method = 'DDRTree',` and `verbose = FALSE)` to complete the function call, but the model deleted all of this work instead.",
+    "tags": ["truncated", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-027",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. The target shows the expected edit was to change 'Find an R files' to 'Find any R files' (correcting the grammar). Since the model failed to make any edit when one was expected, this is a no_edit case, scoring 3 per the PARTIAL guideline.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-028__04-population-residents",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-029__cleaning",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing the first 5 lines of the target (the comment and the first part of the summarise call). It only outputs the tail end starting with 'tart_acc))' which is a fragment. This makes the output syntactically broken and incomplete.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-029__Fig3",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing 10 of the 12 lines that should be present in the editable region. It only provides the completion of the cursor line and one additional line, rather than reproducing the full region with the edit applied.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-029__model-clusters",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the edit by adding 'season_reveff' after 'pack_' and including the comma. However, it added many extra lines beyond what was in the target output, copying commented code from above the editable region that should not be part of the output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it's missing the first two lines of the editable region ('clients_to_evaluate <- clients_to_evaluate()' and 'for (row in 1:nrow(clients_to_evaluate)) {') and starts mid-expression with 'clients_to_evaluate[[row, \"name\"]])'. While the intended edit (adding the argument to print()) appears correct, the truncation makes this output completely unusable.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-030__timing-grid",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model's output is nearly identical to the target, with the only difference being the presence/absence of a trailing comma after 'A_gs'. Both are syntactically valid R code. The trailing comma in R lists is optional and doesn't affect functionality, making these functionally equivalent.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-031__fun_mayfly_correct",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output only contains a closing brace and comments that should be outside the editable region. It completely failed to reproduce the function definition that was supposed to be in the editable region, truncating most of the required content.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-032",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is missing the first two bullet points about R date/time values and Oracle DATE targets that are present in the target. This is a clear case of truncation where the model failed to reproduce the full editable region, only outputting the portion from the SQL Server bullet point onwards.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-033__Fa_Model",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete line by adding 'nlevels(data$SEASON)', which matches the target. However, it added an extra line 'levels(data$SEASON)' at the beginning that is not present in the target output. This is an extra_lines failure.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-033__traffic_network",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated. It only includes the new line being added (`values_from = \"traffic_work\"`) and a few lines after, but is missing the entire beginning of the editable region (the comment, variable assignment, and pipe chain up to `tidyr::pivot_wider(`).",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-034__100_dada",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-034__server_wijken",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is missing the beginning of the editable region (everything before 'reduced_wkc <-'), which makes the code structurally incorrect and incomplete. Additionally, the model included extra lines (setdiff, leafletProxy with hideGroup) that are not present in the target output, which shows the dropdown handler being built incrementally and stopping after just setting up the reduced_wkc variable.",
+    "tags": ["truncated", "extra_lines"]
+  },
+  {
+    "sample_id": "sample-034__sync-yaml",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly added 'collapse = \"\\n\"' to complete the paste function call, which matches the target's intent. However, it is missing the trailing pipe operator '|>' that is present in the target output, making it a truncation.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-035__index",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it's missing most of the editable region lines (the entire beginning up to geom_point). The model only provided content starting from within the geom_point() call onwards. Additionally, the output includes extra content not in the target (facet_wrap, theme_minimal, theme, scale_x_discrete, and expanded labs content). The intended edit (adding closing parenthesis after geom_point) is present, but the truncation and extra lines make this completely wrong.",
+    "tags": ["truncated", "extra_lines"]
+  },
+  {
+    "sample_id": "sample-035__ReadData",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it only contains the completion fragment 'ate()' and some lines that should not be included. The target requires the full editable region (4 lines) but the model only provided a fragment. Additionally, it includes commented lines that should not be in the output (extra_lines), and the syntax is broken as 'ate()' is not valid standalone code.",
+    "tags": ["truncated", "extra_lines", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-035__theory-checks-figures",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model completed the incomplete line correctly with 'value' instead of the target 'sum', but then added many extra lines of code that are not present in the target. The target only includes the pivot_longer line (properly closed) and a pipe operator, while the model added an entire plotting section.",
+    "tags": ["extra_lines", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-036__04-dplyr",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-037__08_ssc_Slide-tag_EP300_41160730",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it's missing the first 3 lines of the editable region and only provides a partial fragment starting with 'um * umi'. The intended edit (completing the plot_y line with 'y_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE),') is present but incomplete, and the critical context lines are absent.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-037__100_dada",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model was supposed to output the complete editable region, but it only provided the continuation from the cursor position ('2_trim.fastq.gz\")'). The target shows the full editable region should be 6 lines, but the model only output 3 lines. This is a truncation failure - missing the first 3 lines of the region.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-037__invasive_species",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the partial parameter 'overw' to 'overwrite = T', which is functionally equivalent to the target 'overwrite = TRUE' (T and TRUE are equivalent in R). The edit is at the right location with valid syntax.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-038__data",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, missing almost all of the required code. It only outputs 'pct_diff))' followed by the last two lines, omitting the entire pipeline structure from 'home_away_splits |>' through all the dplyr operations. While 'pct_diff' is the correct argument to pass to desc(), the output is incomplete and unusable.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-038__get_items_statistics",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete 'winning_' to 'winning_rate' which matches the target. However, the target includes a trailing comma after 'winning_rate,' but the model's output does not have this comma. This is a minor difference in formatting, but the output is functionally equivalent and represents the correct edit.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-039__index",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly identified the edit location and provided the right completion ('mean(value)'), but the output includes many extra lines that should not be part of the editable region (the ggplot code). The target only includes the section_summary definition, while the model output extends beyond that.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-040__du2014",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 4,
+    "reasoning": "The model completed the partial function name `tidyr::drop_na()` correctly, which is a valid tidyr function. However, the target specifies `tidyr::drop_na(code)` with an explicit argument, while the model output has `tidyr::drop_na()` without arguments. Both are valid R syntax and will work, though they may have slightly different behavior (drop_na() without args drops rows with NA in any column, while drop_na(code) only drops rows with NA in the code column specifically). Given the context and that code is being transformed, the explicit argument is more precise. This is a valid alternative but not exactly equivalent.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-041__ch5_datatidying",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated. It only outputs '_number(week)' and the closing lines, but is missing the entire beginning of the code block including 'billboard_longer <- billboard |> pivot_longer(...) |> mutate(week = parse'. The model appears to have only output the completion of 'parse_' but failed to reproduce the full editable region as required.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-042",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 4,
+    "reasoning": "The model correctly identified the typo 'deault' and fixed it to 'default', but added the word 'port' after 'default' instead of ending with a period like the target. This is a valid alternative that maintains correct syntax and makes semantic sense, though it differs from the target output.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-043__efile_headers",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly identified the missing parameter 'col_seq' but only output a fragment 'col_seq)' along with code that belongs outside the editable region. The output is severely truncated, missing most of the verification assignment, and includes extra lines that shouldn't be in the editable region.",
+    "tags": ["truncated", "extra_lines"]
+  },
+  {
+    "sample_id": "sample-044",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  }
+]

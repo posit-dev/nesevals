@@ -1,0 +1,33 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:34:18.785Z):\n```dashboard.py\n@@ -12,8 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n+def a\n \n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```\n\nEdit 2 (2025-12-19T18:34:19.493Z):\n```dashboard.py\n@@ -12,9 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n-def a\n+def actualizar_\n \n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```\n\nEdit 3 (2025-12-19T18:34:20.263Z):\n```dashboard.py\n@@ -12,9 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n-def actualizar_\n+def actualizar_fondo():\n \n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```\n\nEdit 4 (2025-12-19T18:34:21.382Z):\n```dashboard.py\n@@ -12,9 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n def actualizar_fondo():\n-\n+    st.\n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```\n\nEdit 5 (2025-12-19T18:34:22.105Z):\n```dashboard.py\n@@ -12,9 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n def actualizar_fondo():\n-    st.\n+    st.session_state.\n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```\n\nEdit 6 (2025-12-19T18:34:22.953Z):\n```dashboard.py\n@@ -12,9 +12,9 @@\n # Funciones para actualizar session_state\n def actualizar_trafico():\n     st.session_state.estacion_trafico = st.session_state.trafico_key\n \n def actualizar_fondo():\n-    st.session_state.\n+    st.session_state.estacion_\n # Selector de año único\n anio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\n```",
+    "excerpt": "```dashboard.py\n# Usamos session_state para evitar que los valores seleccionados se pierdan al recargar la página\n# Inicializar valores en session_state si no existen\nif \"anio_seleccionado\" not in st.session_state:\n    st.session_state.anio_seleccionado = anios[0]\n\nif \"estacion_trafico\" not in st.session_state:\n    st.session_state.estacion_trafico = estaciones_trafico[0]\n\nif \"estacion_fondo\" not in st.session_state:\n    st.session_state.estacion_fondo = estaciones_fondo[0]\n<|editable_region_start|>\n\n# Funciones para actualizar session_state\ndef actualizar_trafico():\n    st.session_state.estacion_trafico = st.session_state.trafico_key\n\ndef actualizar_fondo():\n    st.session_state.estacion_f<|user_cursor_is_here|>\n\n# Selector de año único\nanio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\nst.session_state.anio_seleccionado = anio_seleccionado  # Mantener año seleccionado\n<|editable_region_end|>\n\n# Creamos dos columnas para mostrar los gráficos en paralelo\ncol1, col2 = st.columns(2)\n```\n",
+    "variables": [
+      {
+        "name": "st",
+        "type": "module"
+      },
+      {
+        "name": "actualizar_trafico",
+        "type": "function"
+      },
+      {
+        "name": "estaciones_trafico",
+        "type": "list [8]"
+      },
+      {
+        "name": "estaciones_fondo",
+        "type": "list [6]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n# Funciones para actualizar session_state\ndef actualizar_trafico():\n    st.session_state.estacion_trafico = st.session_state.trafico_key\n\ndef actualizar_fondo():\n    st.session_state.estacion_fondo = st.session_state.fondo_key\n\n# Selector de año único\nanio_seleccionado = st.selectbox(\"Selecciona un año\", anios, index=anios.index(st.session_state.anio_seleccionado), key=\"anio_key\")\nst.session_state.anio_seleccionado = anio_seleccionado  # Mantener año seleccionado\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

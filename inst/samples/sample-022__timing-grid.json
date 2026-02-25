@@ -1,0 +1,35 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T17:13:07.450Z):\n```timing-grid.R\n@@ -85,8 +85,10 @@\n     DLL = \"covariate_diffusion\"\n   )\n   Obj$env$beSilent()\n \n+  times <- list()\n+\n   out <- system.time({\n     Opt <- nlminb(\n       start = Obj$par,\n       obj = Obj$fn,\n```\n\nEdit 2 (2025-11-24T17:13:42.112Z):\n```timing-grid.R\n@@ -95,8 +95,9 @@\n       control = list(eval.max = 1e4, iter.max = 1e4, trace = 0)\n     )\n   })\n+  times$standard_nlminb <- out[[\"elapsed\"]]\n \n   out <- system.time({\n     gr = Obj$gr( Opt$par )\n   })\n```\n\nEdit 3 (2025-11-24T17:14:03.887Z):\n```timing-grid.R\n@@ -98,6 +98,8 @@\n   times$standard_nlminb <- out[[\"elapsed\"]]\n \n   out <- system.time({\n     gr = Obj$gr( Opt$par )\n   })\n+  times$\n```",
+    "excerpt": "```timing-grid.R\n  Obj <- MakeADFun(\n    data = Data,\n    parameters = Params,\n    random = Random,\n    checkParameterOrder = TRUE,\n    DLL = \"covariate_diffusion\"\n  )\n  Obj$env$beSilent()\n\n  times <- list()\n\n<|editable_region_start|>\n  out <- system.time({\n    Opt <- nlminb(\n      start = Obj$par,\n      obj = Obj$fn,\n      grad = Obj$gr,\n      control = list(eval.max = 1e4, iter.max = 1e4, trace = 0)\n    )\n  })\n  times$standard_nlminb <- out[[\"elapsed\"]]\n\n  out <- system.time({\n    gr = Obj$gr( Opt$par )\n  })\n  times$<|user_cursor_is_here|>\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "times",
+        "type": "list [1]",
+        "value": "Elements:\n* standard_nlminb: dbl (0.842)"
+      },
+      {
+        "name": "out",
+        "type": "proc_time [5]",
+        "value": "Named numeric: user.self=0.81, sys.self=0.03, elapsed=0.84, ..."
+      },
+      {
+        "name": "Opt",
+        "type": "list [6]",
+        "value": "Elements:\n* par: dbl [5]\n* objective: dbl\n* convergence: int\n* iterations: int\n* evaluations: int [2]\n* message: chr"
+      },
+      {
+        "name": "Obj",
+        "type": "list",
+        "value": "TMB model object with elements:\n* fn: function\n* gr: function\n* par: dbl [5]\n* env: environment"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  out <- system.time({\n    Opt <- nlminb(\n      start = Obj$par,\n      obj = Obj$fn,\n      grad = Obj$gr,\n      control = list(eval.max = 1e4, iter.max = 1e4, trace = 0)\n    )\n  })\n  times$standard_nlminb <- out[[\"elapsed\"]]\n\n  out <- system.time({\n    gr = Obj$gr( Opt$par )\n  })\n  times$standard_gr <- out[[\"elapsed\"]]\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop"
+  ]
+}

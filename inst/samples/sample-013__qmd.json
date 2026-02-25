@@ -1,0 +1,24 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:16:29.622Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \n+            gen\n         }\n     )\n )\n ```\n```\n\nEdit 2 (2025-12-19T19:16:30.855Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            gen\n+            \n         }\n     )\n )\n ```\n```\n\nEdit 3 (2025-12-19T19:16:31.309Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \n+            \"\"\n         }\n     )\n )\n ```\n```\n\nEdit 4 (2025-12-19T19:16:32.471Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"\"\n+            \"genre\"\n         }\n     )\n )\n ```\n```\n\nEdit 5 (2025-12-19T19:16:36.662Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre\"\n+            \"genre_\"\n         }\n     )\n )\n ```\n```\n\nEdit 6 (2025-12-19T19:16:37.318Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre_\"\n+            \"genre_1\"\n         }\n     )\n )\n ```\n```\n\nEdit 7 (2025-12-19T19:16:39.179Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre_1\"\n+            \"genre_1\":\n         }\n     )\n )\n ```\n```\n\nEdit 8 (2025-12-19T19:16:40.153Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre_1\":\n+            \"genre_1\": ''\n         }\n     )\n )\n ```\n```\n\nEdit 9 (2025-12-19T19:16:41.158Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre_1\": ''\n+            \"genre_1\": \n         }\n     )\n )\n ```\n```\n\nEdit 10 (2025-12-19T19:16:41.474Z):\n```books.qmd\n@@ -278,9 +278,9 @@\n         cases={\n             \"cover_image\": \"20%\",\n             \"title\": \"10%\",\n             \"author\": \"30%\",\n-            \"genre_1\": \n+            \"genre_1\": \"\"\n         }\n     )\n )\n ```\n```",
+    "excerpt": "```books.qmd\n        heading_title_font_size='22px',\n        column_labels_font_weight='bold',\n        column_labels_background_color='#34495E',\n        row_striping_background_color='#F8F9FA'\n<|editable_region_start|>\n    )\n    .cols_width(\n        cases={\n            \"cover_image\": \"20%\",\n            \"title\": \"10%\",\n            \"author\": \"30%\",\n            \"genre_1\": \"<|user_cursor_is_here|>\"\n        }\n    )\n)\n```\n\n### Pages and books per month\n<|editable_region_end|>\n\nKeeping a running tally of how much I'm reading per month! But I'm curious of the difference between number of books versus number of pages I'm reading.\n\n```{python}\n```\n",
+    "variables": [
+      "GT: <type>",
+      "md: <function>",
+      "html: <function>",
+      "aes: <type>",
+      "after_scale: <function>",
+      "after_stat: <function>",
+      "annotate: <type>",
+      "annotation_logticks: <type>",
+      "annotation_stripes: <type>",
+      "arrow: <type>"
+    ]
+  },
+  "output": "<|editable_region_start|>\n    )\n    .cols_width(\n        cases={\n            \"cover_image\": \"20%\",\n            \"title\": \"10%\",\n            \"author\": \"30%\",\n            \"genre_1\": \"20%\"\n        }\n    )\n)\n```\n\n### Pages and books per month\n<|editable_region_end|>",
+  "tags": [
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

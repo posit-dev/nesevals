@@ -1,0 +1,28 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T17:13:07.450Z):\n```invasive_species.R\n@@ -1,12 +1,13 @@\n            pred <- predict(mods[[x]], currentEnv, on_0_1000 = T,\n                            temp_workdir = temp_workdir, overwrite = T,\n                            seedval = 42, mod.name = names(mods)[[x]])\n+           # Write prediction to disk\n+           terra::write\n            return(temp_pred_files[x])\n          },\n          mc.cores = cl\n   )\n   \n   # Read predictions back from disk\n   ens_pred <- lapply(temp_pred_files, function(f) terra::rast(f))\n```\n\nEdit 2 (2025-11-24T17:13:12.108Z):\n```invasive_species.R\n@@ -3,9 +3,9 @@\n                            temp_workdir = temp_workdir, overwrite = T,\n                            seedval = 42, mod.name = names(mods)[[x]])\n            # Write prediction to disk\n-           terra::write\n+           terra::writeRaster(pred, temp_pred_files[x]\n            return(temp_pred_files[x])\n          },\n          mc.cores = cl\n   )\n```",
+    "excerpt": "```invasive_species.R\n           pred <- predict(mods[[x]], currentEnv, on_0_1000 = T,\n                           temp_workdir = temp_workdir, overwrite = T,\n                           seedval = 42, mod.name = names(mods)[[x]])\n<|editable_region_start|>\n           # Write prediction to disk\n           terra::writeRaster(pred, temp_pred_files[x]<|user_cursor_is_here|>\n           return(temp_pred_files[x])\n         },\n         mc.cores = cl\n  )\n  \n  # Read predictions back from disk\n  ens_pred <- lapply(temp_pred_files, function(f) terra::rast(f))\n<|editable_region_end|>\n  pr <<- weighted.mean(do.call(c, ens_pred), w = weights)\n  names(pr) = \"layer\"\n```\n",
+    "variables": [
+      {
+        "name": "mods",
+        "type": "list [5]"
+      },
+      {
+        "name": "temp_pred_files",
+        "type": "chr [5]"
+      },
+      {
+        "name": "cl",
+        "type": "int"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n           # Write prediction to disk\n           terra::writeRaster(pred, temp_pred_files[x], overwrite = TRUE)\n           return(temp_pred_files[x])\n         },\n         mc.cores = cl\n  )\n  \n  # Read predictions back from disk\n  ens_pred <- lapply(temp_pred_files, function(f) terra::rast(f))\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

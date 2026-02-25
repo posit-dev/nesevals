@@ -1,0 +1,28 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T16:08:31.297Z):\n```R/helper-scorer.R\n@@ -82,9 +82,9 @@\n }\n \n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n-    withr::local_dir()\n+    withr::local_dir(package)\n \n     devtools::load_all(package_dir, quiet = TRUE)\n \n     side_test_file <- file.path(\n```\n\nEdit 2 (2025-11-24T16:08:31.586Z):\n```R/helper-scorer.R\n@@ -82,9 +82,9 @@\n }\n \n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n-    withr::local_dir(package)\n+    withr::local_dir(package_)\n \n     devtools::load_all(package_dir, quiet = TRUE)\n \n     side_test_file <- file.path(\n```\n\nEdit 3 (2025-11-24T16:08:32.708Z):\n```R/helper-scorer.R\n@@ -82,9 +82,9 @@\n }\n \n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n-    withr::local_dir(package_)\n+    withr::local_dir(package_dir)\n \n     devtools::load_all(package_dir, quiet = TRUE)\n \n     side_test_file <- file.path(\n```\n\nEdit 4 (2025-11-24T16:08:46.825Z):\n```R/helper-scorer.R\n@@ -84,19 +84,9 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    devtools::load_all(package_dir, quiet = TRUE)\n-\n-    side_test_file <- file.path(\n-      system.file(\"resources\", \"side\", package = \"helperbench\"),\n-      \"tests\",\n-      \"testthat\",\n-      \"test-tool-fetch_skill.R\"\n-    )\n-\n-    test_results <- testthat::test_file(side_test_file, reporter = \"silent\")\n-\n+    devtools::tes\n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n   })\n```\n\nEdit 5 (2025-11-24T16:08:47.397Z):\n```R/helper-scorer.R\n@@ -84,9 +84,9 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    devtools::tes\n+    devtools::test\n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n   })\n```\n\nEdit 6 (2025-11-24T16:08:47.697Z):\n```R/helper-scorer.R\n@@ -84,9 +84,9 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    devtools::test\n+    devtools::test()\n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n   })\n```\n\nEdit 7 (2025-11-24T16:08:48.559Z):\n```R/helper-scorer.R\n@@ -85,8 +85,9 @@\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n     devtools::test()\n+    \n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n   })\n```\n\nEdit 8 (2025-11-24T16:08:51.978Z):\n```R/helper-scorer.R\n@@ -84,10 +84,10 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    devtools::test()\n-    \n+    testdevtools::test()\n+\n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n   })\n```\n\nEdit 9 (2025-11-24T16:08:53.792Z):\n```R/helper-scorer.R\n@@ -84,9 +84,9 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    testdevtools::test()\n+    resuldevtools::test()\n \n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n```\n\nEdit 10 (2025-11-24T16:08:54.596Z):\n```R/helper-scorer.R\n@@ -84,9 +84,9 @@\n run_unit_test <- function(package_dir) {\n   test_result <- tryCatch({\n     withr::local_dir(package_dir)\n \n-    resuldevtools::test()\n+    result <- devtools::test()\n \n     all(test_results[[\"failed\"]] == 0)\n   }, error = function(e) {\n     FALSE\n```",
+    "excerpt": "```R/helper-scorer.R\n<|editable_region_start|>\n\nrun_unit_test <- function(package_dir) {\n  test_result <- tryCatch({\n    withr::local_dir(package_dir)\n\n    result <- <|user_cursor_is_here|>devtools::test()\n\n    all(test_results[[\"failed\"]] == 0)\n  }, error = function(e) {\n    FALSE\n  })\n<|editable_region_end|>\n\n  test_result\n}\n```\n",
+    "variables": [
+      {
+        "name": "grid_search",
+        "type": "function"
+      },
+      {
+        "name": "samples",
+        "type": "tbl_df [1, 9]"
+      },
+      {
+        "name": "tsk",
+        "type": "Task"
+      },
+      {
+        "name": "tsk_claude_4_5_sonnet",
+        "type": "Task"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nrun_unit_test <- function(package_dir) {\n  test_result <- tryCatch({\n    withr::local_dir(package_dir)\n\n    result <- devtools::test()\n\n    all(result[[\"failed\"]] == 0)\n  }, error = function(e) {\n    FALSE\n  })\n<|editable_region_end|>",
+  "tags": [
+    "jittered_noop"
+  ]
+}

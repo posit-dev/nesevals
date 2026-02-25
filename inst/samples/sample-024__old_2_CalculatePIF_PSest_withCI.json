@@ -1,0 +1,45 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T14:12:03.120Z):\n```old_2_CalculatePIF_PSest_withCI.R\n@@ -172,6 +172,8 @@\n                      n.years = n(),\n                      size.par = (mean.count^2)/(var.count-mean.count),\n                      .groups = \"drop\")\n+\n+  # quick diagnostic plot\n \n   if(nrow(df.spp.i)==0){\n     missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n```\n\nEdit 2 (2026-01-07T14:12:06.441Z):\n```old_2_CalculatePIF_PSest_withCI.R\n@@ -174,6 +174,7 @@\n \n   # quick diagnostic plot\n+  p <- ggplot2::ggplot()\n \n   if(nrow(df.spp.i)==0){\n     missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n```\n\nEdit 3 (2026-01-07T14:12:08.090Z):\n```old_2_CalculatePIF_PSest_withCI.R\n@@ -174,7 +174,7 @@\n \n   # quick diagnostic plot\n-  p <- ggplot2::ggplot()\n+  p <- ggplot2::ggplot(df.spp.i)\n \n   if(nrow(df.spp.i)==0){\n     missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n```\n\nEdit 4 (2026-01-07T14:12:10.522Z):\n```old_2_CalculatePIF_PSest_withCI.R\n@@ -174,7 +174,7 @@\n \n   # quick diagnostic plot\n-  p <- ggplot2::ggplot(df.spp.i)\n+  p <- ggplot2::ggplot(df.spp.i, ggplot2::aes())\n \n   if(nrow(df.spp.i)==0){\n     missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n```\n\nEdit 5 (2026-01-07T14:12:13.904Z):\n```old_2_CalculatePIF_PSest_withCI.R\n@@ -174,7 +174,7 @@\n \n   # quick diagnostic plot\n-  p <- ggplot2::ggplot(df.spp.i, ggplot2::aes())\n+  p <- ggplot2::ggplot(df.spp.i, ggplot2::aes(x = mean.count, y = ))\n \n   if(nrow(df.spp.i)==0){\n     missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n```",
+    "excerpt": "```old_2_CalculatePIF_PSest_withCI.R\nfor(i in 1:length(Spp.aou)){ #Begin loop through each species\n  spp.i <- Spp.aou[i]\n  cn.i <- ExpAdjs$cn[as.character(ExpAdjs$Aou)==spp.i]\n  df.spp.i <- all_data[which(all_data$aou == spp.i),] |>\n    dplyr::group_by(ProvBCR,route_name) |>\n    dplyr::summarise(mean.count = mean(species_total,na.rm = TRUE),\n                     var.count = var(species_total,na.rm = TRUE),\n                     n.years = n(),\n                     size.par = (mean.count^2)/(var.count-mean.count),\n                     .groups = \"drop\")\n<|editable_region_start|>\n\n  p <- ggplot2::ggplot(df.spp.i, ggplot2::aes(x = mean.count, y = var.<|user_cursor_is_here|>))\n\n<|editable_region_end|>\n  if(nrow(df.spp.i)==0){\n    missing<-c(missing, paste(cn.i, 'dataset', sep=' - '))\n    next\n  }   # go to next species if no data\n  # merge location data for each route (state, provence, BCR, lat, long, ect...)\n  # df.spp.i <- merge(x=df.spp.i, y=route.info, by='rteno', all.x=TRUE)\n   #### Lookup Adjustment values based on Expert opinion/analysis\n  Dist.adj.i <- ExpAdjs[ExpAdjs$Aou %in% spp.i, 'Dist2']\n  Dist.adj.LB <- Dist.adjparms$L.bound[Dist.adjparms$Dist.adj==Dist.adj.i]\n  Dist.adj.UB <- Dist.adjparms$U.bound[Dist.adjparms$Dist.adj==Dist.adj.i]\n  Time.adj.meanlog <- ExpAdjs[ExpAdjs$Aou %in% spp.i, 'TimeAdj.meanlog']\n  Time.adj.sdlog <- ExpAdjs[ExpAdjs$Aou %in% spp.i, 'TimeAdj.sdlog']\n  Pair.adj.i <- ExpAdjs[ExpAdjs$Aou %in% spp.i, 'Pair2']\n\n  regions <- unique(df.spp.i$ProvBCR)\n  ##### Lookup any Range Adjustments for each region area\n  # Any Range Adjustments?\n  Rng.Adj.i <- Rng.Adj[Rng.Adj$cn==cn.i, ]\n  # Any borrowed Polygons?\n  PolyRngAdj.i <- PolyRngAdj[PolyRngAdj$cn==cn.i, ]\n```\n",
+    "variables": [
+      {
+        "name": "PS.score",
+        "type": "function"
+      },
+      {
+        "name": "all_data",
+        "type": "tbl_df [324180, 18]",
+        "value": "Columns:\n* aou: chr\n* strata_name_numeric: chr\n* ProvBCR: chr\n* route_name: chr\n* species_total: dbl\n* st_abrev: chr\n* state_num: chr\n* year: int\n* latitude: dbl\n* longitude: dbl\n* observer: chr\n* stop: int\n* count_type: chr\n* quality_flag: lgl\n* bcr: chr\n* rteno: chr\n* countrynum: chr\n* statenum: chr"
+      },
+      {
+        "name": "ExpAdjs",
+        "type": "tbl_df [221, 9]",
+        "value": "Columns:\n* Aou: chr\n* cn: chr\n* Dist2: dbl\n* TimeAdj.meanlog: dbl\n* TimeAdj.sdlog: dbl\n* Pair2: chr\n* Species: chr\n* Notes: chr\n* Region: chr"
+      },
+      {
+        "name": "Dist.adjparms",
+        "type": "data.frame [8, 3]",
+        "value": "Columns:\n* Dist.adj: dbl\n* L.bound: dbl\n* U.bound: dbl"
+      },
+      {
+        "name": "Spp.aou",
+        "type": "chr [221]"
+      },
+      {
+        "name": "df.spp.i",
+        "type": "tbl_df [147, 6]",
+        "value": "Columns:\n* ProvBCR: chr\n* route_name: chr\n* mean.count: dbl\n* var.count: dbl\n* n.years: int\n* size.par: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n  p <- ggplot2::ggplot(df.spp.i, ggplot2::aes(x = mean.count, y = var.count))\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

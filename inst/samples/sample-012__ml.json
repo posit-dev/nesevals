@@ -1,0 +1,37 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-01-15T14:22:31.200Z):\n```ml.py\n@@ -95,9 +95,8 @@\n         scatter = axes[1, 2].scatter(self.df['days_per_week'], self.df['optimal_weekly_sets'],\n                                      c=self.df['recovery_capacity'], cmap='viridis', alpha=0.6)\n         axes[1, 2].set_title('Training Frequency vs Volume')\n         axes[1, 2].set_xlabel('Days per Week')\n         axes[1, 2].set_ylabel('Weekly Sets')\n-        plt.colorbar(scatter, ax=axes[1, 2], label='Recovery Capacity')\n         \n         plt.tight_layout()\n```\n\nEdit 2 (2025-01-15T14:22:45.512Z):\n```ml.py\n@@ -95,8 +95,9 @@\n         scatter = axes[1, 2].scatter(self.df['days_per_week'], self.df['optimal_weekly_sets'],\n                                      c=self.df['recovery_capacity'], cmap='viridis', alpha=0.6)\n         axes[1, 2].set_title('Training Frequency vs Volume')\n         axes[1, 2].set_xlabel('Days per Week')\n         axes[1, 2].set_ylabel('Weekly Sets')\n+        plt.colorbar(scatter, ax=axes[1, 2], label='Recov\n         \n         plt.tight_layout()\n```",
+    "excerpt": "```ml.py\n        # 5. Satisfaction distribution\n        axes[1, 1].hist(self.df['satisfaction_score'], bins=20, color='purple', alpha=0.7, edgecolor='black')\n        axes[1, 1].set_title('Satisfaction Score Distribution')\n        axes[1, 1].set_xlabel('Satisfaction (1-10)')\n        axes[1, 1].set_ylabel('Frequency')\n        axes[1, 1].axvline(self.df['satisfaction_score'].mean(), color='red', linestyle='--', \n                          label=f\"Mean: {self.df['satisfaction_score'].mean():.1f}\")\n        axes[1, 1].legend()\n        \n<|editable_region_start|>\n        # 6. Days per week vs Volume\n        scatter = axes[1, 2].scatter(self.df['days_per_week'], self.df['optimal_weekly_sets'],\n                                     c=self.df['recovery_capacity'], cmap='viridis', alpha=0.6)\n        axes[1, 2].set_title('Training Frequency vs Volume')\n        axes[1, 2].set_xlabel('Days per Week')\n        axes[1, 2].set_ylabel('Weekly Sets')\n        plt.colorbar(scatter, ax=axes[1, 2], label='Recov<|user_cursor_is_here|>\n        \n        plt.tight_layout()\n        plt.savefig('visualizations/data_distribution.png', dpi=300, bbox_inches='tight')\n<|editable_region_end|>\n        print(\"\u2705 Saved to: visualizations/data_distribution.png\")\n```\n",
+    "variables": [
+      {
+        "name": "plt",
+        "type": "module 'matplotlib.pyplot'"
+      },
+      {
+        "name": "self.df",
+        "type": "DataFrame [847, 9]",
+        "value": "Columns:\n* sport: object\n* fitness_level: object\n* days_per_week: int64\n* recovery_capacity: float64\n* best_split: object\n* optimal_weekly_sets: int64\n* satisfaction_score: float64"
+      },
+      {
+        "name": "fig",
+        "type": "Figure"
+      },
+      {
+        "name": "axes",
+        "type": "ndarray [2, 3]"
+      },
+      {
+        "name": "scatter",
+        "type": "PathCollection"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        # 6. Days per week vs Volume\n        scatter = axes[1, 2].scatter(self.df['days_per_week'], self.df['optimal_weekly_sets'],\n                                     c=self.df['recovery_capacity'], cmap='viridis', alpha=0.6)\n        axes[1, 2].set_title('Training Frequency vs Volume')\n        axes[1, 2].set_xlabel('Days per Week')\n        axes[1, 2].set_ylabel('Weekly Sets')\n        plt.colorbar(scatter, ax=axes[1, 2], label='Recovery Capacity')\n        \n        plt.tight_layout()\n        plt.savefig('visualizations/data_distribution.png', dpi=300, bbox_inches='tight')\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:22:31.206Z):\n```Fig3.R\n@@ -7,5 +7,6 @@\n   mutate(Subtype = case_when(Subtype == 'Immune Quiescent' ~ 'TIME-Q',\n                              Subtype == 'Immune Inflamed' ~ 'TIME-I',\n                              Subtype == 'B Cell-enriched' ~ 'TIME-B',\n-                             Subtype == 'Myeloid-enriched' ~ 'TIME-Mye'))\n+                             Subtype == 'Myeloid-enriched' ~ 'TIME-Mye')) |>\n+  mutate(Subtype = factor(Subtype, levels = c()))\n sample_assignment <- arrange(sample_assignment, Subtype, TCGA_project, MFP)\n```\n\nEdit 2 (2025-11-24T14:22:38.892Z):\n```Fig3.R\n@@ -9,5 +9,5 @@\n                              Subtype == 'B Cell-enriched' ~ 'TIME-B',\n                              Subtype == 'Myeloid-enriched' ~ 'TIME-Mye')) |>\n-  mutate(Subtype = factor(Subtype, levels = c()))\n+  mutate(Subtype = factor(Subtype, levels = c('TIME-Q',)))\n sample_assignment <- arrange(sample_assignment, Subtype, TCGA_project, MFP)\n```",
+    "excerpt": "```Fig3.R\n<|editable_region_start|>\nsample_assignment <- sample_assignment |> \n  mutate(MFP = case_when(MFP == 'D' ~ 'Depleted',\n                         MFP == 'F' ~ 'Fibrotic',\n                         MFP == 'IE' ~ 'Immune-enriched',\n                         MFP == 'IE/F' ~ 'Immune-enriched, Fibrotic')) |> \n  mutate(MFP = factor(MFP, levels = c('Immune-enriched, Fibrotic', 'Immune-enriched', 'Fibrotic','Depleted'))) |> \n  mutate(Subtype = case_when(Subtype == 'Immune Quiescent' ~ 'TIME-Q',\n                             Subtype == 'Immune Inflamed' ~ 'TIME-I',\n                             Subtype == 'B Cell-enriched' ~ 'TIME-B',\n                             Subtype == 'Myeloid-enriched' ~ 'TIME-Mye')) |>\n  mutate(Subtype = factor(Subtype, levels = c(<|user_cursor_is_here|>)))\nsample_assignment <- arrange(sample_assignment, Subtype, TCGA_project, MFP)\n<|editable_region_end|>\nsample_assignment$ecotype <- df_ecotype$assignment[match(sample_assignment$sample, df_ecotype$sample)]\n```\n",
+    "variables": [
+      {
+        "name": "sample_assignment",
+        "type": "tbl_df [8421, 14]",
+        "value": "Columns:\n* sample: chr\n* Subtype: chr\n* Actual_Correlation: dbl\n* TCGA_project: chr\n* MFP: chr\n* OS: dbl\n* OS_FLAG: dbl\n* Subtype_Immune_Model_Based: chr\n* ecotype: chr"
+      },
+      {
+        "name": "df_Bagaev",
+        "type": "tbl_df [10234, 8]",
+        "value": "Columns:\n* Sample: chr\n* TCGA_project: chr\n* MFP: chr\n* OS: dbl\n* OS_FLAG: dbl"
+      },
+      {
+        "name": "immune_subtype",
+        "type": "tbl_df [9856, 3]",
+        "value": "Columns:\n* sample: chr\n* Subtype_Immune_Model_Based: chr\n* immune_score: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nsample_assignment <- sample_assignment |> \n  mutate(MFP = case_when(MFP == 'D' ~ 'Depleted',\n                         MFP == 'F' ~ 'Fibrotic',\n                         MFP == 'IE' ~ 'Immune-enriched',\n                         MFP == 'IE/F' ~ 'Immune-enriched, Fibrotic')) |> \n  mutate(MFP = factor(MFP, levels = c('Immune-enriched, Fibrotic', 'Immune-enriched', 'Fibrotic','Depleted'))) |> \n  mutate(Subtype = case_when(Subtype == 'Immune Quiescent' ~ 'TIME-Q',\n                             Subtype == 'Immune Inflamed' ~ 'TIME-I',\n                             Subtype == 'B Cell-enriched' ~ 'TIME-B',\n                             Subtype == 'Myeloid-enriched' ~ 'TIME-Mye')) |>\n  mutate(Subtype = factor(Subtype, levels = c('TIME-Q','TIME-I','TIME-B','TIME-Mye')))\nsample_assignment <- arrange(sample_assignment, Subtype, TCGA_project, MFP)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

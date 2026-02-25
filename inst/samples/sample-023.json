@@ -1,0 +1,24 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T17:27:39.798Z):\n```R/run-eval.R\n@@ -48,5 +48,5 @@\n     'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n   )\n }\n \n-wipe_logs\n\\ No newline at end of file\n+wipe_logs <- function\n\\ No newline at end of file\n```\n\nEdit 2 (2025-11-24T17:27:40.087Z):\n```R/run-eval.R\n@@ -48,5 +48,5 @@\n     'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n   )\n }\n \n-wipe_logs <- function\n\\ No newline at end of file\n+wipe_logs <- function()\n\\ No newline at end of file\n```\n\nEdit 3 (2025-11-24T17:27:40.663Z):\n```R/run-eval.R\n@@ -48,5 +48,5 @@\n     'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n   )\n }\n \n-wipe_logs <- function()\n\\ No newline at end of file\n+wipe_logs <- function() \n\\ No newline at end of file\n```\n\nEdit 4 (2025-11-24T17:27:40.903Z):\n```R/run-eval.R\n@@ -48,5 +48,5 @@\n     'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n   )\n }\n \n-wipe_logs <- function() \n\\ No newline at end of file\n+wipe_logs <- function() {}\n\\ No newline at end of file\n```\n\nEdit 5 (2025-11-24T17:27:41.232Z):\n```R/run-eval.R\n@@ -48,5 +48,7 @@\n     'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n   )\n }\n \n-wipe_logs <- function() {}\n\\ No newline at end of file\n+wipe_logs <- function() {\n+  \n+}\n\\ No newline at end of file\n```\n\nEdit 6 (2025-11-24T17:27:41.561Z):\n```R/run-eval.R\n@@ -49,6 +49,6 @@\n   )\n }\n \n wipe_logs <- function() {\n-  \n+  inst/run/logs\n }\n\\ No newline at end of file\n```\n\nEdit 7 (2025-11-24T17:27:42.228Z):\n```R/run-eval.R\n@@ -49,6 +49,6 @@\n   )\n }\n \n wipe_logs <- function() {\n-  inst/run/logs\n+  \n }\n\\ No newline at end of file\n```\n\nEdit 8 (2025-11-24T17:27:45.221Z):\n```R/run-eval.R\n@@ -49,6 +49,6 @@\n   )\n }\n \n wipe_logs <- function() {\n-  \n+  un\n }\n\\ No newline at end of file\n```\n\nEdit 9 (2025-11-24T17:27:45.780Z):\n```R/run-eval.R\n@@ -49,6 +49,6 @@\n   )\n }\n \n wipe_logs <- function() {\n-  un\n+  unl\n }\n\\ No newline at end of file\n```\n\nEdit 10 (2025-11-24T17:27:46.987Z):\n```R/run-eval.R\n@@ -49,6 +49,6 @@\n   )\n }\n \n wipe_logs <- function() {\n-  unl\n+  un\n }\n\\ No newline at end of file\n```",
+    "excerpt": "```R/run-eval.R\n}\n\nclients_to_evaluate <- function() {\n  tibble::tribble(\n    ~client, ~name,\n<|editable_region_start|>\n    'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n  )\n}\n\nwipe_logs <- function() {\n  un<|user_cursor_is_here|>\n}\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "script",
+        "type": "str"
+      },
+      {
+        "name": "tsk",
+        "type": "Task"
+      },
+      {
+        "name": "tsk_claude_4_5_sonnet",
+        "type": "Task"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    'ellmer::chat_anthropic(model = \"claude-sonnet-4-5\")', 'claude_4_5_sonnet'\n  )\n}\n\nwipe_logs <- function() {\n  unlink(\"inst/run/logs\", recursive = TRUE)\n}\n<|editable_region_end|>",
+  "tags": [
+    "jittered_noop"
+  ]
+}

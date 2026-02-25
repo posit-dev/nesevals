@@ -1,0 +1,33 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:49:03.683Z):\nwhole_hist_viz.py\n@@ -19,9 +19,9 @@\n     }\n\n     df = linmod.data.process_nextstrain(\n         ns_path,\n-\n+        pl.d\n         cfg,\n     ).filter(\n         # If specified, keep only samples seen by last date\n         pl.col(\"date_submitted\")\n\nEdit 2 (2025-12-19T18:49:04.018Z):\nwhole_hist_viz.py\n@@ -19,9 +19,9 @@\n     }\n\n     df = linmod.data.process_nextstrain(\n         ns_path,\n-        pl.d\n+        pl.da\n         cfg,\n     ).filter(\n         # If specified, keep only samples seen by last date\n         pl.col(\"date_submitted\")\n\nEdit 3 (2025-12-19T18:49:04.416Z):\nwhole_hist_viz.py\n@@ -19,9 +19,9 @@\n     }\n\n     df = linmod.data.process_nextstrain(\n         ns_path,\n-        pl.da\n+        pl.date\n         cfg,\n     ).filter(\n         # If specified, keep only samples seen by last date\n         pl.col(\"date_submitted\")\n\nEdit 4 (2025-12-19T18:49:04.698Z):\nwhole_hist_viz.py\n@@ -19,9 +19,9 @@\n     }\n\n     df = linmod.data.process_nextstrain(\n         ns_path,\n-        pl.date\n+        pl.date(\n         cfg,\n     ).filter(\n         # If specified, keep only samples seen by last date\n         pl.col(\"date_submitted\")",
+    "excerpt": "```whole_hist_viz.py\n    y = last_date.year\n    m = last_date.month\n    d = last_date.day\n\n<|editable_region_start|>\n    cfg = linmod.data.DEFAULT_CONFIG.copy()\n    cfg[\"data\"] |= {\n        \"forecast_date\": {\n            \"year\": y,\n            \"month\": m,\n            \"day\": d,\n        },\n        \"horizon\": {\n            \"upper\": 0,\n            \"lower\": (first_date - last_date).days,\n        },\n        \"lineages\": cfg_lineages,\n    }\n\n    df = linmod.data.process_nextstrain(\n        ns_path,\n        pl.date(<|user_cursor_is_here|>),\n        cfg,\n    ).filter(\n        # If specified, keep only samples seen by last date\n        pl.col(\"date_submitted\")\n        <= last_samp_date,\n<|editable_region_end|>\n    )\n```\n",
+    "variables": [
+      {
+        "name": "y",
+        "type": "int"
+      },
+      {
+        "name": "m",
+        "type": "int"
+      },
+      {
+        "name": "d",
+        "type": "int"
+      },
+      {
+        "name": "pl",
+        "type": "module"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    cfg = linmod.data.DEFAULT_CONFIG.copy()\n    cfg[\"data\"] |= {\n        \"forecast_date\": {\n            \"year\": y,\n            \"month\": m,\n            \"day\": d,\n        },\n        \"horizon\": {\n            \"upper\": 0,\n            \"lower\": (first_date - last_date).days,\n        },\n        \"lineages\": cfg_lineages,\n    }\n\n    df = linmod.data.process_nextstrain(\n        ns_path,\n        pl.date(y, m, d),\n        cfg,\n    ).filter(\n        # If specified, keep only samples seen by last date\n        pl.col(\"date_submitted\")\n        <= last_samp_date,\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

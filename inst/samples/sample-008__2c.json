@@ -1,0 +1,37 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T18:21:03.112Z):\n2c.py\n@@ -1,34 +1,34 @@\n import numpy as np\n import scipy as sp\n import scipy.stats as stats\n import pandas as pd\n import matplotlib.pyplot as plt\n import seaborn as sns\n # Set color map to have light blue background\n sns.set()\n import statsmodels.formula.api as smf\n import statsmodels.api as sm\n \n votes = pd.read_csv('data/fl2000.txt', delim_whitespace=True, comment='#')\n votes = votes[['county', 'Bush', 'Gore', 'Nader', 'Buchanan']]\n-#votes.describe(include='all')\n+\n+#2c\n+y = votes['Bush']\n+X = votes.drop(columns=['county', 'Bush'])\n+\n+# Add a constant term for the intercept\n+X = sm.add_constant(X)\n+model = sm.OLS(y, X).fit()\n+print(model.summary())\n \n #2a\n # numeric_votes = votes._get_numeric_data()\n # corr_matrix = numeric_votes.corr()\n@@ -36,19 +36,6 @@\n # sns.pairplot(votes.iloc[:, :10], diag_kind='kde')\n # plt.savefig('pair_plot.png', dpi = 300, bbox_inches = 'tight')\n-\n-# #2c\n-# y = votes['Bush']\n-# X = votes.drop(columns=['county', 'Bush'])\n-\n-# # Add a constant term for the intercept\n-# X = sm.add_constant(X)\n-# model = sm.OLS(y, X).fit()\n-# print(model.summary())\n \n #2d\n # Create a formula for the multiple linear regression model\n independent_vars = votes.drop(columns=['county', 'Bush']).columns\n\nEdit 2 (2026-01-07T18:21:15.490Z):\n2c.py\n@@ -9,17 +9,20 @@\n import statsmodels.formula.api as smf\n import statsmodels.api as sm\n \n votes = pd.read_csv('data/fl2000.txt', delim_whitespace=True, comment='#')\n votes = votes[['county', 'Bush', 'Gore', 'Nader', 'Buchanan']]\n \n #2c\n-y = votes['Bush']\n-X = votes.drop(columns=['county', 'Bush'])\n-\n-# Add a constant term for the intercept\n-X = sm.add_constant(X)\n-model = sm.OLS(y, X).fit()\n-print(model.summary())\n+def fit_ols_model(votes, response_col='Bush'):\n+    y = votes[response_col]\n+    X = votes.drop(columns=['county', response_col])\n+\n+    # Add a constant term for the intercept\n+    X = sm.add_constant(X)\n+    model = sm.OLS(y, X)\n \n #2d\n # Create a formula for the multiple linear regression model\n independent_vars = votes.drop(columns=['county', 'Bush']).columns\n\nEdit 3 (2026-01-07T18:21:22.031Z):\n2c.py\n@@ -12,13 +12,16 @@\n votes = pd.read_csv('data/fl2000.txt', delim_whitespace=True, comment='#')\n votes = votes[['county', 'Bush', 'Gore', 'Nader', 'Buchanan']]\n \n #2c\n def fit_ols_model(votes, response_col='Bush'):\n     y = votes[response_col]\n     X = votes.drop(columns=['county', response_col])\n \n     # Add a constant term for the intercept\n     X = sm.add_constant(X)\n     model = sm.OLS(y, X)\n+\n+model = fit_ols_model(votes)\n+print(model.summary())\n \n #2d\n # Create a formula for the multiple linear regression model\n independent_vars = votes.drop(columns=['county', 'Bush']).columns\n\nEdit 4 (2026-01-07T18:21:33.804Z):\n2c.py\n@@ -12,8 +12,8 @@\n #2c\n-def fit_ols_model(votes, response_col='Bush'):\n+def fit_ols_model(votes: pd.DataFrame, response_col: str = 'Bush'):\n     y = votes[response_col]\n     X = votes.drop(columns=['county', response_col])\n \n     # Add a constant term for the intercept\n     X = sm.add_constant(X)\n     model = sm.OLS(y, X)\n",
+    "excerpt": "```2c.py\nimport numpy as np\nimport scipy as sp\nimport scipy.stats as stats\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n# Set color map to have light blue background\nsns.set()\nimport statsmodels.formula.api as smf\nimport statsmodels.api as sm\n\nvotes = pd.read_csv('data/fl2000.txt', delim_whitespace=True, comment='#')\nvotes = votes[['county', 'Bush', 'Gore', 'Nader', 'Buchanan']]\n\n<|editable_region_start|>\ndef fit_ols_model(votes: pd.DataFrame, response_col: str = 'Bush'):\n    y = votes[response_col]\n    X = votes.drop(columns=['county', response_col])\n    # Add a constant term for the intercept\n    X = sm.add_constant(X)\n    model = sm.OLS(y, X)<|user_cursor_is_here|>\n<|editable_region_end|>\n\nmodel = fit_ols_model(votes)\nprint(model.summary())\n\n#2d\n# Create a formula for the multiple linear regression model\nindependent_vars = votes.drop(columns=['county', 'Bush']).columns\n# Create formular with full interactions\n#formula_str = 'Bush ~ ' + ' * '.join(independent_vars)\n# Fit the model using statsmodels\n#model_multi = smf.ols(formula=formula_str, data=votes).fit()\n#Print and observe the p-value for each interaction\n#print(model_multi.summary())\n\n# Create formular eliminate interactions that do not meet the p value <= 0.05\nformula_str = 'Bush ~ Gore +  Nader + Buchanan + Nader:Buchanan'\nmodel_multi = smf.ols(formula=formula_str, data=votes).fit()\nprint(model_multi.summary())\n```\n",
+    "variables": [
+      {
+        "name": "votes",
+        "type": "DataFrame [67, 5]",
+        "value": "Columns:\n* county: object\n* Bush: int64\n* Gore: int64\n* Nader: int64\n* Buchanan: int64"
+      },
+      {
+        "name": "fit_ols_model",
+        "type": "function"
+      },
+      {
+        "name": "independent_vars",
+        "type": "Index [3]"
+      },
+      {
+        "name": "formula_str",
+        "type": "str"
+      },
+      {
+        "name": "model_multi",
+        "type": "statsmodels.regression.linear_model.RegressionResultsWrapper"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\ndef fit_ols_model(votes: pd.DataFrame, response_col: str = 'Bush'):\n    y = votes[response_col]\n    X = votes.drop(columns=['county', response_col])\n    # Add a constant term for the intercept\n    X = sm.add_constant(X)\n    model = sm.OLS(y, X).fit()\n    return model\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "function-stub-completion",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

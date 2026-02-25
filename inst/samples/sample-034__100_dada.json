@@ -1,0 +1,30 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T15:02:11.104Z):\n```100_dada.R\n@@ -1,3 +1,10 @@\n+## Helper: number of CPU threads for dada2's `multithread` argument\n+local_cpus <- function() {\n+  parallel::detectCores()\n+}\n+\n ###### err_{read}_{.orient}_{.seqrun} ######\n # list: see dada2::LearnErrors\n #\n```\n\nEdit 2 (2026-01-07T15:03:02.887Z):\n```100_dada.R\n@@ -12,7 +12,7 @@\n   learnErrors(\n     purrr::discard(filtered, grepl, pattern = \"BLANK|NEG\"),\n     errorEstimationFunction = errfun,\n-    multithread = parallel::detectCores(),\n+    multithread = local_cpus(),\n     verbose = TRUE\n   ),\n   resources = tar_resources(crew = tar_resources_crew(controller = \"wide\"))\n```\n\nEdit 3 (2026-01-07T15:04:18.552Z):\n```100_dada.R\n@@ -1,6 +1,7 @@\n ## Helper: number of CPU threads for dada2's `multithread` argument\n-local_cpus <- function() {\n-  parallel::detectCores()\n+local_cpus <- function(reserve = 1L) {\n+  n <- parallel::detectCores(logical = FALSE)\n+  max(1L, as.integer(n) - as.integer(reserve))\n }\n```\n\nEdit 4 (2026-01-07T15:05:01.230Z):\n```100_dada.R\n@@ -1,7 +1,6 @@\n ## Helper: number of CPU threads for dada2's `multithread` argument\n local_cpus <- function(reserve = 1L) {\n   n <- parallel::detectCores(logical = FALSE)\n-  max(1L, as.integer(n) - as.integer(reserve))\n }\n```",
+    "excerpt": "```100_dada.R\n<|editable_region_start|>\n# Helper: number of CPU threads for dada2's `multithread` argument\nlocal_cpus <- function(reserve = 1L) {\n  n <- parallel::detectCores(logical = FALSE)<|user_cursor_is_here|>\n}\n\n<|editable_region_end|>\n####### err_{read}_{.orient}_{.seqrun} ######\n# list: see dada2::LearnErrors\n#\n# fit error profile\ntar_target(\n  err,\n  learnErrors(\n    purrr::discard(filtered, grepl, pattern = \"BLANK|NEG\"),\n    errorEstimationFunction = errfun,\n    multithread = local_cpus(),\n    verbose = TRUE\n  ),\n  resources = tar_resources(crew = tar_resources_crew(controller = \"wide\"))\n)\n```\n",
+    "variables": [
+      {
+        "name": "filtered",
+        "type": "chr [48]"
+      },
+      {
+        "name": "dada2_meta",
+        "type": "tbl_df [48, 12]",
+        "value": "Columns:\n* sample_key: chr\n* seqrun: chr\n* orient: chr\n* fastq_R1: chr\n* fastq_R2: chr\n* trim_R1: chr\n* trim_R2: chr\n* filt_R1: chr\n* filt_R2: chr\n* primer_fwd: chr\n* primer_rev: chr\n* is_control: lgl"
+      },
+      {
+        "name": "errfun",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# Helper: number of CPU threads for dada2's `multithread` argument\nlocal_cpus <- function(reserve = 1L) {\n  n <- parallel::detectCores(logical = FALSE)\n  max(1L, as.integer(n) - as.integer(reserve))\n}\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

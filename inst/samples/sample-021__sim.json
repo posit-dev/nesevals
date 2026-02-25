@@ -1,0 +1,26 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:32:15.011Z):\n```sim.R\n@@ -22,9 +22,8 @@\n       lst_mat[[i]] <- matrix(\n         data = qcolSum(assay_j[desc[[i]],, drop = FALSE]),\n         nrow = 1L,\n-        ncol = n_col,\n         dimnames = list(node_name[i], col_nms)\n       )\n     }\n     NewAssays[[j]] <- do.call('rbind', lst_mat)\n   }\n```\n\nEdit 2 (2025-11-24T14:32:18.443Z):\n```sim.R\n@@ -22,8 +22,9 @@\n       lst_mat[[i]] <- matrix(\n         data = qcolSum(assay_j[desc[[i]],, drop = FALSE]),\n         nrow = 1L,\n+        n\n         dimnames = list(node_name[i], col_nms)\n       )\n     }\n     NewAssays[[j]] <- do.call('rbind', lst_mat)\n   }\n```\n\nEdit 3 (2025-11-24T14:32:18.891Z):\n```sim.R\n@@ -22,9 +22,9 @@\n       lst_mat[[i]] <- matrix(\n         data = qcolSum(assay_j[desc[[i]],, drop = FALSE]),\n         nrow = 1L,\n-        n\n+        nc\n         dimnames = list(node_name[i], col_nms)\n       )\n     }\n     NewAssays[[j]] <- do.call('rbind', lst_mat)\n   }",
+    "excerpt": "```sim.R\n# train_res_climbed <- climb(train_res, \"order\")\n# plot_results(climb(train_res, \"order\"))\nqcolSum <- function(x, na.rm = FALSE) {\n  n <- nrow(x)\n  dn <- ncol(x)\n  .Internal(colSums(x, n, prod(dn), na.rm))\n}\ntse_by_climb <- function(tse, climb_res) {\n  \n\n  keep <- subset(climb_res, keep)\n  n_col <- ncol(tse)\n  col_nms <- colnames(tse)\n  dimnms <- list(keep$nodes, col_nms)\n  lst_mat <- vector('list', nrow(keep))\n  Assays <- SummarizedExperiment::assays(tse)\n  NewAssays <- vector('list', length(Assays))\n  i_seq <- seq_along(lst_mat)\n  desc <- keep$descendants\n<|editable_region_start|>\n  node_name <- keep$nodes\n  for (j in seq_along(NewAssays)) {\n    assay_j <- Assays[[j]]\n    for (i in i_seq) {\n      lst_mat[[i]] <- matrix(\n        data = qcolSum(assay_j[desc[[i]],, drop = FALSE]),\n        nrow = 1L,\n        nc<|user_cursor_is_here|>\n        dimnames = list(node_name[i], col_nms)\n      )\n    }\n    NewAssays[[j]] <- do.call('rbind', lst_mat)\n  }\n  names(NewAssays) <- names(Assays)\n<|editable_region_end|>\n  md <- c(list(\n    TreeSummarizedExperiment = tse\n  ), tse@metadata)\n```\n",
+    "variables": [
+      {
+        "name": "qcolSum",
+        "type": "function"
+      },
+      {
+        "name": "tse_by_climb",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  node_name <- keep$nodes\n  for (j in seq_along(NewAssays)) {\n    assay_j <- Assays[[j]]\n    for (i in i_seq) {\n      lst_mat[[i]] <- matrix(\n        data = qcolSum(assay_j[desc[[i]],, drop = FALSE]),\n        nrow = 1L,\n        ncol = n_col,\n        dimnames = list(node_name[i], col_nms)\n      )\n    }\n    NewAssays[[j]] <- do.call('rbind', lst_mat)\n  }\n  names(NewAssays) <- names(Assays)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

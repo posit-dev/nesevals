@@ -1,0 +1,44 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T19:12:10.118Z):\n```index.R\n@@ -1,6 +1,10 @@\n word_count <- comma(sum(book_toks$value))\n \n avg_words <- mean(book_toks$value)\n+\n+section_summary <- book_toks |>\n+  group_by(heading) |>\n+  summarize(total_words = sum(value))\n \n book_toks |> \n   ggplot(aes(heading, value)) +\n```\n\nEdit 2 (2026-01-07T19:12:18.506Z):\n```index.R\n@@ -1,8 +1,9 @@\n section_summary <- book_toks |>\n-  group_by(heading) |>\n+  mutate(section = if_else(str_starts(heading, \"Pro\"), \"Prologue\", \"Chapter\")) |>\n+  group_by(section) |>\n   summarize(total_words = sum(value))\n```\n\nEdit 3 (2026-01-07T19:12:26.941Z):\n```index.R\n@@ -1,5 +1,7 @@\n section_summary <- book_toks |>\n   mutate(section = if_else(str_starts(heading, \"Pro\"), \"Prologue\", \"Chapter\")) |>\n   group_by(section) |>\n-  summarize(total_words = sum(value))\n+  summarize(\n+    total_words = sum(value)\n+  )\n```",
+    "excerpt": "```index.R\nword_count <- comma(sum(book_toks$value))\n\navg_words <- mean(book_toks$value)\n<|editable_region_start|>\n\nsection_summary <- book_toks |>\n  mutate(section = if_else(str_starts(heading, \"Pro\"), \"Prologue\", \"Chapter\")) |>\n  group_by(section) |>\n  summarize(\n    total_words = sum(value),\n    avg_words = <|user_cursor_is_here|>\n  )\n\n<|editable_region_end|>\nbook_toks |> \n  ggplot(aes(heading, value)) +\n  geom_col(fill = \"#82b777\", colour = \"#181d1e\") +\n  geom_hline(yintercept = avg_words, linetype = \"dashed\") +\n  annotate(\"label\", x = 15.5, y = avg_words, label = \"Average\") +\n  labs(\n    title = glue(\"Such an Odd Word to Use -- {word_count} Words\"),\n    x = NULL, y = \"Words\"\n    ) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n```\n",
+    "variables": [
+      {
+        "name": "book_split",
+        "type": "tbl_df [18, 2]",
+        "value": "Columns:\n* heading: chr\n* text: chr"
+      },
+      {
+        "name": "book_corp",
+        "type": "corpus [18 documents]"
+      },
+      {
+        "name": "book_toks",
+        "type": "tbl_df [17, 3]",
+        "value": "Columns:\n* heading: chr\n* value: int\n* cum_toks: int"
+      },
+      {
+        "name": "word_count",
+        "type": "chr [1]"
+      },
+      {
+        "name": "avg_words",
+        "type": "dbl [1]"
+      },
+      {
+        "name": "section_summary",
+        "type": "tbl_df [2, 2]",
+        "value": "Columns:\n* section: chr\n* total_words: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nsection_summary <- book_toks |>\n  mutate(section = if_else(str_starts(heading, \"Pro\"), \"Prologue\", \"Chapter\")) |>\n  group_by(section) |>\n  summarize(\n    total_words = sum(value),\n    avg_words = mean(value)\n  )\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

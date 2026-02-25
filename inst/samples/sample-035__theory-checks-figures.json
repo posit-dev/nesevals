@@ -1,0 +1,26 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```theory-checks-figures.R\n  ) # , log(as.numeric(vec2b)))\n\n  plot(stuff, cex = 2, pch = 19, border = NA)\n\n  stuff_list[[i]] <- stuff |> mutate(kappa = i)\n\n  sum_list[[i]] <- tibble(\n    kappa = i,\n    sum_orig = sum(stuff$orig),\n    sum_proj = sum(stuff$proj),\n    sum_orig2 = sum(stuff$orig2),\n    sum_proj2 = sum(stuff$proj2)\n  )\n}\n\nstuff <- bind_rows(stuff_list)\nsums <- bind_rows(sum_list)\n\nsums\n\n# Reorganize data for plotting origin as a kappa-case\nsums2 <- sums |>\n  mutate(kappa = paste0(\"log(\\u03BA)=\", kappa)) |>\n  bind_rows(sums |>\n    filter(kappa == min(kappa)) |>\n    dplyr::select(-sum_proj, -sum_proj2) |>\n    rename(\n      sum_proj = sum_orig,\n      sum_proj2 = sum_orig2\n    ) |>\n    mutate(kappa = \"Original\")) |>\n<|editable_region_start|>\n  dplyr::select(-sum_orig, -sum_orig2) |>\n  pivot_longer(-kappa, names_to = \"var\", values_to = \"<|user_cursor_is_here|>\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "sums",
+        "type": "tbl_df [3, 5]",
+        "value": "Columns:\n* kappa: dbl\n* sum_orig: dbl\n* sum_proj: dbl\n* sum_orig2: dbl\n* sum_proj2: dbl"
+      },
+      {
+        "name": "stuff",
+        "type": "sf tbl_df [150, 6]",
+        "value": "Columns:\n* kappa: dbl\n* orig: dbl\n* proj: dbl\n* orig2: dbl\n* proj2: dbl\n* geometry: sfc_POLYGON"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  dplyr::select(-sum_orig, -sum_orig2) |>\n  pivot_longer(-kappa, names_to = \"var\", values_to = \"sum\") |>\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

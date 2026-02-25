@@ -1,0 +1,28 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:34:18.785Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-\n+stress_s\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 2 (2025-12-19T18:34:19.493Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_s\n+stress_su\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 3 (2025-12-19T18:34:20.263Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_su\n+stress_subIDs\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 4 (2025-12-19T18:34:20.503Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs\n+stress_subIDs = \n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 5 (2025-12-19T18:34:21.382Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs = \n+stress_subIDs = list(\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 6 (2025-12-19T18:34:21.790Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs = list(\n+stress_subIDs = list(usable_subinfo[\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 7 (2025-12-19T18:34:22.953Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs = list(usable_subinfo[\n+stress_subIDs = list(usable_subinfo[usable_subinfo.group\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 8 (2025-12-19T18:34:26.497Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs = list(usable_subinfo[usable_subinfo.group\n+stress_subIDs = list(usable_subinfo[usable_subinfo.group == 1]\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```\n\nEdit 9 (2025-12-19T18:34:27.139Z):\n```fmri_starter.py\n@@ -12,9 +12,9 @@\n \n # split into control and stress groups\n ctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\n-stress_subIDs = list(usable_subinfo[usable_subinfo.group == 1]\n+stress_subIDs = list(usable_subinfo[usable_subinfo.group == 1].s\n print(\"Controls: \",len(ctrl_subIDs))\n print(\"Stress: \",len(stress_subIDs))\n```",
+    "excerpt": "```fmri_starter.py\nsubinfo = pd.read_csv('./data/subject_info.txt', sep=\"\\t\")\nusable_subinfo = subinfo[subinfo.fmri_scenes_usable == 1].reset_index(drop=True)\n\n# filter out subjects with low response rate\nsubIDs = []\nfor sub in list(usable_subinfo.subid):\n    behav_df = pd.read_csv(f'./data/behavior/catStats_sub{sub}.csv', sep='\\t')\n    goodresp_prop = len(behav_df[behav_df[\"rt\"] < 1])/len(behav_df)\n    if goodresp_prop > 0.6:\n        subIDs.append(sub)\nusable_subinfo = usable_subinfo[np.isin(usable_subinfo[\"subid\"], subIDs)].reset_index(drop=True)\n\n<|editable_region_start|>\n# split into control and stress groups\nctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\nstress_subIDs = list(usable_subinfo[usable_subinfo.group == 1].sub<|user_cursor_is_here|>\n\nprint(\"Controls: \",len(ctrl_subIDs))\nprint(\"Stress: \",len(stress_subIDs))\n<|editable_region_end|>\n\nruns = [\"rest1\", \"rest2\", \"scene1\", \"scene2\", \"scene3\", \"scene4\", \"scene5\"]\n```\n",
+    "variables": [
+      {
+        "name": "usable_subinfo",
+        "type": "DataFrame [47, 12]",
+        "value": "Columns:\n* subid: int64\n* group: int64\n* age: int64\n* gender: object\n* fmri_scenes_usable: int64\n* fmri_rest_usable: int64\n* cortisol_baseline: float64\n* cortisol_post: float64\n* heart_rate_baseline: float64\n* heart_rate_post: float64\n* stress_rating: float64\n* notes: object"
+      },
+      {
+        "name": "ctrl_subIDs",
+        "type": "list [23]"
+      },
+      {
+        "name": "subIDs",
+        "type": "list [47]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# split into control and stress groups\nctrl_subIDs = list(usable_subinfo[usable_subinfo.group == 0].subid)\nstress_subIDs = list(usable_subinfo[usable_subinfo.group == 1].subid)\n\nprint(\"Controls: \",len(ctrl_subIDs))\nprint(\"Stress: \",len(stress_subIDs))\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered_noop"
+  ]
+}

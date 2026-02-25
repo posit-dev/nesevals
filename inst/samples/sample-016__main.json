@@ -1,0 +1,41 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T14:32:11.240Z):\n```main.py\n@@ -67,8 +67,10 @@\n                 elif module not in ALLOWED_IMPORTS:\n                     self.violations.append(f\"Unauthorized import: {module}\")\n         \n+        def visit_ImportFrom(self, node):\n+    \n     visitor = ImportVisitor()\n     visitor.visit(tree)\n     \n     if visitor.violations:\n         return False, \"; \".join(visitor.violations)\n```\n\nEdit 2 (2025-12-19T14:32:14.892Z):\n```main.py\n@@ -68,8 +68,9 @@\n                     self.violations.append(f\"Unauthorized import: {module}\")\n         \n         def visit_ImportFrom(self, node):\n+            if node.module:\n     \n     visitor = ImportVisitor()\n     visitor.visit(tree)\n     \n     if visitor.violations:\n```\n\nEdit 3 (2025-12-19T14:32:18.455Z):\n```main.py\n@@ -69,8 +69,9 @@\n         \n         def visit_ImportFrom(self, node):\n             if node.module:\n+                module = node.module.split('.')[0]\n     \n     visitor = ImportVisitor()\n     visitor.visit(tree)\n     \n     if visitor.violations:\n```\n\nEdit 4 (2025-12-19T14:32:22.103Z):\n```main.py\n@@ -70,8 +70,9 @@\n         def visit_ImportFrom(self, node):\n             if node.module:\n                 module = node.module.split('.')[0]\n+                if module in BLOCKED_IMPORTS:\n     \n     visitor = ImportVisitor()\n     visitor.visit(tree)\n     \n     if visitor.violations:\n```",
+    "excerpt": "```main.py\n    # Parse and check imports\n    try:\n        tree = ast.parse(code)\n    except SyntaxError as e:\n        return False, f\"Syntax error: {e}\"\n    \n    class ImportVisitor(ast.NodeVisitor):\n        def __init__(self):\n            self.violations = []\n        \n        def visit_Import(self, node):\n            for alias in node.names:\n                module = alias.name.split('.')[0]\n                if module in BLOCKED_IMPORTS:\n                    self.violations.append(f\"Blocked import: {module}\")\n                elif module not in ALLOWED_IMPORTS:\n                    self.violations.append(f\"Unauthorized import: {module}\")\n<|editable_region_start|>\n        \n        def visit_ImportFrom(self, node):\n            if node.module:\n                module = node.module.split('.')[0]\n                if module in BLOCKED_IMPORTS:<|user_cursor_is_here|>\n    \n    visitor = ImportVisitor()\n    visitor.visit(tree)\n    \n    if visitor.violations:\n        return False, \"; \".join(visitor.violations)\n    \n    return True, \"OK\"\n\n<|editable_region_end|>\n\n@mcp.tool()\nasync def execute_python(\n    code: str,\n    ctx: Context,\n    timeout: int = 10,\n) -> ExecutionResult:\n```\n",
+    "variables": [
+      {
+        "name": "ast",
+        "type": "module"
+      },
+      {
+        "name": "validate_code",
+        "type": "function(code: str) -> tuple[bool, str]"
+      },
+      {
+        "name": "ALLOWED_IMPORTS",
+        "type": "set [21]"
+      },
+      {
+        "name": "BLOCKED_IMPORTS",
+        "type": "set [12]"
+      },
+      {
+        "name": "DANGEROUS_PATTERNS",
+        "type": "list [8]"
+      },
+      {
+        "name": "ExecutionResult",
+        "type": "class"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        \n        def visit_ImportFrom(self, node):\n            if node.module:\n                module = node.module.split('.')[0]\n                if module in BLOCKED_IMPORTS:\n                    self.violations.append(f\"Blocked import: {module}\")\n                elif module not in ALLOWED_IMPORTS:\n                    self.violations.append(f\"Unauthorized import: {module}\")\n    \n    visitor = ImportVisitor()\n    visitor.visit(tree)\n    \n    if visitor.violations:\n        return False, \"; \".join(visitor.violations)\n    \n    return True, \"OK\"\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

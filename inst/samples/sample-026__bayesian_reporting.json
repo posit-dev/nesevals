@@ -1,0 +1,42 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T19:03:12.114Z):\n```bayesian_reporting.R\n@@ -1,14 +1,17 @@\n bayes_tbl_sum <- function(bayes_model\n                           , add_sigma = FALSE\n                           , add_loo = FALSE\n                           , add_R2 = FALSE\n                           , add_loo_R2 = FALSE\n                           , add_convergence = FALSE\n                           , apa_table  = FALSE\n                           , coef_calc   = \"mean\"\n                           , coef_except = NULL\n                           , .low_val    = FALSE\n                           , fmt_md      = FALSE){\n+\n+  require(tidyverse)\n+  require(tidybayes)\n```\n\nEdit 2 (2026-01-07T19:03:25.802Z):\n```bayesian_reporting.R\n@@ -14,6 +14,10 @@\n \n   require(tidyverse)\n   require(tidybayes)\n+\n+  draws <- bayes_model |>\n+    tidybayes::tidy_draws()\n+\n+  draws\n```\n\nEdit 3 (2026-01-07T19:03:39.441Z):\n```bayesian_reporting.R\n@@ -16,8 +16,9 @@\n \n   draws <- bayes_model |>\n-    tidybayes::tidy_draws()\n+    tidybayes::tidy_draws() |>\n+    dplyr::select(.chain, .iteration, .draw)\n \n   draws\n```\n\nEdit 4 (2026-01-07T19:03:52.019Z):\n```bayesian_reporting.R\n@@ -16,8 +16,8 @@\n \n   draws <- bayes_model |>\n     tidybayes::tidy_draws() |>\n-    dplyr::select(.chain, .iteration, .draw)\n+    dplyr::select(.chain, .iteration, .draw, dplyr::matches(\"^b_\"))\n \n   draws\n```\n\nEdit 5 (2026-01-07T19:04:05.387Z):\n```bayesian_reporting.R\n@@ -16,8 +16,8 @@\n \n   draws <- bayes_model |>\n     tidybayes::tidy_draws() |>\n-    dplyr::select(.chain, .iteration, .draw, dplyr::matches(\"^b_\"))\n+    dplyr::select(.chain, .iteration, .draw, dplyr::all_of(coef_names))\n \n   draws\n```\n\nEdit 6 (2026-01-07T19:04:19.663Z):\n```bayesian_reporting.R\n@@ -16,8 +16,8 @@\n \n   draws <- bayes_model |>\n     tidybayes::tidy_draws() |>\n-    dplyr::select(.chain, .iteration, .draw, dplyr::all_of(coef_names))\n+    dplyr::select(.chain, .iteration, .draw, dplyr::all_of(\n \n   draws\n```",
+    "excerpt": "```bayesian_reporting.R\n#'\n#' @param coef_except Vector of named coefficients (can take regex)\nbayes_tbl_sum <- function(bayes_model\n                          , add_sigma = FALSE\n                          , add_loo = FALSE\n                          , add_R2 = FALSE\n                          , add_loo_R2 = FALSE\n                          , add_convergence = FALSE\n                          , apa_table  = FALSE\n                          , coef_calc   = \"mean\"\n                          , coef_except = NULL\n                          , .low_val    = FALSE\n                          , fmt_md      = FALSE){\n<|editable_region_start|>\n\n  require(tidyverse)\n  require(tidybayes)\n\n  draws <- bayes_model |>\n    tidybayes::tidy_draws() |>\n    dplyr::select(.chain, .iteration, .draw, dplyr::all_of(coef_na<|user_cursor_is_here|>\n\n  draws\n}\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "bayes_tbl_sum",
+        "type": "function"
+      },
+      {
+        "name": "bayes_model",
+        "type": "brmsfit"
+      },
+      {
+        "name": "draws",
+        "type": "tbl_df [4000, 9]",
+        "value": "Columns:\n* .chain: int\n* .iteration: int\n* .draw: int\n* b_Intercept: dbl\n* b_age: dbl\n* b_treatmentB: dbl\n* sd_subject__Intercept: dbl\n* sigma: dbl\n* lp__: dbl"
+      },
+      {
+        "name": "coef_names",
+        "type": "chr [3]"
+      },
+      {
+        "name": "coef_except",
+        "type": "NULL"
+      },
+      {
+        "name": "coef_calc",
+        "type": "chr [1]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n  require(tidyverse)\n  require(tidybayes)\n\n  draws <- bayes_model |>\n    tidybayes::tidy_draws() |>\n    dplyr::select(.chain, .iteration, .draw, dplyr::all_of(coef_names))\n\n  draws\n}\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

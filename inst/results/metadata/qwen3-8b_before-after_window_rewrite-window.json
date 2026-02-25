@@ -1,0 +1,12 @@
+{
+  "name": "qwen3-8b_before-after_window_rewrite-window",
+  "model": "qwen3-8b",
+  "prompt": "rewrite-window",
+  "edit_history_format": "before_after",
+  "output_format": "window",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 80,
+  "generated_at": "2026-02-12 08:34:17.553684"
+}

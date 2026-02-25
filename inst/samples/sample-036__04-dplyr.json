@@ -1,0 +1,29 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```04-dplyr.R\nlibrary(readr)\n# ?readr\ndatos <- read_csv2(\"./data/coches.csv\")\nclass(datos) \n\nlibrary(readxl)\ndatos<-read_excel(\"./data/coches.xlsx\")\n<|editable_region_start|>\ncla<|user_cursor_is_here|>\nexcel_sheets(\"./data/coches.xlsx\") # listado de hojas\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "datos",
+        "type": "tbl_df [250, 12]",
+        "value": "Columns:\n* marca: chr\n* modelo: chr\n* ano: dbl\n* km: dbl\n* combustible: fct(3)\n* cambio: fct(2)\n* potencia_cv: dbl\n* cilindrada_cc: dbl\n* puertas: dbl\n* color: chr\n* precio_eur: dbl\n* vendedor: chr"
+      },
+      {
+        "name": "read_excel",
+        "type": "function"
+      },
+      {
+        "name": "excel_sheets",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nclass(datos)\nexcel_sheets(\"./data/coches.xlsx\") # listado de hojas\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "pattern-following",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

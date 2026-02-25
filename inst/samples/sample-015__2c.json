@@ -1,0 +1,40 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:16:58.622Z):\n```2c.py\n@@ -10,5 +10,6 @@\n\n # Create formular eliminate interactions that do not meet the p value <= 0.05\n formula_str = 'Bush ~ Gore +  Nader + Buchanan + Nader:Buchanan'\n+model_multi = smf.ols(formula=formula_str, data=votes).fit()\n ```\n\nEdit 2 (2025-12-19T19:17:03.428Z):\n```2c.py\n@@ -11,5 +11,6 @@\n # Create formular eliminate interactions that do not meet the p value <= 0.05\n formula_str = 'Bush ~ Gore +  Nader + Buchanan + Nader:Buchanan'\n model_multi = smf.ols(formula=formula_str, data=votes).fit()\n+print(\n ```",
+    "excerpt": "```2c.py\n#2d\n# Create a formula for the multiple linear regression model\nindependent_vars = votes.drop(columns=['county', 'Bush']).columns\n# Create formular with full interactions\n#formula_str = 'Bush ~ ' + ' * '.join(independent_vars)\n# Fit the model using statsmodels\n#model_multi = smf.ols(formula=formula_str, data=votes).fit()\n#Print and observe the p-value for each interaction\n#print(model_multi.summary())\n\n<|editable_region_start|>\n# Create formular eliminate interactions that do not meet the p value <= 0.05\nformula_str = 'Bush ~ Gore +  Nader + Buchanan + Nader:Buchanan'\nmodel_multi = smf.ols(formula=formula_str, data=votes).fit()\nprint(model_m<|user_cursor_is_here|>\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "votes",
+        "type": "DataFrame [67, 5]",
+        "value": "Columns:\n* county: object\n* Bush: int64\n* Gore: int64\n* Nader: int64\n* Buchanan: int64"
+      },
+      {
+        "name": "independent_vars",
+        "type": "Index [3]"
+      },
+      {
+        "name": "formula_str",
+        "type": "str"
+      },
+      {
+        "name": "model_multi",
+        "type": "OLSResults"
+      },
+      {
+        "name": "smf",
+        "type": "<module>"
+      },
+      {
+        "name": "sm",
+        "type": "<module>"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# Create formular eliminate interactions that do not meet the p value <= 0.05\nformula_str = 'Bush ~ Gore +  Nader + Buchanan + Nader:Buchanan'\nmodel_multi = smf.ols(formula=formula_str, data=votes).fit()\nprint(model_multi.summary())\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop"
+  ]
+}

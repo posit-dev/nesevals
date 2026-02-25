@@ -1,0 +1,49 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T16:22:10.102Z):\n```fun_mayfly_correct.R\n@@ -118,7 +118,7 @@\n     cleanings <- cleanings %>% \n-      dplyr::filter(substr(Location, nchar(Location) - 3, nchar(Location)) == loc) %>% \n+      dplyr::filter(substrRight(Location, 4) == loc) %>% \n       rowwise() %>% \n       mutate(DateTimeUTC = with_tz(Mayfly_DownloadDateTimeET, tzone = \"UTC\")) %>%\n       arrange(DateTimeUTC)\n```\n\nEdit 2 (2026-01-07T16:22:28.441Z):\n```fun_mayfly_correct.R\n@@ -168,7 +168,7 @@\n         #* TESTING PREVIEW PLOT ----\n         # loc <- \"MD05\"\n-        # sum_loc <- data_correct_summary(parameter = par) %>% filter(Location == substr(loc, nchar(loc) - 3, nchar(loc)))\n+        # sum_loc <- data_correct_summary(parameter = par) %>% filter(Location == substrRight(loc, 4))\n         # preview_plot(loc = loc, par = par, sum_loc, df_fp = df_fp, df_trib_monitoring = df_trib_monitoring)\n         ###\n```\n\nEdit 3 (2026-01-07T16:23:01.017Z):\n```fun_mayfly_correct.R\n@@ -1,3 +1,9 @@\n+#+#+#+#+#################################################################\n+# Utility helpers --------------------------------------------------------\n+\n+\n+\n+\n+\n  ###           INITIAL EXPLORATORY PLOT FOR STAGE CORRECTION         ####\n  ########################################################################.\n  # dygraph showing full range of Raw and Corrected data \n```\n\nEdit 4 (2026-01-07T16:23:16.588Z):\n```fun_mayfly_correct.R\n@@ -1,8 +1,10 @@\n #########################################################################\n # Utility helpers --------------------------------------------------------\n \n+\n+# TODO: define substrRight(x, n)\n+\n \n \n \n  ###           INITIAL EXPLORATORY PLOT FOR STAGE CORRECTION         ####\n```\n\nEdit 5 (2026-01-07T16:23:31.904Z):\n```fun_mayfly_correct.R\n@@ -1,10 +1,11 @@\n #########################################################################\n # Utility helpers --------------------------------------------------------\n \n-\n-# TODO: define substrRight(x, n)\n+\n+# Used later, e.g.\n+# cleanings <- cleanings %>% dplyr::filter(substrRight(Location, 4) == loc)\n \n \n \n \n  ###           INITIAL EXPLORATORY PLOT FOR STAGE CORRECTION         ####\n```",
+    "excerpt": "```fun_mayfly_correct.R\n# Utility helpers --------------------------------------------------------\n<|editable_region_start|>\n\nsubstrRight <- function(x, n) {\n  start <- nchar(x) - n + 1\n  substr(x, start, nchar(x))\n<|user_cursor_is_here|>\n\n<|editable_region_end|>\n# Used later, e.g.\n# cleanings <- cleanings %>% dplyr::filter(substrRight(Location, 4) == loc)\n```\n",
+    "variables": [
+      {
+        "name": "df_mayfly",
+        "type": "tbl_df [48, 7]",
+        "value": "Columns:\n* DateTimeUTC: POSIXct\n* RawStage_ft: dbl\n* RawConductivity_uScm: dbl\n* Temp_C: dbl\n* Location: chr\n* SensorID: chr\n* Flag: lgl"
+      },
+      {
+        "name": "df_hobo",
+        "type": "tbl_df [52, 4]",
+        "value": "Columns:\n* DateTimeUTC: POSIXct\n* Stage_ft: dbl\n* Location: chr\n* LoggerID: chr"
+      },
+      {
+        "name": "df_fp2",
+        "type": "tbl_df [12, 3]",
+        "value": "Columns:\n* DateTimeUTC: POSIXct\n* FinalResult: dbl\n* Location: chr"
+      },
+      {
+        "name": "df_trib_monitoring",
+        "type": "tbl_df [305, 15]",
+        "value": "Columns:\n* Location: chr\n* Mayfly_Cleaned: lgl\n* Mayfly_DownloadDateTimeET: POSIXct\n* Notes: chr\n* Tech: chr"
+      },
+      {
+        "name": "par",
+        "type": "chr [1]"
+      },
+      {
+        "name": "loc",
+        "type": "chr [1]"
+      },
+      {
+        "name": "preview_plot",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nsubstrRight <- function(x, n) {\n  start <- nchar(x) - n + 1\n  substr(x, start, nchar(x))\n}\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "function-stub-completion",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

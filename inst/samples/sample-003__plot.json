@@ -1,0 +1,39 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:39:03.309Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n+        .s\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```\n\nEdit 2 (2025-12-19T18:39:03.698Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n-        .s\n+        .so\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```\n\nEdit 3 (2025-12-19T18:39:04.105Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n-        .so\n+        .sor\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```\n\nEdit 4 (2025-12-19T18:39:04.608Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n-        .sor\n+        .sort\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```\n\nEdit 5 (2025-12-19T18:39:05.611Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n-        .sort\n+        .sort(\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```\n\nEdit 6 (2025-12-19T18:39:06.700Z):\n```plot.py\n@@ -207,9 +207,9 @@\n         )\n         .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n         .drop_nulls()\n-        .sort(\n+        .sort()\n     )\n \n     fig = plt.figure(figsize=(8, 3))\n```",
+    "excerpt": "```plot.py\n    gpu_suffix = \"-gpu\" if gpu else \"\"\n    pdata = summary.filter(pl.col(\"dataset\").is_in([id_dataset, ood_dataset])).filter(pl.col(\"k\") == k)\n    if pdata.is_empty():\n        raise ValueError(\"no results data found for performance gap plot\")\n<|editable_region_start|>\n\n    maindata = (\n        fastest_at(pdata, recall)\n        .with_columns(\n            pl.when(pl.col(\"dataset\") == id_dataset)\n            .then(pl.lit(\"in-distribution\"))\n            .otherwise(pl.lit(\"out-of-distribution\"))\n            .alias(\"type\")\n        )\n        .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n        .drop_nulls()\n        .sort(<|user_cursor_is_here|>)\n    )\n\n    fig = plt.figure(figsize=(8, 3))\n    gs = GridSpec(2, 3)\n<|editable_region_end|>\n    ax_main = fig.add_subplot(gs[:, 0])\n    ax_pca_id = fig.add_subplot(gs[0, 1])\n```\n",
+    "variables": [
+      {
+        "name": "pl",
+        "type": "module"
+      },
+      {
+        "name": "plt",
+        "type": "module"
+      },
+      {
+        "name": "pdata",
+        "type": "DataFrame [1247, 8]",
+        "value": "Columns:\n* dataset: str\n* algorithm: str\n* k: int64\n* recall: float64\n* qps: float64\n* build_time: float64\n* index_size: int64\n* params: str"
+      },
+      {
+        "name": "fastest_at",
+        "type": "function(data, recall)"
+      },
+      {
+        "name": "GridSpec",
+        "type": "type"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n    maindata = (\n        fastest_at(pdata, recall)\n        .with_columns(\n            pl.when(pl.col(\"dataset\") == id_dataset)\n            .then(pl.lit(\"in-distribution\"))\n            .otherwise(pl.lit(\"out-of-distribution\"))\n            .alias(\"type\")\n        )\n        .pivot(on=\"type\", values=\"qps\", index=\"algorithm\")\n        .drop_nulls()\n        .sort(\"out-of-distribution\", descending=False)\n    )\n\n    fig = plt.figure(figsize=(8, 3))\n    gs = GridSpec(2, 3)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

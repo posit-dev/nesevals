@@ -1,0 +1,28 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T18:59:30.123Z):\n```Donem_projesi.py\n@@ -7,9 +7,9 @@\n df.head() \n\n # Veri setindeki say\u0131sal s\u00fctunlar\u0131 se\u00e7iyoruz (float64 ve int64 t\u00fcr\u00fcndeki s\u00fctunlar)\n-numeric_columns = \n+numeric_columns = df.select_dtypes(\n\n # Genel grafik stilini ve boyutunu ayarl\u0131yoruz\n plt.style.use('ggplot')  # ggplot tarz\u0131nda bir g\u00f6rselle\u015ftirme stili kullan\u0131l\u0131yor\n plt.figure(figsize=(20, 15))  \n```\n\nEdit 2 (2025-12-19T18:59:33.456Z):\n```Donem_projesi.py\n@@ -7,9 +7,9 @@\n df.head() \n\n # Veri setindeki say\u0131sal s\u00fctunlar\u0131 se\u00e7iyoruz (float64 ve int64 t\u00fcr\u00fcndeki s\u00fctunlar)\n-numeric_columns = df.select_dtypes(\n+numeric_columns = df.select_dtypes(include=['float64', 'int64'])\n\n # Genel grafik stilini ve boyutunu ayarl\u0131yoruz\n plt.style.use('ggplot')  # ggplot tarz\u0131nda bir g\u00f6rselle\u015ftirme stili kullan\u0131l\u0131yor\n plt.figure(figsize=(20, 15))  \n```\n\nEdit 3 (2025-12-19T18:59:35.789Z):\n```Donem_projesi.py\n@@ -7,9 +7,9 @@\n df.head() \n\n # Veri setindeki say\u0131sal s\u00fctunlar\u0131 se\u00e7iyoruz (float64 ve int64 t\u00fcr\u00fcndeki s\u00fctunlar)\n-numeric_columns = df.select_dtypes(include=['float64', 'int64'])\n+numeric_columns = df.select_dtypes(include=['float64', 'int64']).\n\n # Genel grafik stilini ve boyutunu ayarl\u0131yoruz\n plt.style.use('ggplot')  # ggplot tarz\u0131nda bir g\u00f6rselle\u015ftirme stili kullan\u0131l\u0131yor\n plt.figure(figsize=(20, 15))  \n```",
+    "excerpt": "```Donem_projesi.py\n# Veri setinin ilk birka\u00e7 sat\u0131r\u0131n\u0131 g\u00f6r\u00fcnt\u00fcl\u00fcyoruz\ndf.head() \n<|editable_region_start|>\n\n# Veri setindeki say\u0131sal s\u00fctunlar\u0131 se\u00e7iyoruz (float64 ve int64 t\u00fcr\u00fcndeki s\u00fctunlar)\nnumeric_columns = df.select_dtypes(include=['float64', 'int64']).<|user_cursor_is_here|>\n\n# Genel grafik stilini ve boyutunu ayarl\u0131yoruz\nplt.style.use('ggplot')  # ggplot tarz\u0131nda bir g\u00f6rselle\u015ftirme stili kullan\u0131l\u0131yor\nplt.figure(figsize=(20, 15))  \n\n# Her say\u0131sal s\u00fctun i\u00e7in alt grafikler (subplots) olu\u015fturuyoruz\nfor i, col in enumerate(numeric_columns, start=1):\n    plt.subplot(len(numeric_columns) // 3 + 1, 3, i)  \n    sns.histplot(df[col], kde=True, bins=20, color='blue', alpha=0.7)  \n<|editable_region_end|>\n    plt.title(f\"Distribution of {col}\", fontsize=12)  # Histogram ba\u015fl\u0131\u011f\u0131n\u0131 s\u00fctun ad\u0131na g\u00f6re ayarl\u0131yoruz\n    plt.xlabel(col, fontsize=10)  \n    plt.ylabel(\"Frequency\", fontsize=10) \n```\n",
+    "variables": [
+      {
+        "name": "df",
+        "type": "DataFrame [500, 15]",
+        "value": "Columns:\n* Gender: object\n* Age: int64\n* Weight: float64\n* Height: float64\n* Backpack Height: object\n* Backpack Weight: float64\n* Work Hours: int64\n* Sitting Hours: float64\n* Standing Hours: float64\n* Break Frequency: int64\n* Exercise Frequency: int64\n* Stress Level: int64\n* Sleep Quality: int64\n* Posture Score: float64\n* msd_risk: object"
+      },
+      {
+        "name": "file_path",
+        "type": "str",
+        "value": "'msd_risk_dataset.xlsx'"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n# Veri setindeki say\u0131sal s\u00fctunlar\u0131 se\u00e7iyoruz (float64 ve int64 t\u00fcr\u00fcndeki s\u00fctunlar)\nnumeric_columns = df.select_dtypes(include=['float64', 'int64']).columns\n\n# Genel grafik stilini ve boyutunu ayarl\u0131yoruz\nplt.style.use('ggplot')  # ggplot tarz\u0131nda bir g\u00f6rselle\u015ftirme stili kullan\u0131l\u0131yor\nplt.figure(figsize=(20, 15))  \n\n# Her say\u0131sal s\u00fctun i\u00e7in alt grafikler (subplots) olu\u015fturuyoruz\nfor i, col in enumerate(numeric_columns, start=1):\n    plt.subplot(len(numeric_columns) // 3 + 1, 3, i)  \n    sns.histplot(df[col], kde=True, bins=20, color='blue', alpha=0.7)  \n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

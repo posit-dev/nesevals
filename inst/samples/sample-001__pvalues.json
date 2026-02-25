@@ -1,0 +1,48 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T19:12:10.120Z):\npvalues.py\n@@ -60,6 +60,8 @@ def get_pvalues(key, p0s, maxit, test_statistic,\n \tpvalue = get_pvalue(test_statistic_value=value,\n \t\t\t\t\t\tthreshold=quantiles,\n \t\t\t\t\t\ttol=tol,\n \t\t\t\t\t\tmaxit=maxit,\n \t\t\t\t\t\tupper_alpha=upper_alpha)\n+\n+\tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n \n \treturn pvalue\n\nEdit 2 (2026-01-07T19:12:18.904Z):\npvalues.py\n@@ -62,6 +62,9 @@ def get_pvalues(key, p0s, maxit, test_statistic,\n \t\t\t\t\t\tmaxit=maxit,\n \t\t\t\t\t\tupper_alpha=upper_alpha)\n \n \tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n+\tp = ggplot(Ts_df, aes(x=\"T\")) + geom_histogram(bins=30) + theme_minimal()\n \n \treturn pvalue\n\nEdit 3 (2026-01-07T19:12:25.611Z):\npvalues.py\n@@ -63,6 +63,6 @@ def get_pvalues(key, p0s, maxit, test_statistic,\n \n \tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n-\tp = ggplot(Ts_df, aes(x=\"T\")) + geom_histogram(bins=30) + theme_minimal()\n+\tp = ggplot(Ts_df, aes(x=\"T\", fill=\"\")) + geom_histogram(bins=30) + theme_minimal()\n \n \treturn pvalue\n\nEdit 4 (2026-01-07T19:12:31.402Z):\npvalues.py\n@@ -63,6 +63,6 @@ def get_pvalues(key, p0s, maxit, test_statistic,\n \n \tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n-\tp = ggplot(Ts_df, aes(x=\"T\", fill=\"\")) + geom_histogram(bins=30) + theme_minimal()\n+\tp = ggplot(Ts_df, aes(x=\"T\", fill=\"p\")) + geom_histogram(bins=30) + theme_minimal()\n \n \treturn pvalue",
+    "excerpt": "```pvalues.py\n\tquantiles = lambda alpha: np.max(np.quantile(Ts, q=1 - alpha, axis=1))\n\n\tpvalue = get_pvalue(test_statistic_value=value,\n\t\t\t\t\t\tthreshold=quantiles,\n\t\t\t\t\t\ttol=tol,\n\t\t\t\t\t\tmaxit=maxit,\n\t\t\t\t\t\tupper_alpha=upper_alpha)\n<|editable_region_start|>\n\n\tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n\tp = ggplot(Ts_df, aes(x=\"T\", fill=\"p<|user_cursor_is_here|>\")) + geom_histogram(bins=30) + theme_minimal()\n\n<|editable_region_end|>\n\treturn pvalue\n```\n",
+    "variables": [
+      {
+        "name": "pd",
+        "type": "module"
+      },
+      {
+        "name": "get_pvalues",
+        "type": "function get_pvalues(key, p0s, maxit, test_statistic, xs, ts, n, B, tol, upper_alpha) -> float"
+      },
+      {
+        "name": "key",
+        "type": "jax.Array [2] uint32"
+      },
+      {
+        "name": "p0s",
+        "type": "list [6]",
+        "value": "[0.05, 0.10, 0.20, 0.30, 0.40, 0.50]"
+      },
+      {
+        "name": "B",
+        "type": "int",
+        "value": "2000"
+      },
+      {
+        "name": "Ts",
+        "type": "ndarray [6, 2000] float64"
+      },
+      {
+        "name": "Ts_df",
+        "type": "DataFrame [12000, 2]",
+        "value": "Columns:\n* p0: float64\n* T: float64"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n\tTs_df = pd.DataFrame({\"p0\": onp.repeat(p0s, B), \"T\": Ts.reshape(-1)})\n\tp = ggplot(Ts_df, aes(x=\"T\", fill=\"p0\")) + geom_histogram(bins=30) + theme_minimal()\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

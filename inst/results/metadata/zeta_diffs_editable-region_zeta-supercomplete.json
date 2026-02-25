@@ -1,0 +1,12 @@
+{
+  "name": "zeta_diffs_editable-region_zeta-supercomplete",
+  "model": "zeta",
+  "prompt": "zeta-supercomplete",
+  "edit_history_format": "diffs",
+  "output_format": "editable_region",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 80,
+  "generated_at": "2026-02-11 17:06:59.597943"
+}

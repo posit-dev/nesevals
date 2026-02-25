@@ -1,0 +1,36 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:20:12.183Z):\n```aggregations.py\n@@ -11,6 +11,9 @@\n         .to_native()\n     )\n \n \n+def get_\n+\n+\n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 2 (2025-12-19T19:20:12.892Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_\n+def get_max\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 3 (2025-12-19T19:20:13.401Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_max\n+def get_max(frame\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 4 (2025-12-19T19:20:14.105Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_max(frame\n+def get_max(frame: IntoDataFrameT\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 5 (2025-12-19T19:20:15.233Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_max(frame: IntoDataFrameT\n+def get_max(frame: IntoDataFrameT, by: str\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 6 (2025-12-19T19:20:16.108Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_max(frame: IntoDataFrameT, by: str\n+def get_max(frame: IntoDataFrameT, by: str, agg: str)\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```\n\nEdit 7 (2025-12-19T19:20:17.445Z):\n```aggregations.py\n@@ -11,9 +11,9 @@\n         .to_native()\n     )\n \n \n-def get_max(frame: IntoDataFrameT, by: str, agg: str)\n+def get_max(frame: IntoDataFrameT, by: str, agg: str) -> IntoDataFrameT\n \n \n # Send them !!! 💣\n get_avg(pd_df, \"department\", \"salary\")\n```",
+    "excerpt": "```aggregations.py\n# Narwhals dataframe-agnostic function\ndef get_avg(frame: IntoDataFrameT, by: str, agg: str) -> IntoDataFrameT:\n    return (\n        nw.from_native(frame)\n        .group_by(by)\n        .agg(nw.col(agg).mean())\n        .sort(agg, descending=True)\n        .to_native()\n    )\n\n\n<|editable_region_start|>\ndef get_max(frame: IntoDataFrameT, by: str, agg: str) -> IntoDataFrameT:<|user_cursor_is_here|>\n\n\n# Send them !!! 💣\nget_avg(pd_df, \"department\", \"salary\")\nget_avg(pl_df, \"department\", \"salary\").collect()\nget_avg(db_rel, \"department\", \"salary\")\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "pd_df",
+        "type": "DataFrame [250, 6]",
+        "value": "Columns:\n* employee_id: int64\n* name: object\n* department: object\n* salary: float64\n* hire_date: datetime64[ns]\n* manager_id: int64"
+      },
+      {
+        "name": "pl_df",
+        "type": "LazyFrame"
+      },
+      {
+        "name": "db_rel",
+        "type": "Relation"
+      },
+      {
+        "name": "get_avg",
+        "type": "function"
+      },
+      {
+        "name": "IntoDataFrameT",
+        "type": "type"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\ndef get_max(frame: IntoDataFrameT, by: str, agg: str) -> IntoDataFrameT:\n    return (\n        nw.from_native(frame)\n        .group_by(by)\n        .agg(nw.col(agg).max())\n        .sort(agg, descending=True)\n        .to_native()\n    )\n\n\n# Send them !!! 💣\nget_avg(pd_df, \"department\", \"salary\")\nget_avg(pl_df, \"department\", \"salary\").collect()\nget_avg(db_rel, \"department\", \"salary\")\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T14:22:31.205Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f for package in packages]\n+        packages_w_pins = [package if package not in pins else f\" for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 2 (2025-12-19T14:22:31.892Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\" for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"' for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 3 (2025-12-19T14:22:32.341Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"' for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{ for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 4 (2025-12-19T14:22:32.798Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{ for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 5 (2025-12-19T14:22:33.156Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{package for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package} for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 6 (2025-12-19T14:22:33.612Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{package} for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package}>= for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 7 (2025-12-19T14:22:34.089Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{package}>= for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package}>={ for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 8 (2025-12-19T14:22:34.534Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{package}>={ for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package}>={pins for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```\n\nEdit 9 (2025-12-19T14:22:35.001Z):\n```conda_packages.py\n@@ -11,9 +11,9 @@\n         packages = set(packages)\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        packages_w_pins = [package if package not in pins else f\"'{package}>={pins for package in packages]\n+        packages_w_pins = [package if package not in pins else f\"'{package}>={pins[ for package in packages]\n         packages_str = \" \".join(packages_w_pins)\n         prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n         suffix = \" --yes\"\n```",
+    "excerpt": "```conda_packages.py\n    @staticmethod\n    def conda_packages_to_str(\n        packages: t.Iterable[str] = ALL,\n        pin_loc: str = JSON_NAME,\n        pins_override: dict[str, str] = PINS_OVERRIDE,\n        version: str = \"3.12\",\n    ):\n        packages = set(packages)\n        with open(pin_loc) as f:\n            loaded: dict[str, str] = json.load(f)\n<|editable_region_start|>\n        pins = loaded | pins_override\n        packages = sorted(packages, key=lambda x: (x not in pins, x))\n        packages_w_pins = [package if package not in pins else f\"'{package}>={pins[<|user_cursor_is_here|>\" for package in packages]\n        packages_str = \" \".join(packages_w_pins)\n        prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n        suffix = \" --yes\"\n\n<|editable_region_end|>\n        print(prepend + packages_str + suffix)\n```\n",
+    "variables": [
+      {
+        "name": "packages",
+        "type": "list [23]"
+      },
+      {
+        "name": "pins",
+        "type": "dict [5]"
+      },
+      {
+        "name": "loaded",
+        "type": "dict [5]"
+      },
+      {
+        "name": "pin_loc",
+        "type": "str"
+      },
+      {
+        "name": "version",
+        "type": "str"
+      },
+      {
+        "name": "pins_override",
+        "type": "dict [0]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        pins = loaded | pins_override\n        packages = sorted(packages, key=lambda x: (x not in pins, x))\n        packages_w_pins = [package if package not in pins else f\"'{package}>={pins[package]}'\" for package in packages]\n        packages_str = \" \".join(packages_w_pins)\n        prepend = f\"mm create -n kret_{version.replace('.', '')} python={version} \"\n        suffix = \" --yes\"\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

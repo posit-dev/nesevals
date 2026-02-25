@@ -1,0 +1,38 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T15:38:17.067Z):\n```cellchat.r\n@@ -51,8 +51,9 @@\n meta = obj@meta.data |>\n   dplyr::rename(\n     \"labels\"=myoptions$celltype_column,\n     \"samples\"=myoptions$sample_column) |>\n-  dplyr::select(labels, samples)\n+  dplyr::select(labels, samples) |>\n+  dplyr::mutate(\n  )\n \n cellchat <- createCellChat(object = data.input, meta = meta, group.by = \"labels\")\n```\n\nEdit 2 (2025-11-24T15:38:19.234Z):\n```cellchat.r\n@@ -51,9 +51,10 @@\n meta = obj@meta.data |>\n   dplyr::rename(\n     \"labels\"=myoptions$celltype_column,\n     \"samples\"=myoptions$sample_column) |>\n   dplyr::select(labels, samples) |>\n   dplyr::mutate(\n+    labels = as.factor(as.character(labels)),\n  )\n \n cellchat <- createCellChat(object = data.input, meta = meta, group.by = \"labels\")\n```",
+    "excerpt": "```cellchat.r\nobj = subset(obj, cells=cells)\nobj = NormalizeData(obj)\n\ndata.input = GetAssayData(obj, assay = \"RNA\", layer = \"data\")\n<|editable_region_start|>\n\nmeta = obj@meta.data |>\n  dplyr::rename(\n    \"labels\"=myoptions$celltype_column,\n    \"samples\"=myoptions$sample_column) |>\n  dplyr::select(labels, samples) |>\n  dplyr::mutate(\n    labels = as.factor(as.character(labels)),\n    sam<|user_cursor_is_here|>\n )\n\ncellchat <- createCellChat(object = data.input, meta = meta, group.by = \"labels\")\n\nif(myoptions$CellChatDB == \"mouse\"){\n  cellchat@DB <- CellChatDB.mouse\n} else {\n<|editable_region_end|>\n  cellchat@DB <- CellChatDB.human\n}\n```\n",
+    "variables": [
+      {
+        "name": "obj",
+        "type": "Seurat"
+      },
+      {
+        "name": "data.input",
+        "type": "dgCMatrix [18432, 5621]"
+      },
+      {
+        "name": "myoptions",
+        "type": "list [5]"
+      },
+      {
+        "name": "read_file_map",
+        "type": "function(file_list_path, sep, header)"
+      },
+      {
+        "name": "sample_name",
+        "type": "chr",
+        "value": "\"CD_Met\""
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nmeta = obj@meta.data |>\n  dplyr::rename(\n    \"labels\"=myoptions$celltype_column,\n    \"samples\"=myoptions$sample_column) |>\n  dplyr::select(labels, samples) |>\n  dplyr::mutate(\n    labels = as.factor(as.character(labels)),\n    samples = as.factor(as.character(samples))\n )\n\ncellchat <- createCellChat(object = data.input, meta = meta, group.by = \"labels\")\n\nif(myoptions$CellChatDB == \"mouse\"){\n  cellchat@DB <- CellChatDB.mouse\n} else {\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:10:07.313Z):\n```explore_foldseek.py\n@@ -10,7 +10,8 @@\n     evalue = pl.col(\"evalue\").cast(pl.Float64),\n     qcov = pl.col(\"qcov\").cast(pl.Float64),\n     tcov = pl.col(\"tcov\").cast(pl.Float64)\n-)\n+).filter(\n+)\n\n molten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n```\n\nEdit 2 (2025-12-19T19:10:07.758Z):\n```explore_foldseek.py\n@@ -11,7 +11,7 @@\n     qcov = pl.col(\"qcov\").cast(pl.Float64),\n     tcov = pl.col(\"tcov\").cast(pl.Float64)\n ).filter(\n-\n+    (pl.col(\"\n )\n\n molten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n```\n\nEdit 3 (2025-12-19T19:10:08.172Z):\n```explore_foldseek.py\n@@ -11,7 +11,7 @@\n     qcov = pl.col(\"qcov\").cast(pl.Float64),\n     tcov = pl.col(\"tcov\").cast(pl.Float64)\n ).filter(\n-    (pl.col(\"\n+    (pl.col(\"qcov\")\n )\n\n molten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n```\n\nEdit 4 (2025-12-19T19:10:08.810Z):\n```explore_foldseek.py\n@@ -11,7 +11,7 @@\n     qcov = pl.col(\"qcov\").cast(pl.Float64),\n     tcov = pl.col(\"tcov\").cast(pl.Float64)\n ).filter(\n-    (pl.col(\"qcov\")\n+    (pl.col(\"qcov\") >= 0.7)\n )\n\n molten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n```\n\nEdit 5 (2025-12-19T19:10:09.457Z):\n```explore_foldseek.py\n@@ -11,7 +11,7 @@\n     qcov = pl.col(\"qcov\").cast(pl.Float64),\n     tcov = pl.col(\"tcov\").cast(pl.Float64)\n ).filter(\n-    (pl.col(\"qcov\") >= 0.7)\n+    (pl.col(\"qcov\") >= 0.7) &\n )\n\n molten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n```",
+    "excerpt": "```explore_foldseek.py\nprint(f\"Seaborn version: {sns.__version__}\")\nprint(f\"Matplotlib version: {plt.matplotlib.__version__}\")\n\n\n<|editable_region_start|>\nglobular_vs_afdb = pl.scan_csv(\"Globular_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n    query = pl.col(\"query\").str.split(\".\").list.get(0),\n    target = pl.col(\"target\").str.replace(r\"AF-(.*)-F1.*\", r\"${1}\"),\n    evalue = pl.col(\"evalue\").cast(pl.Float64),\n    qcov = pl.col(\"qcov\").cast(pl.Float64),\n    tcov = pl.col(\"tcov\").cast(pl.Float64)\n).filter(\n    (pl.col(\"qcov\") >= 0.7) &<|user_cursor_is_here|>\n)\n\nmolten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n    query = pl.col(\"query\").str.split(\".\").list.get(0),\n    target = pl.col(\"target\").str.replace(r\"AF-(.*)-F1.*\", r\"${1}\"),\n    evalue = pl.col(\"evalue\").cast(pl.Float64),\n<|editable_region_end|>\n    qcov = pl.col(\"qcov\").cast(pl.Float64),\n    tcov = pl.col(\"tcov\").cast(pl.Float64)\n).filter(\n    (pl.col(\"qcov\") >= 0.7) & (pl.col(\"tcov\") >= 0.7)\n)\n```\n",
+    "variables": [
+      {
+        "name": "pl",
+        "type": "module"
+      },
+      {
+        "name": "sns",
+        "type": "module"
+      },
+      {
+        "name": "plt",
+        "type": "module"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nglobular_vs_afdb = pl.scan_csv(\"Globular_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n    query = pl.col(\"query\").str.split(\".\").list.get(0),\n    target = pl.col(\"target\").str.replace(r\"AF-(.*)-F1.*\", r\"${1}\"),\n    evalue = pl.col(\"evalue\").cast(pl.Float64),\n    qcov = pl.col(\"qcov\").cast(pl.Float64),\n    tcov = pl.col(\"tcov\").cast(pl.Float64)\n).filter(\n    (pl.col(\"qcov\") >= 0.7) & (pl.col(\"tcov\") >= 0.7)\n)\n\nmolten_vs_afdb = pl.scan_csv(\"Molten_vs_afbd_micro.tsv\", separator = \"\\t\").with_columns(\n    query = pl.col(\"query\").str.split(\".\").list.get(0),\n    target = pl.col(\"target\").str.replace(r\"AF-(.*)-F1.*\", r\"${1}\"),\n    evalue = pl.col(\"evalue\").cast(pl.Float64),\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

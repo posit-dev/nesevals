@@ -1,0 +1,40 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:03:46.771Z):\n```temporal_analysis.py\n@@ -8,9 +8,9 @@\n # Show date range per location\n print(\"Date ranges by location:\")\n date_ranges = df.group_by('location_num').agg([\n-\n+    pl.col('date_parsed').min().alias('first_date'),\n ]).sort('location_num')\n print(date_ranges)\n \n # Get all unique dates per location\n```\n\nEdit 2 (2025-12-19T19:03:48.842Z):\n```temporal_analysis.py\n@@ -8,9 +8,10 @@\n # Show date range per location\n print(\"Date ranges by location:\")\n date_ranges = df.group_by('location_num').agg([\n     pl.col('date_parsed').min().alias('first_date'),\n+    pl.col\n ]).sort('location_num')\n print(date_ranges)\n \n # Get all unique dates per location\n```\n\nEdit 3 (2025-12-19T19:03:49.326Z):\n```temporal_analysis.py\n@@ -8,9 +8,10 @@\n # Show date range per location\n print(\"Date ranges by location:\")\n date_ranges = df.group_by('location_num').agg([\n     pl.col('date_parsed').min().alias('first_date'),\n-    pl.col\n+    pl.col('date_p\n ]).sort('location_num')\n print(date_ranges)\n \n # Get all unique dates per location\n```",
+    "excerpt": "```temporal_analysis.py\n# Parse Date field from DD.MM.YYYY format\ndf = df.with_columns([\n    pl.col('Date').str.strip_chars('\"').str.to_date('%d.%m.%Y').alias('date_parsed')\n])\n\n# Show date range per location\n<|editable_region_start|>\nprint(\"Date ranges by location:\")\ndate_ranges = df.group_by('location_num').agg([\n    pl.col('date_parsed').min().alias('first_date'),\n    pl.col('date_p<|user_cursor_is_here|>\n]).sort('location_num')\nprint(date_ranges)\n\n# Get all unique dates per location\nprint(\"\\nUnique dates per location:\")\nfor loc in sorted(LOCATIONS.keys()):\n    dates = df.filter(pl.col('location_num') == loc)['date_parsed'].unique().sort()\n    dates_str = [d.strftime('%Y-%m-%d') for d in dates if d is not None]\n<|editable_region_end|>\n    print(f\"  Location {loc}: {dates_str}\")\n\n# %% Select Operator\n```\n",
+    "variables": [
+      {
+        "name": "pl",
+        "type": "module"
+      },
+      {
+        "name": "df",
+        "type": "DataFrame [48250, 12]",
+        "value": "Columns:\n* location_num: int64\n* location_type: str\n* source_file: str\n* MNC: str\n* operator: str\n* Date: str\n* date_parsed: date\n* SSS_RSRP: float64\n* SSS-SINR: float64"
+      },
+      {
+        "name": "LOCATIONS",
+        "type": "dict [3]"
+      },
+      {
+        "name": "print_heading",
+        "type": "function"
+      },
+      {
+        "name": "df_filtered",
+        "type": "DataFrame [32104, 12]",
+        "value": "Columns:\n* location_num: int64\n* location_type: str\n* source_file: str\n* MNC: str\n* operator: str\n* Date: str\n* date_parsed: date\n* SSS_RSRP: float64\n* SSS-SINR: float64"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nprint(\"Date ranges by location:\")\ndate_ranges = df.group_by('location_num').agg([\n    pl.col('date_parsed').min().alias('first_date'),\n    pl.col('date_parsed').max().alias('last_date'),\n]).sort('location_num')\nprint(date_ranges)\n\n# Get all unique dates per location\nprint(\"\\nUnique dates per location:\")\nfor loc in sorted(LOCATIONS.keys()):\n    dates = df.filter(pl.col('location_num') == loc)['date_parsed'].unique().sort()\n    dates_str = [d.strftime('%Y-%m-%d') for d in dates if d is not None]\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:22:31.204Z):\n```cleaning.R\n@@ -4,7 +4,8 @@\n segment_summary <- beh_data |> \n     group_by(segment_id) |>\n-    summarise(recording_id = first(recording_id))\n+    summarise(recording_id = first(recording_id),\n+              seg_start_real = first(beh_start_real))\n \n segment_summary <- segment_summary |> \n```\n\nEdit 2 (2025-11-24T14:22:38.891Z):\n```cleaning.R\n@@ -4,8 +4,9 @@\n segment_summary <- beh_data |> \n     group_by(segment_id) |>\n     summarise(recording_id = first(recording_id),\n-              seg_start_real = first(beh_start_real))\n+              seg_start_real = first(beh_start_real),\n+              seg_start_acc = first())\n \n segment_summary <- segment_summary |> \n```",
+    "excerpt": "```cleaning.R\n<|editable_region_start|>\n# Get the start time, end time, and other useful info about each segment\nsegment_summary <- beh_data |> \n    group_by(segment_id) |>\n    summarise(recording_id = first(recording_id),\n              seg_start_real = first(beh_start_real),\n              seg_start_acc = first(beh_s<|user_cursor_is_here|>))\n\nsegment_summary <- segment_summary |> \n    left_join(recording_info |> \n                  select(recording_id, filename, matches(\"scale\"), \n                         acc_first_dt, acc_last_dt))\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "beh_data",
+        "type": "tbl_df [2847, 14]",
+        "value": "Columns:\n* recording_id: chr\n* beh_start_real: chr\n* beh_stop_real: chr\n* beh_start_acc: chr\n* beh_stop_acc: chr\n* behaviour: chr\n* segment_id: int\n* observer: chr\n* video_file: chr\n* bird_id: chr\n* species: chr\n* beh_duration: dbl\n* notes: chr\n* validated: lgl"
+      },
+      {
+        "name": "recording_info",
+        "type": "tbl_df [15, 18]",
+        "value": "Columns:\n* recording_id: chr\n* filename: chr\n* bird_id: chr\n* species: chr\n* scale_x_6O: dbl\n* scale_y_6O: dbl\n* scale_z_6O: dbl\n* scale_x_deploybias: dbl\n* scale_y_deploybias: dbl\n* scale_z_deploybias: dbl\n* acc_first_dt: chr\n* acc_last_dt: chr\n* deploy_date: chr\n* retrieve_date: chr\n* sample_rate: dbl\n* device_id: chr\n* location: chr\n* tag_mass_g: dbl"
+      },
+      {
+        "name": "segment_dir",
+        "type": "chr",
+        "value": "/home/user/project/data/clean/data-segments"
+      },
+      {
+        "name": "n_CPU_cores",
+        "type": "dbl",
+        "value": "4"
+      },
+      {
+        "name": "packages",
+        "type": "chr [6]"
+      },
+      {
+        "name": "scales_staticbias",
+        "type": "list [15]"
+      },
+      {
+        "name": "find_beh_segments",
+        "type": "function (recording_id, start_times, stop_times, max_gap = 0.5)"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# Get the start time, end time, and other useful info about each segment\nsegment_summary <- beh_data |> \n    group_by(segment_id) |>\n    summarise(recording_id = first(recording_id),\n              seg_start_real = first(beh_start_real),\n              seg_start_acc = first(beh_start_acc))\n\nsegment_summary <- segment_summary |> \n    left_join(recording_info |> \n                  select(recording_id, filename, matches(\"scale\"), \n                         acc_first_dt, acc_last_dt))\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

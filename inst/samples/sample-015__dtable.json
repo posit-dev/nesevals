@@ -1,0 +1,23 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:16:58.622Z):\n```dtable.py\n@@ -10,8 +10,9 @@\n             if abs_x < 0.001 and abs_x > 0:\n                 return f\"{x:.6f}\".rstrip(\"0\").rstrip(\".\")\n             elif abs_x < 1:\n                 return f\"{x:.{digits}f}\"\n             elif abs_x < 1000:\n                 return f\"{x:.{digits}f}\"\n+            elif abs_x >= 1\n             elif abs_x >= 1000:\n                 if abs(x - round(x)) < 1e-10:\n```\n\nEdit 2 (2025-12-19T19:17:02.341Z):\n```dtable.py\n@@ -10,9 +10,9 @@\n             if abs_x < 0.001 and abs_x > 0:\n                 return f\"{x:.6f}\".rstrip(\"0\").rstrip(\".\")\n             elif abs_x < 1:\n                 return f\"{x:.{digits}f}\"\n             elif abs_x < 1000:\n                 return f\"{x:.{digits}f}\"\n-            elif abs_x >= 1\n+            elif abs_x >= 10000:\n             elif abs_x >= 1000:\n                 if abs(x - round(x)) < 1e-10:\n```",
+    "excerpt": "```dtable.py\n    def _format_number(self, x: float, format_spec: str | None = None, digits: int = 2) -> str:\n        \"\"\"Format a number with optional format specifier or sensible default.\"\"\"\n        import pandas as pd\n        import numpy as np\n\n        if pd.isna(x) or (isinstance(x, float) and np.isnan(x)):\n            return \"-\"\n\n        if format_spec is None:\n            abs_x = abs(x)\n<|editable_region_start|>\n            if abs_x < 0.001 and abs_x > 0:\n                return f\"{x:.6f}\".rstrip(\"0\").rstrip(\".\")\n            elif abs_x < 1:\n                return f\"{x:.{digits}f}\"\n            elif abs_x < 1000:\n                return f\"{x:.{digits}f}\"\n            elif abs_x >= 10000:<|user_cursor_is_here|>\n            elif abs_x >= 1000:\n                if abs(x - round(x)) < 1e-10:\n                    return f\"{int(round(x)):,}\"\n                else:\n                    return f\"{x:,.2f}\"\n            else:\n                return f\"{x:.{digits}f}\"\n<|editable_region_end|>\n        try:\n            if format_spec == \"d\":\n                return f\"{int(round(x)):d}\"\n            return f\"{x:{format_spec}}\"\n```\n",
+    "variables": [
+      {
+        "name": "pd",
+        "type": "module"
+      },
+      {
+        "name": "np",
+        "type": "module"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n            if abs_x < 0.001 and abs_x > 0:\n                return f\"{x:.6f}\".rstrip(\"0\").rstrip(\".\")\n            elif abs_x < 1:\n                return f\"{x:.{digits}f}\"\n            elif abs_x < 1000:\n                return f\"{x:.{digits}f}\"\n            elif abs_x >= 10000:\n                return f\"{x:,.0f}\"\n            elif abs_x >= 1000:\n                if abs(x - round(x)) < 1e-10:\n                    return f\"{int(round(x)):,}\"\n                else:\n                    return f\"{x:,.2f}\"\n            else:\n                return f\"{x:.{digits}f}\"\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered_noop"
+  ]
+}

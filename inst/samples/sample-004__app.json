@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T14:32:15.234Z):\n```app.py\n@@ -23,8 +23,9 @@\n     # Create application state\n     app_state = AppState()\n     \n     # Create UI and server components\n     app_ui = create_ui()\n+    server_func = create_server()\n     \n     # Create and return the app\n     return App(app_ui, server_func)\n```\n\nEdit 2 (2025-12-19T14:32:18.891Z):\n```app.py\n@@ -23,9 +23,9 @@\n     # Create application state\n     app_state = AppState()\n     \n     # Create UI and server components\n     app_ui = create_ui()\n-    server_func = create_server()\n+    server_func = create_server(app_)\n     \n     # Create and return the app\n     return App(app_ui, server_func)\n```",
+    "excerpt": "```app.py\n\"\"\"\nMain application file for the DvLIR analyzer.\nThis is the refactored version with improved code organization.\n\"\"\"\nfrom shiny import App\nimport shinyswatch\n\n# Import our modular components\nfrom ui.layout import create_ui\nfrom server.handlers import create_server\nfrom server.state import AppState\n\n\ndef create_app():\n    \"\"\"\n    Create and configure the DvLIR application.\n    \n    Returns:\n        Configured Shiny App instance\n<|editable_region_start|>\n    \"\"\"\n    # Create application state\n    app_state = AppState()\n    \n    # Create UI and server components\n    app_ui = create_ui()\n    server_func = create_server(app_<|user_cursor_is_here|>)\n    \n    # Create and return the app\n    return App(app_ui, server_func)\n\n<|editable_region_end|>\n\n# Create the app instance\napp = create_app()\n\nif __name__ == \"__main__\":\n```\n",
+    "variables": [
+      {
+        "name": "App",
+        "type": "<type>"
+      },
+      {
+        "name": "shinyswatch",
+        "type": "<module>"
+      },
+      {
+        "name": "create_ui",
+        "type": "<function()>"
+      },
+      {
+        "name": "create_server",
+        "type": "<function(app_state)>"
+      },
+      {
+        "name": "AppState",
+        "type": "<type>"
+      },
+      {
+        "name": "app_state",
+        "type": "<AppState>"
+      },
+      {
+        "name": "app_ui",
+        "type": "<Tag>"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    \"\"\"\n    # Create application state\n    app_state = AppState()\n    \n    # Create UI and server components\n    app_ui = create_ui()\n    server_func = create_server(app_state)\n    \n    # Create and return the app\n    return App(app_ui, server_func)\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

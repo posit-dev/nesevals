@@ -1,0 +1,44 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```index.R\nread_df <- such |> \n  mutate(doc_id = str_c(chapter, \" | \", chapter_name)) |> \n  corpus() |> \n  textstat_readability(measure = methods) |>\n  pivot_longer(-document) |>\n  mutate(document = fct_inorder(document)) |>\n  rename(chapter = document) \n\navgs <- read_df |> \n  summarise(avg_score = mean(value), .by = name)\n\n<|editable_region_start|>\nread_df |> \n  ggplot(aes(chapter, value, group = name)) +\n  geom_hline(\n    aes(yintercept = avg_score), linetype = \"dashed\",\n    colour = \"grey80\", data = avgs\n    ) +\n  geom_label(\n    aes(\n      \"15 | Pancakes and Paranoia\", avg_score, \n      label = glue(\"Average\\n{round(avgs$avg_score, 1)}\")\n      ), \n    nudge_y = -1.5, size = 3, data = avgs\n    ) +\n  geom_line(colour = \"#82b777\") +\n  geom_point(<|user_cursor_is_here|>\n  coord_cartesian(ylim = c(0, 14), expand = TRUE) +\n  labs(\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "such",
+        "type": "tbl_df [312, 5]",
+        "value": "Columns:\n* title: chr\n* author: chr\n* chapter: dbl\n* chapter_name: chr\n* text: chr"
+      },
+      {
+        "name": "pattern",
+        "type": "chr",
+        "value": "\"chapter|scene|the prologue|stave\""
+      },
+      {
+        "name": "books_corp",
+        "type": "corpus [847]"
+      },
+      {
+        "name": "books_toks",
+        "type": "tbl_df [12, 3]",
+        "value": "Columns:\n* title: chr\n* author: chr\n* words: chr"
+      },
+      {
+        "name": "readability_df",
+        "type": "tbl_df [847, 5]",
+        "value": "Columns:\n* title: chr\n* author: chr\n* chapter: chr\n* name: chr\n* value: dbl"
+      },
+      {
+        "name": "read_df",
+        "type": "tbl_df [24, 3]",
+        "value": "Columns:\n* chapter: fct\n* name: chr\n* value: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nread_df |> \n  ggplot(aes(chapter, value, group = name)) +\n  geom_hline(\n    aes(yintercept = avg_score), linetype = \"dashed\",\n    colour = \"grey80\", data = avgs\n    ) +\n  geom_label(\n    aes(\n      \"15 | Pancakes and Paranoia\", avg_score, \n      label = glue(\"Average\\n{round(avgs$avg_score, 1)}\")\n      ), \n    nudge_y = -1.5, size = 3, data = avgs\n    ) +\n  geom_line(colour = \"#82b777\") +\n  geom_point() +\n  coord_cartesian(ylim = c(0, 14), expand = TRUE) +\n  labs(\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop"
+  ]
+}

@@ -1,0 +1,2162 @@
+[
+  {
+    "sample_id": "sample-001__P1",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-001__P1",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-001__P1",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-001__pvalues",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model failed to complete the edit. The target changes 'fill=\"p\"' to 'fill=\"p0\"', referencing the actual column name in the DataFrame. The model left the code unchanged at 'fill=\"p\"', which doesn't match any column in Ts_df (columns are 'p0' and 'T'). This is a no-edit situation where the expected change was not made.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-001__pvalues",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it did not make any edit at all. The target requires changing fill=\"p\" to fill=\"p0\", but the model left it as fill=\"p\". Since the expected output differs from what the model produced, and the model failed to make the necessary edit, this is a no-edit case deserving a PARTIAL score.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-001__pvalues",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model was expected to change fill=\"p\" to fill=\"p0\" to match the column name in Ts_df. However, the model's output kept fill=\"p\", making no edit at all. This is identical to the original code when an edit was expected.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-002__sleep",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the filter with the same values as the target (\"WT\", \"HET\", \"HOM\"), but it also added an extra line `final_dfs.append(df)` that is not present in the target output. This is an extra_lines failure.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-002__sleep",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the filter statement with the expected tuple (\"WT\", \"HET\", \"HOM\"), which matches the target. However, it added an extra line `final_dfs.append(df)` that is not present in the target output, making this a case of extra_lines.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-002__sleep",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the filter statement with the expected tuple ('WT', 'HET', 'HOM'), matching the target. However, it added an extra line `final_dfs.append(df)` that is not present in the target output. This is an extra_lines failure mode.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-003__metrics",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-003__metrics",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-003__metrics",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-003__plot",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input (no change was made). The target shows the user wanted to fill in the `.sort()` parameters with `\"out-of-distribution\", descending=False`. The model failed to predict this next edit and left the code unchanged.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-003__plot",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input and does not include the expected arguments to .sort() method. The target adds 'out-of-distribution' and descending=False parameters, but the model left .sort() empty, making no progress from the input state.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-003__plot",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable_input (the state after the previous edit) and does not make the next expected edit. The target shows `.sort('out-of-distribution', descending=False)` but the model kept `.sort()` unchanged.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-003",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it made no edit at all. The target shows the title should be completed to 'Personal vs. Community Ratings' but the model left it as 'Personal vs. Community '. This is a clear failure to predict the next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-003",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input and does not make the expected edit. The target shows the title should be completed to 'Personal vs. Community Ratings', but the model left it as 'Personal vs. Community ' (unchanged). This is a clear case of no edit being made when one was expected.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-003",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the input code without any changes. The target shows that the title should be completed with 'Ratings' to become 'Personal vs. Community Ratings', but the model made no edit and left the title as 'Personal vs. Community '.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-004__app",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__app",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__app",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__car",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__car",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-004__car",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-005__conda_packages",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input, meaning no edit was made. The target shows the incomplete f-string should be completed by adding 'package]}' to become f\"'{package}>={pins[package]}'\". The model failed to predict this next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-005__conda_packages",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the input (no edit was made). The target shows that the user continued typing to complete the f-string expression with 'package]}'' but the model failed to predict this next edit and left the code unchanged with incomplete syntax.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-005__conda_packages",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is identical to the input—it didn't make the expected edit. The target shows the line should be completed with 'package]}'' to properly close the f-string and dictionary access, but the model left it as 'pins[' (incomplete). This is a no-edit case and also has syntax errors due to the incomplete f-string.",
+    "tags": ["no_edit", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-005__fmri_starter",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-005__fmri_starter",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-005__fmri_starter",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-005",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed 'range_' to 'range_y=[0,5]' which matches the target edit. However, there is a critical syntax error: the line is missing a comma after '[0,5]' before 'title =', which will cause a Python syntax error. The target has 'range_y=[0,5],' but the model output has 'range_y=[0,5]' without the trailing comma.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-005",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed `range_` to `range_y=[0,5]` which matches the target edit. However, there is a critical syntax error: the line is missing a comma after `[0,5]` (should be `range_y=[0,5],`), which makes this invalid Python syntax.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-005",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly predicted the edit (changing 'range_' to 'range_y=[0,5]'), but it has a syntax error: missing a comma after 'range_y=[0,5]'. The target has a comma there, and the model's output would fail to execute in Python.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-006__whole_hist_viz",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-006__whole_hist_viz",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-006__whole_hist_viz",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-007__Donem_projesi",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 1,
+    "reasoning": "The model edited the correct location but produced the wrong completion. The target is `.columns` to extract column names, but the model wrote `.dropna().astype(float)` which would attempt to drop NA values and convert to float (semantically incorrect for this use case). This would also cause a runtime error since the result won't be iterable column names.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-007__Donem_projesi",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 2,
+    "reasoning": "The model attempted to complete the line with `.dropna().astype(float)` instead of the target `.columns`. This changes the behavior significantly - instead of getting column names, it tries to get a modified DataFrame. The code won't work correctly with the subsequent `enumerate(numeric_columns)` loop which expects column names, not a DataFrame. This is a wrong method completion, using real pandas methods but incorrectly applied.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-007__Donem_projesi",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model edited the correct location and produced valid syntax, but used the wrong completion. The target is `.columns` to get column names, but the model produced `.dropna().astype(float)` which would attempt to convert the DataFrame itself (not column names) and wouldn't work correctly with the subsequent `enumerate(numeric_columns)` loop that expects an iterable of column names.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-007__plot_dots",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-007__plot_dots",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-007__plot_dots",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-008__2c",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the original editable input - no edit was made at all. The target shows that `.fit()` should be called on the model and a `return model` statement should be added. The model failed to make any of these changes.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-008__2c",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input - no edit was made. The target required adding `.fit()` to the model creation and adding `return model`, but the model output didn't make these changes.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-008__2c",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. The target requires adding `.fit()` to the model line and adding a `return model` statement. The model failed to make any changes.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-008__a",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-008__a",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-008__a",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-008",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model changed 'rerating' to 'rating' instead of 'avg_rating' as in the target, and included extra lines beyond the editable region boundary (the second .tab_style block). The extra lines constitute a critical failure as the model must reproduce only the editable region.",
+    "tags": ["extra_lines", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-008",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output contains extra lines not present in the target (the second .tab_style() call and its closing parenthesis). Additionally, it predicted 'rating' instead of the target 'avg_rating'. The extra lines disqualify it from a higher score regardless of the edit accuracy.",
+    "tags": ["extra_lines", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-008",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model changed 'rerating' to 'rating' instead of 'avg_rating' as in the target, and included extra lines beyond the editable region boundary. This is both a wrong edit value and a structural error (extra lines).",
+    "tags": ["extra_lines", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-009__gen_report",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-009__gen_report",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-009__gen_report",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-010__data_cleaner",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-010__data_cleaner",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-010__data_cleaner",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-011__temporal_analysis",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly predicted the intended edit (completing the line to add `.max().alias('last_date')`). However, the model's output is missing the trailing comma after 'last_date')` that is present in the target. This is a minor formatting difference but makes the outputs not byte-for-byte identical.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-011__temporal_analysis",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 4,
+    "reasoning": "The model's output correctly completes the incomplete line by adding 'pl.col('date_parsed').max().alias('last_date')' which matches the target. However, the model is missing a trailing comma after the added line (before the closing bracket), which is present in the target. This is a minor syntax difference that could affect code style consistency.",
+    "tags": []
+  },
+  {
+    "sample_id": "sample-011__temporal_analysis",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the line with `pl.col('date_parsed').max().alias('last_date')` to match the target. However, the output is missing a trailing comma after the closing parenthesis on that line, whereas the target has a comma. This is a minor difference that doesn't affect functionality in Python (trailing commas are optional in lists), so the outputs are functionally equivalent.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-012__explore_foldseek",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__explore_foldseek",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__explore_foldseek",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__ml",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__ml",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__ml",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__pred",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__pred",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-012__pred",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__2",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__2",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__2",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__conda_packages",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__conda_packages",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__conda_packages",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-013__polars_extensions",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input - it made no edit at all. However, the target shows that the next line should add 'y_t = torch.from_numpy(y)', which is the natural continuation given the edit history pattern. The model failed to predict the next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-013__polars_extensions",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. However, the target shows that a new line 'y_t = torch.from_numpy(y)' should have been added between the X_t line and the return statement. The model failed to predict this next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-013__polars_extensions",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it made no edit at all. The target requires adding a line 'y_t = torch.from_numpy(y)' to convert the y variable to a tensor, but the model failed to add this line.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-013",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output is missing the last line '### Pages and books per month' that is present in the target, making it a truncated response. Additionally, the model made no edit to the empty string value for 'genre_1', leaving it as \"\" when the target expected \"20%\".",
+    "tags": ["truncated", "no_edit"]
+  },
+  {
+    "sample_id": "sample-013",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output is missing the closing markdown code fence (```), the newline, and the '### Pages and books per month' heading that are present in the target. This is a truncation issue that makes the output incomplete.",
+    "tags": ["truncated", "no_edit"]
+  },
+  {
+    "sample_id": "sample-013",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output is missing the final line '### Pages and books per month' that is present in the target, making it a truncation. Additionally, the model made no edit to the actual value (left it as empty string \"\" instead of changing it to \"20%\").",
+    "tags": ["truncated", "no_edit"]
+  },
+  {
+    "sample_id": "sample-014__aggregations",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__aggregations",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__aggregations",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__container_manager",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__container_manager",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__container_manager",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__mvo",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__mvo",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-014__mvo",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__2c",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__2c",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__2c",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__5",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__5",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__5",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__dtable",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model removed the line 'elif abs_x >= 1000:' and its associated logic block, which should be present in the target output. This is a truncation issue - the model is missing 5 lines that appear in the target, making the code structure incomplete.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-015__dtable",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model removed the `elif abs_x >= 1000:` block entirely, which is present in the target output. This is a truncation error that removes necessary code logic for handling numbers between 1000 and 10000.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-015__dtable",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly identified the location to edit (the incomplete elif statement at line 'elif abs_x >= 10000:'), but it deleted the next elif clause ('elif abs_x >= 1000:') entirely instead of just completing the incomplete line. The target shows both elif clauses should remain, with the first one completed. This is a truncation error since the 'elif abs_x >= 1000:' block is missing from the output.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-015__week-01_eda",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__week-01_eda",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-015__week-01_eda",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-016__main",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-016__main",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-016__main",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__dashboard",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__dashboard",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__dashboard",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__fmri_starter",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__fmri_starter",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-017__fmri_starter",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-018__cellchat",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly predicted the next edit, completing 'sam' to 'samples = as.factor(as.character(samples))'. However, the model removed the trailing space on the line with the closing parenthesis (the target has ' )' while the model has '  )'). Despite this minor whitespace difference, the outputs are functionally equivalent and represent the same code transformation.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-018__cellchat",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly predicted the next edit, completing 'sam' to 'samples = as.factor(as.character(samples))'. However, the model removed the trailing space after the closing parenthesis on line 14, changing ' )' to '  )' (different whitespace). Despite this minor formatting difference, the code is functionally equivalent.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-018__cellchat",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly predicted the user's next edit by completing 'sam' to 'samples = as.factor(as.character(samples))'. However, the model's output has an extra space on the closing parenthesis line (2 spaces of indentation instead of 1), making it not character-for-character identical to the target, though functionally equivalent.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-018",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model included extra lines at the beginning that were not part of the editable region (fs::dir_copy and solver_dir assignment lines). Additionally, the model failed to make the key edit: it kept 'working_dir' as a parameter in configure_solver_client and added back withr::local_dir(working_dir), which was removed in Edit 10. The target shows the parameter should be removed entirely.",
+    "tags": ["extra_lines", "no_edit"]
+  },
+  {
+    "sample_id": "sample-018",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output includes extra lines not present in the target (two lines before the editable region) and adds `withr::local_dir(working_dir)` back into configure_solver_client, which contradicts the intent of Edit 10 that removed this line. The expected edit was to remove the `working_dir` parameter from the function signature, but the model kept it and even added back code that was previously deleted.",
+    "tags": ["extra_lines", "no_edit"]
+  },
+  {
+    "sample_id": "sample-018",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output includes extra lines not present in the target (lines from the previous function that shouldn't be in the editable region). Additionally, the model failed to make the intended edit: it should have removed the 'working_dir' parameter from configure_solver_client's signature and removed the withr::local_dir(working_dir) line (which was actually removed in Edit 10), but instead it ADDED the withr::local_dir(working_dir) line back, going in the opposite direction.",
+    "tags": ["extra_lines", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-019",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - no edit was made. The target shows that 'test_results' should be changed to 'result' on line 7, but the model failed to make this change.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-019",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it made no edit at all. The target shows that 'test_results' should be changed to 'result' on the line with all(...), but the model left 'test_results' unchanged.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-019",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it made no edit at all. The target shows that `test_results` should be changed to `result` on the line with `all()`, but the model left `test_results` unchanged.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-020__08_extract_primary_quantities",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-020__08_extract_primary_quantities",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-020__08_extract_primary_quantities",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-021__estimate-size",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly completed the incomplete line by adding a new platform case. However, it used 'linux_aarch64' instead of the target's 'linux_arm64', and 'Linux aarch64' instead of 'Linux ARM64'. While aarch64 is technically correct for ARM64 architecture, it doesn't match the target specification and breaks naming consistency with the pattern used for other platforms (e.g., 'mac_arm64'). This is a valid alternative but not the expected output.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-021__estimate-size",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model completed the incomplete switch case but used 'linux_aarch64' instead of 'linux_arm64' for the key and 'Linux aarch64' instead of 'Linux ARM64' for the display string. While 'aarch64' is a valid alternative name for ARM64 architecture, it doesn't match the expected pattern where keys use 'arm64' (as seen in 'mac_arm64') and is inconsistent with the naming convention in the codebase.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-021__estimate-size",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 4,
+    "reasoning": "The model correctly completed the incomplete line by adding a Linux ARM architecture case. However, it used 'linux_aarch64' as the key and 'Linux aarch64' as the display name, while the target uses 'linux_arm64' and 'Linux ARM64'. Both are technically valid ARM architecture names (aarch64 is the 64-bit ARM architecture identifier), making this a defensible alternative, though it differs from the expected output.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-021__sim",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 2,
+    "reasoning": "The model completed 'nc' to 'nc = n_col' instead of 'ncol = n_col'. While 'nc' is not a valid parameter name for the matrix() function in R (the correct parameter is 'ncol'), the model made a reasonable attempt at the edit location with valid syntax and the correct value (n_col).",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-021__sim",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 1,
+    "reasoning": "The model completed 'nc' to 'nc = n_col' instead of the target 'ncol = n_col'. While 'nc' is not a valid parameter name for the matrix() function in R (it should be 'ncol'), the model made a reasonable attempt to complete the partially typed parameter but used the wrong abbreviation.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-021__sim",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed 'nc' to 'nc = n_col', but this has a syntax error - it's missing a comma after 'n_col'. The target shows 'ncol = n_col,' (with a comma). The model's output would break the R code.",
+    "tags": "syntax_error"
+  },
+  {
+    "sample_id": "sample-022__invasive_species",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly closed the parenthesis on the terra::writeRaster call but omitted the 'overwrite = TRUE' parameter that was added in the target. The syntax is valid and the edit location is correct, but it's missing an important parameter.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__invasive_species",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly closed the incomplete function call by adding a closing parenthesis. However, the target expected the addition of ', overwrite = TRUE' parameter before the closing parenthesis. The model's output is syntactically valid and functionally works, but misses the overwrite parameter that was in the target.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__invasive_species",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly closed the parenthesis on the terra::writeRaster call, fixing the syntax error from the input. However, it omitted the `overwrite = TRUE` parameter that was present in the target. The edit is valid and syntactically correct, but incomplete compared to the expected output.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__timing-grid",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete line `times$` by adding a field name and assigning the elapsed time. The only difference from the target is the field name: `standard_gradient` vs `standard_gr`. Both are valid variable names following the same pattern, making this a valid alternative that accomplishes the same task.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__timing-grid",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 4,
+    "reasoning": "The model correctly identified the location and completed the partial line `times$` with a valid name. However, it used `standard_gradient` instead of the target's `standard_gr`. Both are reasonable names for storing gradient timing, making this a valid alternative, but it doesn't match the target exactly.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-022__timing-grid",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly completed the line with a timing assignment pattern matching the previous line. The only difference is 'standard_gradient' vs 'standard_gr'. Both are reasonable names, but 'standard_gradient' doesn't match the target and isn't a variable that exists in scope.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-023",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model made no edit at all - it reproduced the input code exactly as it was, with 'un' still incomplete. The target expected completion of the unlink function call with full parameters. This is a no-edit failure.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-023",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input - it made no edit at all. The target shows the user completed the `unlink()` function call with the full path and recursive parameter, but the model just left 'un' unchanged.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-023",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input - it made no edit at all. The target shows the user completed typing 'unlink(\"inst/run/logs\", recursive = TRUE)' to implement the wipe_logs function, but the model left it at just 'un'.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-024__old_2_CalculatePIF_PSest_withCI",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the edit (y = var.count), but included many extra lines that should not be part of the editable region. The target contains only 2 lines with blank lines, while the model output extends far beyond this.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-024__old_2_CalculatePIF_PSest_withCI",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete code by adding 'count' to make 'var.count', which matches the target. However, the output includes many extra lines that should not be in the editable region, making this a clear truncation/extra_lines error that warrants a score of 0.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-024__old_2_CalculatePIF_PSest_withCI",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete line by changing 'var.' to 'var.count', matching the target. However, it included many extra lines that should not be in the editable region output, making this a complete failure despite getting the core edit right.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-025__2025_42",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model's output correctly completes the line with 'max_temp' and adds the required closing syntax (0.95, na.rm = TRUE). The only difference from the target is the absence of a trailing comma after the last list element. In R, this trailing comma is optional and both versions are syntactically correct and functionally equivalent.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-025__2025_42",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the line with `max_temp` and added the closing arguments. The only difference is the trailing comma after the last list element in the target, which the model omitted. This is a minor stylistic difference that doesn't affect functionality in R.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-025__2025_42",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model's output correctly completes the line with 'max_temp' and adds the necessary arguments. The only difference from the target is the missing trailing comma after the closing parenthesis on the heat_hi line, which is a minor stylistic difference in R (trailing commas are allowed but not required in lists).",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-026__bayesian_reporting",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated (cuts off mid-line) and contains many extra lines with redundant and increasingly nonsensical chained select statements that are not in the target. The target simply completes 'coef_na' to 'coef_names)' and closes the pipeline cleanly, but the model hallucinates multiple additional select operations.",
+    "tags": ["truncated", "extra_lines", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-026__bayesian_reporting",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated (missing the closing brace and 'draws' line) and contains many extra lines with repetitive, unnecessary chained select statements that don't match the target. The target shows a simple completion of 'coef_names' followed by closing the select, but the model added multiple redundant select calls and appears to have been cut off mid-completion.",
+    "tags": ["truncated", "extra_lines", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-026__bayesian_reporting",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, cutting off mid-line with 'dplyr::select(.chain, .iteration, .draw, dplyr::all_of(coef_names), dplyr::matches(\"^b_\"), dplyr::matches(\"^sd_\"), dplyr::matches(\"^sigma\"), dplyr::'. It also contains multiple extra chained select statements that are not in the target. The target simply completes 'coef_na' to 'coef_names)' and includes the closing 'draws' and '}' lines, which are missing in the model output.",
+    "tags": ["truncated", "extra_lines", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-026__gp34",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, stopping mid-file and not including the editable region at all. The output ends at 'get_decreased_age()' which is well before the editable region that should contain the gp34_multivisit_only definition.",
+    "tags": "truncated"
+  },
+  {
+    "sample_id": "sample-026__gp34",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated - it only includes the first ~50 lines of the file and stops mid-function call, completely missing the editable region that was supposed to be rewritten. The expected edit was to complete the incomplete dplyr::filter() call, but the model failed to output the relevant section at all.",
+    "tags": ["truncated", "wrong_location"]
+  },
+  {
+    "sample_id": "sample-026__gp34",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, stopping at line 62 (within the decreased_age assignment) when it should continue through line 97 to include the complete editable region. The model failed to produce the required edit and didn't reproduce the full target content.",
+    "tags": ["truncated", "wrong_name"]
+  },
+  {
+    "sample_id": "sample-027__fig6-03-adipoMonocle2",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable input, meaning no edit was made. However, the target shows that two lines should have been added: 'reduction_method = 'DDRTree'' and 'verbose = FALSE)' to complete the function call. The model failed to predict this next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-027__fig6-03-adipoMonocle2",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model's output is identical to the editable_input, meaning no edit was made. The target shows that two lines should have been added: 'reduction_method = 'DDRTree'' and 'verbose = FALSE)' to complete the reduceDimension call. The model failed to predict this next edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-027__fig6-03-adipoMonocle2",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the editable input, making no edit at all. The target shows that two lines should have been added: 'reduction_method = 'DDRTree'' and 'verbose = FALSE)' to complete the reduceDimension call in the else block. Since the model failed to make the expected edit, this is a no_edit case.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-027",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model made no edit at all - the output is identical to the input. The target shows the user changed 'Find an R files' to 'Find any R files' (correcting the grammar). Since no edit was made when one was expected, this gets a score of 3.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-027",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model output is identical to the input with no changes made. The target shows the user corrected 'Find an R files' to 'Find any R files' (fixing subject-verb agreement). The model failed to predict this edit.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-027",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model made no edit to the code, leaving it identical to the input. The target changes 'Find an R files' to 'Find any R files' (correcting the grammar error), but the model's output still contains 'Find an R files'.",
+    "tags": "no_edit"
+  },
+  {
+    "sample_id": "sample-028__04-population-residents",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-028__04-population-residents",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-028__04-population-residents",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-029__cleaning",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the edit by changing `first(beh_s` to `first(beh_start_acc)`, which matches the target. However, it also added an extra line `seg_stop_acc = first(beh_stop_acc)` that is not present in the target output. While this is a valid variable from beh_data, it represents an extra edit beyond what was expected.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__cleaning",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete line by changing 'beh_s' to 'beh_start_acc', which matches the target. However, it also added an extra line 'seg_stop_acc = first(beh_stop_acc)' that is not present in the target output. This is an extra_lines failure mode.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__cleaning",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the variable name to 'beh_start_acc', which matches the target. However, it also added an extra line 'seg_stop_acc = first(beh_stop_acc)' that is not in the target output. This constitutes an extra line beyond what was expected.",
+    "tags": ["extra_lines", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-029__Fig3",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model made two errors: (1) it reversed the order of the Subtype factor levels (TIME-Mye, TIME-B, TIME-I, TIME-Q instead of TIME-Q, TIME-I, TIME-B, TIME-Mye), and (2) it changed the last line from 'arrange(sample_assignment, Subtype, TCGA_project, MFP)' to 'arrange(sample_assignment, Subtype, TCGA_project, MFP) |>' with an extra pipe operator and different arrangement. The second change also adds 'sample_assignment' as the first argument to arrange when it should remain separate assignment. These are wrong content/values but valid syntax in correct location.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__Fig3",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model made two errors: (1) it reversed the order of the Subtype levels compared to the target ('TIME-Mye', 'TIME-B', 'TIME-I', 'TIME-Q' vs 'TIME-Q','TIME-I','TIME-B','TIME-Mye'), and (2) it incorrectly modified the last line to 'arrange(sample_assignment, ...)' instead of 'arrange(sample_assignment, ...)'. The second issue is particularly problematic as it passes sample_assignment as a data argument to arrange when it should be the first argument. This represents edits at the right locations with valid syntax, but with incorrect values/logic.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__Fig3",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 1,
+    "reasoning": "The model correctly filled in the factor levels ('TIME-Mye', 'TIME-B', 'TIME-I', 'TIME-Q') but made two errors: (1) the order is reversed from the target, and (2) it changed the last line from arrange(sample_assignment, ...) to arrange(sample_assignment, ...) with an extra 'sample_assignment' argument, which is incorrect syntax for arrange(). This constitutes both wrong content and a syntax error.",
+    "tags": ["syntax_error", "extra_lines"]
+  },
+  {
+    "sample_id": "sample-029__model-clusters",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the intended edit (changing 'pack_' to 'pack_season_reveff'), but includes many extra lines beyond what the target expects. The target only has 3 lines while the model output has 13 lines, copying code from the commented section above.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__model-clusters",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the intended edit (changing 'pack_' to 'pack_season_reveff,'), but it included many extra lines that were not in the target. The target only has 3 lines while the model output has 12 lines, including commented code and additional ggplot specifications that should not be in the editable region.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029__model-clusters",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model completed the edit correctly by changing 'pack_' to 'pack_season_reveff' which matches the target. However, it included many extra lines from the commented-out code above that should not be in the editable region output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-029",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly identified the location to edit (the print statement) and made a valid syntactic change. However, it filled in 'row' instead of the target 'clients_to_evaluate[[row, \"name\"]]'. The variable 'row' is real and in scope, but it's not the intended value.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-029",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly identified the location to edit (inside the print() function) and produced valid syntax. However, it filled in `row` instead of the target `clients_to_evaluate[[row, \"name\"]]`. The variable `row` exists in scope, so this is a wrong but real variable name, making it a partial completion.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-029",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model correctly identified the location to edit (inside the print() call) and produced valid R syntax. However, it printed `row` (the loop variable) instead of `clients_to_evaluate[[row, \"name\"]]` as in the target. Both `row` and `clients_to_evaluate` are real variables in scope, making this a wrong but valid choice.",
+    "tags": "wrong_name"
+  },
+  {
+    "sample_id": "sample-030__timing-grid",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the line by assigning A_gs to the 'A_gs' key. The only difference from the target is the absence of a trailing comma after A_gs, which is a minor stylistic difference but syntactically valid in R (trailing commas are allowed but not required).",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-030__timing-grid",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model's output correctly completes the incomplete line by adding '= A_gs'. The only difference from the target is the absence of a trailing comma after 'A_gs'. This is a valid stylistic difference in R - trailing commas in lists are optional and both versions are syntactically correct and functionally equivalent.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-030__timing-grid",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model completed the line correctly by adding `= A_gs` to the incomplete list entry. The only difference from the target is the absence of a trailing comma after `A_gs`. In R, trailing commas in lists are allowed but not required, making this functionally equivalent.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-031__fun_mayfly_correct",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-031__fun_mayfly_correct",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-031__fun_mayfly_correct",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-032",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output includes extra lines that are not in the target (lines from '# odbc 1.6.2' onwards that should not be in the editable region). Additionally, the model failed to make the required edit: it kept the period and line break before '(#946)' instead of removing them as shown in the target.",
+    "tags": ["extra_lines", "no_edit"]
+  },
+  {
+    "sample_id": "sample-032",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model included extra lines (# odbc 1.6.2 section and its contents) that are not part of the editable region's expected output. Additionally, the model failed to make the required edit: it kept the period and newline before (#946) on a separate line, when the target shows (#946) should be on the same line without the period.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-032",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output includes extra lines ('# odbc 1.6.2' and the two bullet points under it) that are not in the target output. Additionally, the model failed to make the required edit: it kept the line break before '(#946)' when the target shows it should be on the same line as the previous text.",
+    "tags": ["extra_lines", "no_edit"]
+  },
+  {
+    "sample_id": "sample-033__Fa_Model",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model was asked to rewrite only the editable region but instead reproduced the entire file including code before the editable region. This is the 'extra_lines' failure mode. The actual edit within the region (completing 'num.sea <- n' to 'num.sea <- nlevels(data$SEASON)') is correct, but the output format is wrong.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-033__Fa_Model",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete line 'num.sea <- n' to 'num.sea <- nlevels(data$SEASON)' which matches the target. However, the model included extra lines (the entire data loading and transformation section) that were outside the editable region and not present in the target output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-033__Fa_Model",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output includes many extra lines that should not be in the editable region (the data loading and transformation code). The editable region should only contain the num.* and name.* variable assignments. While the correct edit (completing 'nlevels(data$SEASON)') is present, the output format is completely wrong.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-033__traffic_network",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-033__traffic_network",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-033__traffic_network",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-034__100_dada",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-034__100_dada",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-034__100_dada",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-034__server_wijken",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, cutting off mid-word ('change' instead of completing the line). It's missing most of the expected code including the crucial additions (reduced_wkc variable creation and else clause). This is a clear truncation failure.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-034__server_wijken",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, ending mid-word with 'change' instead of completing the full editable region. The target requires adding lines to handle the `reduced_wkc` variable similar to how `added_wkc` was handled in the first branch, but the model output is cut off before producing any meaningful content.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-034__server_wijken",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is severely truncated, cutting off mid-line with 'change' instead of 'change_value'. It fails to complete the expected edits which include adding the reduced_wkc logic block with foreach loop and else clause. The output is incomplete and unusable.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-034__sync-yaml",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output has a syntax error - it's missing the closing parenthesis for paste() and instead has an extra double quote followed by closing parenthesis. The target shows paste(split, collapse = \"\\n\") |>, but the model produced paste(split, \")). This is broken syntax and does not complete the intended edit correctly.",
+    "tags": ["syntax_error", "truncated"]
+  },
+  {
+    "sample_id": "sample-034__sync-yaml",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model output is missing the final pipe operator and blank line that are present in the target. Additionally, while the model attempted to complete the paste() function, it produced invalid syntax with an unmatched closing parenthesis instead of the correct 'collapse = \"\\n\"' argument.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-034__sync-yaml",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model's output is truncated - it's missing the final line with the pipe operator that appears in the target. Additionally, it has a syntax error with an unmatched closing parenthesis instead of completing the paste() function call with 'collapse = \"\\n\"'.",
+    "tags": ["truncated", "syntax_error"]
+  },
+  {
+    "sample_id": "sample-035__index",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__index",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__index",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__ReadData",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__ReadData",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__ReadData",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-035__theory-checks-figures",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the incomplete `pivot_longer()` call but used 'value' instead of 'sum' for the `values_to` parameter and is missing the trailing pipe operator `|>` that appears in the target. This constitutes a truncation since the pipe is missing.",
+    "tags": ["truncated", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-035__theory-checks-figures",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model completed the incomplete string with 'value' instead of 'sum' and closed the line with a closing parenthesis. While 'value' is a reasonable and common parameter name in pivot_longer operations, it differs from the target which uses 'sum'. The syntax is valid and the edit location is correct, but the content differs from the target.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-035__theory-checks-figures",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 3,
+    "reasoning": "The model completed the incomplete line correctly with valid syntax. It used 'value' instead of 'sum' for the values_to argument. Both are valid column names, though 'value' is more conventional for pivot_longer. The model also removed the trailing pipe operator present in the target, which could be considered either truncation or a stylistic choice.",
+    "tags": ["truncated", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-036__04-dplyr",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-036__04-dplyr",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-036__04-dplyr",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-037__08_ssc_Slide-tag_EP300_41160730",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the plot_y line with the expected UMI-weighted calculation. The only difference is a missing trailing comma after the plot_y line, which is a minor stylistic difference that doesn't affect R syntax (trailing commas are optional in R).",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-037__08_ssc_Slide-tag_EP300_41160730",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete line by adding '_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE)' to match the pattern of plot_x. However, it removed the trailing comma after the closing parenthesis in the plot_y line, while the target keeps it. In R, a trailing comma inside dplyr::summarise() is valid and sometimes used for cleaner version control diffs. This is a very minor stylistic difference that doesn't affect functionality.",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-037__08_ssc_Slide-tag_EP300_41160730",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete line by adding '_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE)' and reproduced all lines. The only difference from the target is the absence of a trailing comma after the plot_y line, which is actually more correct R syntax (trailing commas in the last element are optional and often considered poor style).",
+    "tags": "correct"
+  },
+  {
+    "sample_id": "sample-037__100_dada",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-037__100_dada",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-037__100_dada",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-037__invasive_species",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete parameter 'overw' to 'overwrite = T', which is functionally equivalent to the target 'overwrite = TRUE' since T and TRUE are equivalent in R. This is a valid alternative style choice.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-037__invasive_species",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the partial parameter 'overw' to 'overwrite = T'. While the target uses 'TRUE' and the model uses 'T', these are functionally equivalent in R. The syntax is correct and this represents a valid stylistic variation.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-037__invasive_species",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the edit by changing 'overw' to 'overwrite = T'. This is functionally equivalent to the target 'overwrite = TRUE' since T and TRUE are identical in R. The syntax is correct and the edit location is appropriate.",
+    "tags": ["correct", "valid_alternative"]
+  },
+  {
+    "sample_id": "sample-038__data",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-038__data",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-038__data",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-038__get_items_statistics",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed 'winning_' to 'winning_rate', which matches the target. However, the output includes extra lines ('items <- na.omit(items_winrate$item)' and 'names(items) <- items_winrate$label' and a closing ')') that are not present in the target editable region, making this a truncation/extra_lines issue.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-038__get_items_statistics",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed 'winning_' to 'winning_rate', which matches the target. However, the output includes extra lines ('items <- na.omit(items_winrate$item)' and 'names(items) <- items_winrate$label' and closing parenthesis) that are outside the editable region and not present in the target output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-038__get_items_statistics",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model completed 'winning_' to 'winning_rate' which matches the target. However, the model output includes extra lines beyond the editable region (the items <- na.omit... lines), which should not be included since they appear after the editable region end marker.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-039__index",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-039__index",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-039__index",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-040__du2014",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the incomplete line `tidyr::drop_na()` and added the pipe operator. The only difference from the target is that the model used `drop_na()` without specifying the `code` argument, while the target uses `drop_na(code)`. Both are functionally valid R code - `drop_na()` without arguments drops rows with NA in any column, while `drop_na(code)` specifically targets the code column. This is a valid alternative that would work in context.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-040__du2014",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed the partial line `tidyr::drop_na()` instead of `tidyr::drop_na(code)`. While both are syntactically valid, the target specifies the column explicitly. This is a valid alternative as `drop_na()` without arguments drops rows with NA in any column, which may be functionally similar depending on the data context.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-040__du2014",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 5,
+    "reasoning": "The model correctly completed `tidyr::drop_na()` where the target expected `tidyr::drop_na(code)`. Both are valid syntactically and functionally similar (drop_na() without arguments drops rows with NA in any column, while drop_na(code) only checks the code column). This is a valid alternative approach, though slightly less specific than the target.",
+    "tags": "valid_alternative"
+  },
+  {
+    "sample_id": "sample-041__ch5_datatidying",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the edit by adding 'parse_number(week)' which matches the target exactly. However, the output includes two extra lines at the end (the commented table rows) that are not present in the target's editable region, which constitutes truncation/extra content beyond the expected boundary.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-041__ch5_datatidying",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model made the correct edit (parse_number(week)) but included extra lines beyond the editable region boundary, extending into the comment section that should have ended after the header line.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-041__ch5_datatidying",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly completed the edit by adding 'parse_number(week)' as expected. However, the output includes two extra lines of code comments beyond what was in the target editable region, which constitutes truncation or extra content that shouldn't be there.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-042",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly fixed the typo 'deault' to 'default', which matches the target. However, it failed to add the period at the end of the sentence (target has 'default.' while model has 'default'). More critically, the model included many extra lines beyond the editable region boundary, continuing far past where it should have stopped.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-042",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly fixed the typo 'deault' to 'default' but missed adding the period at the end of the sentence that is present in the target. Additionally, the model included many extra lines beyond the editable region that are not present in the target output.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-042",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": false,
+    "score": 0,
+    "reasoning": "The model correctly fixed the typo 'deault' to 'default' but is missing the period at the end of the line that is present in the target. Additionally, the output includes many extra lines beyond the editable region boundary that should not have been included.",
+    "tags": "extra_lines"
+  },
+  {
+    "sample_id": "sample-043__efile_headers",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-043__efile_headers",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-043__efile_headers",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-044",
+    "replicate": 1,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-044",
+    "replicate": 2,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  },
+  {
+    "sample_id": "sample-044",
+    "replicate": 3,
+    "processable": true,
+    "exact_match": true,
+    "score": 5,
+    "reasoning": "Exact match",
+    "tags": "exact_match"
+  }
+]

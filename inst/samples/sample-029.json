@@ -1,0 +1,22 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T23:04:51.906Z):\n```R/run-eval.R\n@@ -57,9 +57,9 @@\n clients_to_evaluate <- function() {\n   tibble::tribble(\n     ~client, ~name,\n     'ellmer::chat_openrouter(model = \"anthropic/claude-sonnet-4.5\")', \"claude_4_5_sonnet_openrouter\",\n-    'ellmer::chat_openrouter(model = \"anthropic/claude-haiku-4-5\")', 'claude_4_5_haiku_openrouter',\n+    'ellmer::chat_openrouter(model = \"anthropic/claude-haiku-4-5\")', 'claude_4_5_haiku',\n     'ellmer::chat_openrouter(model = \"openai/gpt-4.1\")', 'gpt_4_1',\n     'ellmer::chat_openrouter(model = \"openai/gpt-4.1-mini\")', 'gpt_4_1_mini',\n     'ellmer::chat_openrouter(model = \"openai/gpt-oss-20b\")', 'gpt_oss_20b',\n     'ellmer::chat_openrouter(model = \"qwen/qwen3-coder-30b-a3b-instruct\")', 'qwen_3_coder_30b',\n```\n\nEdit 2 (2025-11-24T23:04:53.435Z):\n```R/run-eval.R\n@@ -56,9 +56,9 @@\n \n clients_to_evaluate <- function() {\n   tibble::tribble(\n     ~client, ~name,\n-    'ellmer::chat_openrouter(model = \"anthropic/claude-sonnet-4.5\")', \"claude_4_5_sonnet_openrouter\",\n+    'ellmer::chat_openrouter(model = \"anthropic/claude-sonnet-4.5\")', \"claude_4_5_sonnet\",\n     'ellmer::chat_openrouter(model = \"anthropic/claude-haiku-4-5\")', 'claude_4_5_haiku',\n     'ellmer::chat_openrouter(model = \"openai/gpt-4.1\")', 'gpt_4_1',\n     'ellmer::chat_openrouter(model = \"openai/gpt-4.1-mini\")', 'gpt_4_1_mini',\n     'ellmer::chat_openrouter(model = \"openai/gpt-oss-20b\")', 'gpt_oss_20b',\n```\n\nEdit 3 (2025-11-24T23:11:01.039Z):\n```inst/README.md\n@@ -1,9 +1,9 @@\n A number of repositories have been cloned into the `inst/resources` subdirectory using the following:\n \n ```\n cd inst/resources\n-git clone https://github.com/tidyverse/ellmer.git\n+git clone --branch helperbench https://github.com/tidyverse/ellmer.git\n git clone --branch helperbench https://github.com/simonpcouch/side\n git clone https://github.com/simonpcouch/bluffbench.git\n git clone https://github.com/simonpcouch/predictivebench.git\n ```\n```\n\nEdit 4 (2025-11-24T23:11:14.693Z):\n```inst/README.md\n@@ -1,9 +1,9 @@\n A number of repositories have been cloned into the `inst/resources` subdirectory using the following:\n \n ```\n cd inst/resources\n-git clone --branch helperbench https://github.com/tidyverse/ellmer.git\n+git clone --branch hacky-openrouter-fix https://github.com/tidyverse/ellmer.git\n git clone --branch helperbench https://github.com/simonpcouch/side\n git clone https://github.com/simonpcouch/bluffbench.git\n git clone https://github.com/simonpcouch/predictivebench.git\n ```\n```\n\nEdit 5 (2025-11-24T23:33:03.449Z):\n```inst/runs/progress/qwen_3_coder_30b.txt\n@@ -1,1 +1,1 @@\n-0\n+2\n```\n\nEdit 6 (2025-11-24T23:33:45.515Z):\n```inst/runs/progress/qwen_3_coder_30b.txt\n@@ -1,1 +1,1 @@\n-2\n+8\n```\n\nEdit 7 (2025-11-24T23:33:48.805Z):\n```inst/runs/progress/qwen_3_coder_30b.txt\n@@ -1,1 +1,1 @@\n-8\n+10\n```\n\nEdit 8 (2025-11-24T23:34:19.460Z):\n```inst/runs/progress/gpt_4_1.txt\n@@ -1,1 +1,1 @@\n-0\n+2\n```\n\nEdit 9 (2025-11-24T23:34:34.336Z):\n```inst/runs/progress/gpt_4_1.txt\n@@ -1,1 +1,1 @@\n-2\n+8\n```\n\nEdit 10 (2025-11-24T23:35:44.642Z):\n```inst/runs/progress/gpt_4_1.txt\n@@ -1,1 +1,1 @@\n-8\n+10\n```",
+    "excerpt": "```Untitled-1\n<|editable_region_start|>\nclients_to_evaluate <- clients_to_evaluate()\n\nfor (row in 1:nrow(clients_to_evaluate)) {\n  print(<|user_cursor_is_here|>)\n  run_evals(\n    clients_to_evaluate[[row, \"client\"]],\n    clients_to_evaluate[[row, \"name\"]],\n    epochs = 10\n  )\n<|editable_region_end|>\n}\n```\n",
+    "variables": [
+      {
+        "name": "clients_to_evaluate",
+        "type": "tbl_df [7, 2]",
+        "value": "Columns:\n* client: str\n* name: str"
+      },
+      {
+        "name": "row",
+        "type": "dbl",
+        "value": "1"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nclients_to_evaluate <- clients_to_evaluate()\n\nfor (row in 1:nrow(clients_to_evaluate)) {\n  print(clients_to_evaluate[[row, \"name\"]])\n  run_evals(\n    clients_to_evaluate[[row, \"client\"]],\n    clients_to_evaluate[[row, \"name\"]],\n    epochs = 10\n  )\n<|editable_region_end|>",
+  "tags": [
+    "jittered_noop"
+  ]
+}

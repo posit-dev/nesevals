@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-03T15:22:14.523Z):\n```server_wijken.R\n@@ -48,8 +48,18 @@\n   # Dropdown selection handler for Wijken\n   observeEvent(input$drop_selected_wijk_id, ignoreNULL = FALSE, {\n     if(!!length(setdiff(input$drop_selected_wijk_id, selected_bar$name))){\n       change_value = setdiff(input$drop_selected_wijk_id, selected_bar$name)\n+      \n+      if (length(change_value) > 0) {\n+        added_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n+        added_wkc <- unlist(added_wkc)\n+      } else {\n+        added_wkc <- character(0)\n+      }\n     }\n   })\n```\n\nEdit 2 (2025-12-03T15:22:21.891Z):\n```server_wijken.R\n@@ -55,8 +55,12 @@\n         added_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n         added_wkc <- unlist(added_wkc)\n       } else {\n         added_wkc <- character(0)\n       }\n+      \n+      selected_map$groups <- c(selected_map$groups, added_wkc)\n+      selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n+      leafletProxy(\"map\") %>% showGroup(group = added_wkc)\n     }\n   })\n```\n\nEdit 3 (2025-12-03T15:22:28.337Z):\n```server_wijken.R\n@@ -62,8 +62,11 @@\n       selected_map$groups <- c(selected_map$groups, added_wkc)\n       selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n       leafletProxy(\"map\") %>% showGroup(group = added_wkc)\n     }\n+    else if(!!length(setdiff(selected_bar$name, input$drop_selected_wijk_id)) ) {\n+      change_value = setdiff(selected_bar$name, input$drop_selected_wijk_id )\n+    }\n   })\n```\n\nEdit 4 (2025-12-03T15:22:33.205Z):\n```server_wijken.R\n@@ -65,8 +65,10 @@\n     }\n     else if(!!length(setdiff(selected_bar$name, input$drop_selected_wijk_id)) ) {\n       change_value = setdiff(selected_bar$name, input$drop_selected_wijk_id )\n+      \n+      if (length(change_value) > 0) {\n     }\n   })\n```",
+    "excerpt": "```server_wijken.R\n  })\n\n  # Bar chart selected handler for Wijken\n  observeEvent(input$bar_chart_selected, ignoreNULL = FALSE, {\n    bar_chart_selected <- unique(input$bar_chart_selected)\n    \n    if(!!length(setdiff(bar_chart_selected, selected_bar$name))){\n      change_value = setdiff(bar_chart_selected, selected_bar$name)\n      \n      if (length(change_value) > 0) {\n        added_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n        added_wkc <- unlist(added_wkc)\n      } else {\n        added_wkc <- character(0)\n      }\n      \n      selected_map$groups <- c(selected_map$groups, added_wkc)\n      selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n      leafletProxy(\"map\") %>% showGroup(group = added_wkc)\n      \n      updateSelectizeInput(session,\n                           inputId = \"drop_selected_wijk_id\",\n                           choices = dataset_subset()$WKN,\n                           selected = selected_bar$name)\n    }\n    else if(!!length(setdiff(selected_bar$name, bar_chart_selected)) ) {\n      change_value = setdiff(selected_bar$name, bar_chart_selected )\n      \n      if (length(change_value) > 0) {\n        reduced_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n        reduced_wkc <- unlist(reduced_wkc)\n      } else {\n        reduced_wkc <- character(0)\n      }\n      \n      selected_map$groups <- setdiff(selected_map$groups, reduced_wkc )\n      selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n      leafletProxy(\"map\") %>% hideGroup(group = reduced_wkc )\n      \n      updateSelectizeInput(session,\n                           inputId = \"drop_selected_wijk_id\",\n                           choices = dataset_subset()$WKN,\n                           selected = selected_bar$name)\n    }\n  })\n<|editable_region_start|>\n  \n  # Dropdown selection handler for Wijken\n  observeEvent(input$drop_selected_wijk_id, ignoreNULL = FALSE, {\n    if(!!length(setdiff(input$drop_selected_wijk_id, selected_bar$name))){\n      change_value = setdiff(input$drop_selected_wijk_id, selected_bar$name)\n      \n      if (length(change_value) > 0) {\n        added_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n        added_wkc <- unlist(added_wkc)\n      } else {\n        added_wkc <- character(0)\n      }\n      \n      selected_map$groups <- c(selected_map$groups, added_wkc)\n      selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n      leafletProxy(\"map\") %>% showGroup(group = added_wkc)\n    }\n    else if(!!length(setdiff(selected_bar$name, input$drop_selected_wijk_id)) ) {\n      change_value = setdiff(selected_bar$name, input$drop_selected_wijk_id )\n      \n      if (length(change_value) > 0) {<|user_cursor_is_here|>\n    }\n  })\n  \n<|editable_region_end|>\n  # Bar chart output for Wijken\n  output$bar_chart <- renderGirafe({\n```\n",
+    "variables": [
+      {
+        "name": "selected_bar",
+        "type": "reactivevalues"
+      },
+      {
+        "name": "selected_map",
+        "type": "reactivevalues"
+      },
+      {
+        "name": "Code_dict_wkn_to_wkc",
+        "type": "chr [847]"
+      },
+      {
+        "name": "Code_dict_wkc_to_wkn",
+        "type": "chr [847]"
+      },
+      {
+        "name": "dataset_subset",
+        "type": "function"
+      },
+      {
+        "name": "get_text",
+        "type": "function"
+      },
+      {
+        "name": "session",
+        "type": "ShinySession"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n  \n  # Dropdown selection handler for Wijken\n  observeEvent(input$drop_selected_wijk_id, ignoreNULL = FALSE, {\n    if(!!length(setdiff(input$drop_selected_wijk_id, selected_bar$name))){\n      change_value = setdiff(input$drop_selected_wijk_id, selected_bar$name)\n      \n      if (length(change_value) > 0) {\n        added_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n        added_wkc <- unlist(added_wkc)\n      } else {\n        added_wkc <- character(0)\n      }\n      \n      selected_map$groups <- c(selected_map$groups, added_wkc)\n      selected_bar$name <- unique(unname(Code_dict_wkc_to_wkn[selected_map$groups]))\n      leafletProxy(\"map\") %>% showGroup(group = added_wkc)\n    }\n    else if(!!length(setdiff(selected_bar$name, input$drop_selected_wijk_id)) ) {\n      change_value = setdiff(selected_bar$name, input$drop_selected_wijk_id )\n      \n      if (length(change_value) > 0) {\n        reduced_wkc <- foreach(i = change_value) %do% {(unique(unname(Code_dict_wkn_to_wkc[names(Code_dict_wkn_to_wkc) == i])))}\n        reduced_wkc <- unlist(reduced_wkc)\n      } else {\n        reduced_wkc <- character(0)\n      }\n    }\n  })\n  \n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1",
+    "cursor_only"
+  ]
+}

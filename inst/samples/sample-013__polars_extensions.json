@@ -1,0 +1,24 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:20:12.341Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        \n+        X_t = \n \n         return X_t, y_t\n```\n\nEdit 2 (2025-12-19T19:20:13.127Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        X_t = \n+        X_t = torch\n \n         return X_t, y_t\n```\n\nEdit 3 (2025-12-19T19:20:13.892Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        X_t = torch\n+        X_t = torch.from\n \n         return X_t, y_t\n```\n\nEdit 4 (2025-12-19T19:20:14.654Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        X_t = torch.from\n+        X_t = torch.from_numpy\n \n         return X_t, y_t\n```\n\nEdit 5 (2025-12-19T19:20:15.213Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        X_t = torch.from_numpy\n+        X_t = torch.from_numpy(\n \n         return X_t, y_t\n```\n\nEdit 6 (2025-12-19T19:20:15.876Z):\n```polars_extensions.py\n@@ -95,8 +95,8 @@\n         import torch\n \n         X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n-        X_t = torch.from_numpy(\n+        X_t = torch.from_numpy(X)\n \n         return X_t, y_t\n```",
+    "excerpt": "```polars_extensions.py\n        Returns\n        -------\n        X_t : torch.Tensor\n            Feature tensor\n        y_t : torch.Tensor\n            Target tensor\n\n        Examples\n        --------\n        >>> import polars as pl\n        >>> import dsst\n        >>> df = pl.DataFrame({\"a\": [1, 2, 3], \"b\": [4, 5, 6], \"target\": [0, 1, 0]})\n        >>> X_t, y_t = df.dsst.to_torch(\"target\")\n        \"\"\"\n        import torch\n\n<|editable_region_start|>\n        X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n        X_t = torch.from_numpy(X)<|user_cursor_is_here|>\n\n        return X_t, y_t\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "torch",
+        "type": "<module>"
+      },
+      {
+        "name": "X",
+        "type": "ndarray [250, 8]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        X, y = self.to_xy(target, features=features, drop=drop, as_numpy=True)\n        X_t = torch.from_numpy(X)\n        y_t = torch.from_numpy(y)\n\n        return X_t, y_t\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

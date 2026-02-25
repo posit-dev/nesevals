@@ -1,0 +1,50 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-01T14:22:31.507Z):\n```Fa_Model.R\n@@ -17,8 +17,9 @@\n num.env <- nlevels(data$env)\n num.gen <- nlevels(data$gen)\n num.year <- nlevels(data$YEAR)\n+num.loc <- nlevels(data$loc)\n \n name.env <- levels(data$env)\n name.gen <- levels(data$gen)\n name.year <- levels(data$YEAR)\n name.loc <- levels(data$loc)\n```\n\nEdit 2 (2025-12-01T14:22:34.122Z):\n```Fa_Model.R\n@@ -17,9 +17,10 @@\n num.env <- nlevels(data$env)\n num.gen <- nlevels(data$gen)\n num.year <- nlevels(data$YEAR)\n num.loc <- nlevels(data$loc)\n+num.sea <-\n \n name.env <- levels(data$env)\n name.gen <- levels(data$gen)\n name.year <- levels(data$YEAR)\n name.loc <- levels(data$loc)\n```",
+    "excerpt": "```Fa_Model.R\n\n# Data --------------------------------------------------------------------\ndata <- read_delim(\"soy.csv\", \n                   delim = \";\", \n                   escape_double = FALSE, \n                   trim_ws = TRUE)\n\ndata <- transform(data,\n                  env = as.factor(env),\n                  SEASON = as.factor(SEASON),\n                  rep = as.factor(rep),\n                  gen = as.factor(gen),\n                  loc = as.factor(loc),\n                  RAINFED = as.factor(RAINFED),\n                  YEAR = as.factor(YEAR))\n<|editable_region_start|>\n\nnum.env <- nlevels(data$env)\nnum.gen <- nlevels(data$gen)\nnum.year <- nlevels(data$YEAR)\nnum.loc <- nlevels(data$loc)\nnum.sea <- n<|user_cursor_is_here|>\n\nname.env <- levels(data$env)\nname.gen <- levels(data$gen)\nname.year <- levels(data$YEAR)\nname.loc <- levels(data$loc)\nname.sea <- levels(data$SEASON)\n\n<|editable_region_end|>\n# FA Models ---------------------------------------------------------------\n\nM1 = asreml(\n  fixed = GY ~ rep:env + env,\n  random = ~ gen:fa(env, 1),\n  data = data,\n  residual = ~ dsum(~id(units) | env),\n  na.action = na.method(x = \"include\", y = \"include\"),\n  maxit = 300)\n```\n",
+    "variables": [
+      {
+        "name": "data",
+        "type": "data.frame [1248, 9]",
+        "value": "Columns:\n* env: fct(24)\n* SEASON: fct(2)\n* rep: fct(3)\n* gen: fct(52)\n* loc: fct(12)\n* RAINFED: fct(2)\n* YEAR: fct(4)\n* GY: dbl\n* PLOT: int"
+      },
+      {
+        "name": "num.env",
+        "type": "int",
+        "value": "24"
+      },
+      {
+        "name": "num.gen",
+        "type": "int",
+        "value": "52"
+      },
+      {
+        "name": "num.year",
+        "type": "int",
+        "value": "4"
+      },
+      {
+        "name": "num.loc",
+        "type": "int",
+        "value": "12"
+      },
+      {
+        "name": "name.env",
+        "type": "chr [24]"
+      },
+      {
+        "name": "name.gen",
+        "type": "chr [52]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nnum.env <- nlevels(data$env)\nnum.gen <- nlevels(data$gen)\nnum.year <- nlevels(data$YEAR)\nnum.loc <- nlevels(data$loc)\nnum.sea <- nlevels(data$SEASON)\n\nname.env <- levels(data$env)\nname.gen <- levels(data$gen)\nname.year <- levels(data$YEAR)\nname.loc <- levels(data$loc)\nname.sea <- levels(data$SEASON)\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

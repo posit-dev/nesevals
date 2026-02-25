@@ -1,0 +1,12 @@
+{
+  "name": "qwen3-8b_diffs_tool-calling_tool-calling",
+  "model": "qwen3-8b",
+  "prompt": "tool-calling",
+  "edit_history_format": "diffs",
+  "output_format": "tool_calling",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 80,
+  "generated_at": "2026-02-11 17:02:05.983208"
+}

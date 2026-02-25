@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-05T21:20:15.459Z):\n```data.R\n@@ -11,9 +11,9 @@\n   ) |> \n   dplyr::summarise(\n     pct_diff = abs_diff/mean_diff,\n     .by = squad\n-  )\n+  ) |> \n   \n\n home_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n```\n\nEdit 2 (2025-12-05T21:20:16.238Z):\n```data.R\n@@ -11,9 +11,9 @@\n   ) |> \n   dplyr::summarise(\n     pct_diff = abs_diff/mean_diff,\n     .by = squad\n-  ) |> \n+  ) |> dplyr::\n   \n\n home_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n```\n\nEdit 3 (2025-12-05T21:20:16.923Z):\n```data.R\n@@ -11,9 +11,9 @@\n   ) |> \n   dplyr::summarise(\n     pct_diff = abs_diff/mean_diff,\n     .by = squad\n-  ) |> dplyr::\n+  ) |> dplyr::arrange(\n   \n\n home_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n```\n\nEdit 4 (2025-12-05T21:20:18.202Z):\n```data.R\n@@ -11,9 +11,9 @@\n   ) |> \n   dplyr::summarise(\n     pct_diff = abs_diff/mean_diff,\n     .by = squad\n-  ) |> dplyr::arrange(\n+  ) |> dplyr::arrange(desc(\n   \n\n home_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n```",
+    "excerpt": "```data.R\n<|editable_region_start|>\nhome_away_splits |> \n  dplyr::mutate(\n    abs_diff = xgd_home - xgd_away,\n    .by = squad\n  ) |> \n  dplyr::mutate(\n    mean_diff = mean(abs_diff)\n  ) |> \n  dplyr::summarise(\n    pct_diff = abs_diff/mean_diff,\n    .by = squad\n  ) |> \n  dplyr::arrange(desc(<|user_cursor_is_here|>))\n  \n\nhome_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "buli_urls",
+        "type": "str [34]"
+      },
+      {
+        "name": "bvb_summary_raw",
+        "type": "tbl_df [68, 24]"
+      },
+      {
+        "name": "bvb_summary_stats",
+        "type": "tbl_df [34, 12]",
+        "value": "Columns:\n* season: dbl\n* round: int\n* gls_for: dbl\n* gls_against: dbl\n* xg_for: dbl\n* xg_against: dbl\n* npxg_for: dbl\n* npxg_against: dbl\n* shots_for: dbl\n* shots_against: dbl"
+      },
+      {
+        "name": "bvb_possession_stats",
+        "type": "tbl_df [34, 6]",
+        "value": "Columns:\n* season: dbl\n* round: int\n* touches_for: dbl\n* touches_against: dbl\n* pen_touches_for: dbl\n* pen_touches_against: dbl"
+      },
+      {
+        "name": "bvb_stats",
+        "type": "tbl_df [34, 16]"
+      },
+      {
+        "name": "buli_results_raw",
+        "type": "tbl_df [153, 18]"
+      },
+      {
+        "name": "home_away_splits",
+        "type": "tbl_df [18, 7]",
+        "value": "Columns:\n* squad: chr\n* mp_home: dbl\n* mp_away: dbl\n* xg_home: dbl\n* xg_away: dbl\n* xgd_home: dbl\n* xgd_away: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\nhome_away_splits |> \n  dplyr::mutate(\n    abs_diff = xgd_home - xgd_away,\n    .by = squad\n  ) |> \n  dplyr::mutate(\n    mean_diff = mean(abs_diff)\n  ) |> \n  dplyr::summarise(\n    pct_diff = abs_diff/mean_diff,\n    .by = squad\n  ) |> \n  dplyr::arrange(desc(pct_diff))\n  \n\nhome_away_splits |> dplyr::select(squad, xgd_home, xgd_away)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop"
+  ]
+}

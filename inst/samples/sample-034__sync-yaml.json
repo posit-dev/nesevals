@@ -1,0 +1,25 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-03T14:16:07.301Z):\n```sync-yaml.R\n@@ -13,6 +13,8 @@\n\n proper_r <- grepl(\"^\\nigraph_\", split_r)\n\n-r <- tibble(proper = proper_r, split = split_r)\n+r <- tibble(proper = proper_r, split = split_r) |>\n+  mutate(id = cumsum(lag(proper, default = FALSE)))\n\n map(r$text_r, grep, pattern = \"\\nigraph\") |>\n```\n\nEdit 2 (2025-12-03T14:16:14.873Z):\n```sync-yaml.R\n@@ -14,7 +14,8 @@\n proper_r <- grepl(\"^\\nigraph_\", split_r)\n\n r <- tibble(proper = proper_r, split = split_r) |>\n-  mutate(id = cumsum(lag(proper, default = FALSE)))\n+  mutate(id = cumsum(lag(proper, default = FALSE))) |>\n+  summarize(.by = id, text_r = paste(split, ))\n\n map(r$text_r, grep, pattern = \"\\nigraph\") |>\n```",
+    "excerpt": "```sync-yaml.R\nlibrary(dplyr)\nlibrary(purrr)\n\nlines_r <- brio::read_file(\"tools/stimulus/functions-R.yaml\")\n\nsplit_r <- strsplit(\n  lines_r,\n  \"\\n(?=((?:#.*|)\\n)+igraph_.*:\\n(?:(?:[ #].*|)\\n)*\\n+)\",\n  perl = TRUE\n)[[1]]\n\nproper_r <- grepl(\"^\\nigraph_\", split_r)\n<|editable_region_start|>\n\nr <- tibble(proper = proper_r, split = split_r) |>\n  mutate(id = cumsum(lag(proper, default = FALSE))) |>\n  summarize(.by = id, text_r = paste(split, <|user_cursor_is_here|>))\n\n<|editable_region_end|>\nmap(r$text_r, grep, pattern = \"\\nigraph\") |>\n  lengths() |>\n  unique()\n```\n",
+    "variables": [
+      {
+        "name": "lines_r",
+        "type": "chr"
+      },
+      {
+        "name": "split_r",
+        "type": "chr [84]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\nr <- tibble(proper = proper_r, split = split_r) |>\n  mutate(id = cumsum(lag(proper, default = FALSE))) |>\n  summarize(.by = id, text_r = paste(split, collapse = \"\\n\")) |>\n\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

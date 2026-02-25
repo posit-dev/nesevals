@@ -1,0 +1,47 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T18:42:10.113Z):\n```gen_report.py\n@@ -22,12 +22,13 @@\n     dist_years_agency = ((\n         df\n         >> group_by(_.prepared_y, _.dist)\n         >> summarize(n=_.primary_agency_name.nunique())\n         >> arrange(-_.prepared_y)\n     )\n-        .rename(columns={'dist':'District', 'n':'Count'})\n+        .rename(columns={'dist':'District', 'n':'Count'})\n     )\n```\n\nEdit 2 (2026-01-07T18:42:22.907Z):\n```gen_report.py\n@@ -27,7 +28,7 @@\n     chart10 = (alt.Chart(dist_years_agency).mark_bar().encode(\n         column='District:N',\n         x=alt.X('prepared_y:O', title='Prepared Year'),\n-        y=alt.Y('n:Q', title='Number of Unique Agencies'),\n+        y=alt.Y('Count:Q', title='Number of Unique Agencies'),\n         color = alt.Color(\"District:N\", \n                               scale=alt.Scale(\n                                   range=cp.CALITP_SEQUENTIAL_COLORS),  \n                                legend=alt.Legend(title=\"Prepared Year\")\n                               )))\n```\n\nEdit 3 (2026-01-07T18:42:35.441Z):\n```gen_report.py\n@@ -34,6 +35,7 @@\n                               )))\n                               \n+    chart10 = styleguide.preset_chart_config(chart10)\n     chart10 = _dla_utils.add_tooltip(chart10, 'prepared_y', 'Count')\n     \n     display(HTML(\"<h4><strong>Number of Unique Agencies by District<\/strong><\/h4>\"))\n     display(chart10)\n```\n\nEdit 4 (2026-01-07T18:42:49.006Z):\n```gen_report.py\n@@ -35,7 +35,7 @@\n-    chart10 = _dla_utils.add_tooltip(chart10, 'prepared_y', 'Count')\n+    chart10 = _dla_utils.add_tooltip(chart10, 'prepared_y', 'C')\n```\n",
+    "excerpt": "```gen_report.py\n    # Unique Agencies by Dist\n    dist_years_agency = ((\n        df\n        >> group_by(_.prepared_y, _.dist)\n        >> summarize(n=_.primary_agency_name.nunique())\n        >> arrange(-_.prepared_y)\n    )\n        .rename(columns={'dist':'District', 'n':'Count'})\n    )\n<|editable_region_start|>\n\n    chart10 = (alt.Chart(dist_years_agency).mark_bar().encode(\n        column='District:N',\n        x=alt.X('prepared_y:O', title='Prepared Year'),\n        y=alt.Y('Count:Q', title='Number of Unique Agencies'),\n        color = alt.Color(\"District:N\", \n                              scale=alt.Scale(\n                                  range=cp.CALITP_SEQUENTIAL_COLORS),  \n                               legend=alt.Legend(title=\"Prepared Year\")\n                              )))\n                              \n    chart10 = styleguide.preset_chart_config(chart10)\n    chart10 = _dla_utils.add_tooltip(chart10, 'prepared_y', 'C<|user_cursor_is_here|>')\n    \n<|editable_region_end|>\n    display(HTML(\"<h4><strong>Number of Unique Agencies by District<\/strong><\/h4>\"))\n    display(chart10)\n```\n",
+    "variables": [
+      {
+        "name": "df",
+        "type": "DataFrame [12458, 18]",
+        "value": "Columns:\n* prepared_y: int64\n* dist: object\n* primary_agency_name: object\n* prefix: object\n* adjusted_total_requested: float64\n* obligation_amount: float64\n* contract_id: object\n* vendor_name: object\n* program: object\n* fund_source: object\n* county: object\n* city: object\n* prepared_date: datetime64[ns]\n* fiscal_y: int64\n* status: object\n* category: object\n* is_amendment: bool\n* notes: object"
+      },
+      {
+        "name": "dist_years_agency",
+        "type": "DataFrame [360, 3]",
+        "value": "Columns:\n* prepared_y: int64\n* District: object\n* Count: int64"
+      },
+      {
+        "name": "chart10",
+        "type": "altair.vegalite.v5.api.Chart"
+      },
+      {
+        "name": "alt",
+        "type": "module"
+      },
+      {
+        "name": "_dla_utils",
+        "type": "module"
+      },
+      {
+        "name": "styleguide",
+        "type": "module"
+      },
+      {
+        "name": "cp",
+        "type": "module"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n    chart10 = (alt.Chart(dist_years_agency).mark_bar().encode(\n        column='District:N',\n        x=alt.X('prepared_y:O', title='Prepared Year'),\n        y=alt.Y('Count:Q', title='Number of Unique Agencies'),\n        color = alt.Color(\"District:N\", \n                              scale=alt.Scale(\n                                  range=cp.CALITP_SEQUENTIAL_COLORS),  \n                               legend=alt.Legend(title=\"Prepared Year\")\n                              )))\n                              \n    chart10 = styleguide.preset_chart_config(chart10)\n    chart10 = _dla_utils.add_tooltip(chart10, 'prepared_y', 'Count')\n    \n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

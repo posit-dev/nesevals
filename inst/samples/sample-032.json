@@ -1,0 +1,22 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-01T14:28:34.034Z):\n```NEWS.md\n@@ -1,10 +1,9 @@\n # odbc (development version)\n \n * Fix writing of [R] date/time values that have integer storage. (#952)\n \n-* Oracle:\n-    - Fix writing values to `DATE` targets. (#959)\n+* Oracle: Fix writing values to `DATE` targets. (#959)\n \n * SQL Server:\n      - Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n        ISO 8061 convention where positive offset denotes time zone east of Greenwich. (#946)\n```\n\nEdit 2 (2025-12-01T14:28:35.889Z):\n```NEWS.md\n@@ -3,10 +3,9 @@\n * Fix writing of [R] date/time values that have integer storage. (#952)\n \n * Oracle: Fix writing values to `DATE` targets. (#959)\n \n-* SQL Server:\n-     - Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n+* SQL Server: Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n        ISO 8061 convention where positive offset denotes time zone east of Greenwich. (#946)\n \n # odbc 1.6.3\n \n```\n\nEdit 3 (2025-12-01T14:28:39.059Z):\n```NEWS.md\n@@ -4,9 +4,9 @@\n \n * Oracle: Fix writing values to `DATE` targets. (#959)\n \n * SQL Server: Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n-       ISO 8061 convention where positive offset denotes time zone east of Greenwich. (#946)\n+  ISO 8061 convention where positive offset denotes time zone east of Greenwich. (#946)\n \n # odbc 1.6.3\n \n * Addressed a compiler warning on `r-devel-linux-x86_64-fedora-clang` (#941).\n```\n\nEdit 4 (2025-12-01T14:28:42.620Z):\n```NEWS.md\n@@ -4,9 +4,10 @@\n \n * Oracle: Fix writing values to `DATE` targets. (#959)\n \n * SQL Server: Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n-  ISO 8061 convention where positive offset denotes time zone east of Greenwich. (#946)\n+  ISO 8061 convention where positive offset denotes time zone east of Greenwich.\n+   (#946)\n \n # odbc 1.6.3\n \n * Addressed a compiler warning on `r-devel-linux-x86_64-fedora-clang` (#941).\n```",
+    "excerpt": "```NEWS.md\n# odbc (development version)\n\n<|editable_region_start|>\n* Fix writing of [R] date/time values that have integer storage. (#952)\n\n* Oracle: Fix writing values to `DATE` targets. (#959)\n\n* SQL Server: Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n  ISO 8061 convention where positive offset denotes time zone east of Greenwich.\n  <|user_cursor_is_here|> (#946)\n\n# odbc 1.6.3\n\n* Addressed a compiler warning on `r-devel-linux-x86_64-fedora-clang` (#941).\n<|editable_region_end|>\n\n# odbc 1.6.2\n\n* Fix hang when parsing exceptionally long database errors (#916).\n* Fix retrieving multiple result sets from parametrized queries in cases when some parameters yield empty results (#927).\n\n```\n",
+    "variables": [
+      {
+        "name": "track_attribution",
+        "type": "function"
+      },
+      {
+        "name": "track_campaign",
+        "type": "function"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n* Fix writing of [R] date/time values that have integer storage. (#952)\n\n* Oracle: Fix writing values to `DATE` targets. (#959)\n\n* SQL Server: Fix time zone interpretation in `DATETIMEOFFSET` data; now follows\n  ISO 8061 convention where positive offset denotes time zone east of Greenwich (#946).\n\n# odbc 1.6.3\n\n* Addressed a compiler warning on `r-devel-linux-x86_64-fedora-clang` (#941).\n<|editable_region_end|>",
+  "tags": [
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=1"
+  ]
+}

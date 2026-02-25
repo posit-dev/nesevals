@@ -1,0 +1,39 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-11-24T14:22:31.506Z):\n```model-clusters.R\n@@ -18,5 +18,5 @@\n #   theme_bw()  + theme(\n-# \n-# pack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n-# \n-# ggplot(as.data.frame(pack_season_reveff),\n+\n+pack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n+\n+\n```\n\nEdit 2 (2025-11-24T14:22:38.219Z):\n```model-clusters.R\n@@ -20,4 +20,4 @@\n \n pack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n \n-\n+ggplot(as.data.frame())\n```",
+    "excerpt": "```model-clusters.R\n#     axis.text.y = element_text(size=20),\n#     legend.title=element_text(size=20),\n#     legend.text = element_text(size = 20),\n#     legend.key = element_blank())\n# \n# pack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n# \n# ggplot(as.data.frame(pack_season_reveff),\n#        aes(pack_size,fit, colour=Season, fill = Season))+\n#   geom_line()+\n#   ## colour=NA suppresses edges of the ribbon\n#   geom_ribbon(colour=NA,alpha=0.1,\n#               aes(ymin=lower,ymax=upper))+\n#   ## add rug plot based on original data\n#   geom_rug(data=pack_season_reveff$data,aes(y=NULL),sides=\"b\") +\n#   scale_colour_manual(values = c(\"#440154\",\"#21918c\"), name = \"Season\") +\n#   scale_fill_manual(values = c(\"#440154\",\"#21918c\"), name = \"Season\") +\n#   theme_bw()  + theme(\n<|editable_region_start|>\n\npack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n\nggplot(as.data.frame(pack_<|user_cursor_is_here|>))\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "revisit",
+        "type": "glmerMod"
+      },
+      {
+        "name": "pack_season_reveff",
+        "type": "eff [20, 5]",
+        "value": "Columns:\n* Season: fct(2)\n* pack_size: dbl\n* fit: dbl\n* lower: dbl\n* upper: dbl"
+      },
+      {
+        "name": "pack_site_reveff",
+        "type": "eff [20, 5]",
+        "value": "Columns:\n* StudySite: fct(2)\n* pack_size: dbl\n* fit: dbl\n* lower: dbl\n* upper: dbl"
+      },
+      {
+        "name": "lf_season_reveff",
+        "type": "eff [20, 5]",
+        "value": "Columns:\n* Season: fct(2)\n* lf_dens: dbl\n* fit: dbl\n* lower: dbl\n* upper: dbl"
+      },
+      {
+        "name": "lf_site_reveff",
+        "type": "eff [20, 5]",
+        "value": "Columns:\n* StudySite: fct(2)\n* lf_dens: dbl\n* fit: dbl\n* lower: dbl\n* upper: dbl"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\npack_season_reveff <- Effect(c('Season','pack_size'),revisit) \n\nggplot(as.data.frame(pack_season_reveff),\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop"
+  ]
+}

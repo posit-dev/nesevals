@@ -1,0 +1,35 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```ReadData.R\n# データの前処理 ---------------------------------------------------------------\n\n### 期間の設定 -----\n\n# 集計期間を指定\n<|editable_region_start|>\ndate_min <- \"1997-09-01\" |> \n  lubridate::as_date() |> \n  lubridate::floor_date(unit = \"month\") # 集計開始(最小)月\ndate_max <- \"2024-10-01\" |> \n  lubridate::as_d<|user_cursor_is_here|>\n<|editable_region_end|>\n#date_max <- lubridate::today()|> \n#  lubridate::floor_date(unit = \"month\") # 集計終了(最大)月\n```\n",
+    "variables": [
+      {
+        "name": "dat_path",
+        "type": "str",
+        "value": "\"data/hp/\""
+      },
+      {
+        "name": "group_df",
+        "type": "tbl_df [15, 6]",
+        "value": "Columns:\n* groupID: dbl\n* groupName: chr\n* formDate: date\n* dissolveDate: date\n* isActive: lgl\n* artistCode: chr"
+      },
+      {
+        "name": "member_df",
+        "type": "tbl_df [142, 8]",
+        "value": "Columns:\n* memberID: dbl\n* groupID: dbl\n* memberName: chr\n* birthDate: date\n* joinDate: date\n* leaveDate: date\n* birthplace_jp: chr\n* birthplace_en: chr"
+      },
+      {
+        "name": "color_df",
+        "type": "tbl_df [142, 4]",
+        "value": "Columns:\n* groupID: dbl\n* memberID: dbl\n* memberColor: chr\n* displayColor: chr"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\ndate_min <- \"1997-09-01\" |> \n  lubridate::as_date() |> \n  lubridate::floor_date(unit = \"month\") # 集計開始(最小)月\ndate_max <- \"2024-10-01\" |> \n  lubridate::as_date() |> \n  lubridate::floor_date(unit = \"month\") # 集計終了(最大)月\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "pattern-following",
+    "jittered_noop"
+  ]
+}

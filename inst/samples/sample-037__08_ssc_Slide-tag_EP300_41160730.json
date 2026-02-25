@@ -1,0 +1,37 @@
+{
+  "input": {
+    "edit_history": "",
+    "excerpt": "```08_ssc_Slide-tag_EP300_41160730.R\n# --- aggregate per-cell (UMI-weighted) coordinates ---------------------------\nagg <- df %>%\n<|editable_region_start|>\n\tdplyr::group_by(cb_index) %>%\n\tdplyr::summarise(\n\t\tplot_x    = sum(x_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE),\n\t\tplot_y    = sum(y<|user_cursor_is_here|>\n\t)\n\nif (isTRUE(flip_y)) agg$plot_y <- -agg$plot_y\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "df",
+        "type": "tbl_df [2847923, 4]",
+        "value": "Columns:\n* cb_index: dbl\n* x_um: dbl\n* y_um: dbl\n* umi: dbl"
+      },
+      {
+        "name": "path_matrix",
+        "type": "str",
+        "value": "\"~/ngs/slide-tag/pipeline_outputs/PD53626B/Positions/matrix.csv.gz\""
+      },
+      {
+        "name": "flip_y",
+        "type": "lgl",
+        "value": "FALSE"
+      },
+      {
+        "name": "canonicalize_barcode",
+        "type": "function",
+        "value": "function(x)"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\tdplyr::group_by(cb_index) %>%\n\tdplyr::summarise(\n\t\tplot_x    = sum(x_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE),\n\t\tplot_y    = sum(y_um * umi, na.rm = TRUE) / sum(umi, na.rm = TRUE),\n\t)\n\nif (isTRUE(flip_y)) agg$plot_y <- -agg$plot_y\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}

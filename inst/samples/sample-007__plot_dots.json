@@ -1,0 +1,24 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:02:12.456Z):\n```plot_dots.py\n@@ -10,6 +10,9 @@\n     timings = timings.with_columns(\n         pl.col(\"solution\").cast(pl.Enum(styles.get_column(\"solution\")))\n     )\n+    name_versions = timings.select(\n+        pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n+    ).to_series()\n\n     plot = (\n         p9.ggplot(\n```\n\nEdit 2 (2025-12-19T19:02:18.234Z):\n```plot_dots.py\n@@ -13,6 +13,7 @@\n     name_versions = timings.select(\n         pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n     ).to_series()\n+    timings = timings.with_columns(\n\n     plot = (\n         p9.ggplot(\n```\n\nEdit 3 (2025-12-19T19:02:21.789Z):\n```plot_dots.py\n@@ -13,7 +13,7 @@\n     name_versions = timings.select(\n         pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n     ).to_series()\n-    timings = timings.with_columns(\n+    timings = timings.with_columns(pl.col(\"name_version\").\n\n     plot = (\n         p9.ggplot(\n```\n\nEdit 4 (2025-12-19T19:02:24.012Z):\n```plot_dots.py\n@@ -13,7 +13,7 @@\n     name_versions = timings.select(\n         pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n     ).to_series()\n-    timings = timings.with_columns(pl.col(\"name_version\").\n+    timings = timings.with_columns(pl.col(\"name_version\").cast(pl.Enum(\n\n     plot = (\n         p9.ggplot(\n```",
+    "excerpt": "```plot_dots.py\n    styles = styles.join(timings, on=\"solution\", how=\"semi\")\n\n    # Cast columns to Enum to make sure the order is correct\n    timings = timings.with_columns(\n        pl.col(\"solution\").cast(pl.Enum(styles.get_column(\"solution\")))\n    )\n<|editable_region_start|>\n    name_versions = timings.select(\n        pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n    ).to_series()\n    timings = timings.with_columns(pl.col(\"name_version\").cast(pl.Enum(<|user_cursor_is_here|>\n\n    plot = (\n        p9.ggplot(\n            timings,\n            p9.aes(\n                x=\"duration\",\n<|editable_region_end|>\n                y=\"query\",\n                fill=\"name_version\",\n                shape=\"name_version\",\n                size=\"name_version\",\n            ),\n        )\n```\n",
+    "variables": [
+      {
+        "name": "timings",
+        "type": "DataFrame [1024, 5]",
+        "value": "Columns:\n* solution: Enum\n* name_version: String\n* query: String\n* duration: Float64\n* run: Int64"
+      },
+      {
+        "name": "name_versions",
+        "type": "Series [8]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n    name_versions = timings.select(\n        pl.col(\"name_version\").sort_by(\"solution\").unique(maintain_order=True)\n    ).to_series()\n    timings = timings.with_columns(pl.col(\"name_version\").cast(pl.Enum(name_versions)))\n\n    plot = (\n        p9.ggplot(\n            timings,\n            p9.aes(\n                x=\"duration\",\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "chain-continuation",
+    "jittered_noop"
+  ]
+}

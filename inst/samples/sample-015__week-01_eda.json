@@ -1,0 +1,33 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-12-19T19:16:58.622Z):\n```week-01_eda.py\n@@ -23,4 +23,6 @@\n pd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n # %%\n+presence_of_ment_611 = \n+\n```\n\nEdit 2 (2025-12-19T19:17:02.428Z):\n```week-01_eda.py\n@@ -23,5 +23,5 @@\n pd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n # %%\n-presence_of_ment_611 = \n+presence_of_ment_611 = df_dropped[\n\n```\n\nEdit 3 (2025-12-19T19:17:05.149Z):\n```week-01_eda.py\n@@ -23,5 +23,5 @@\n pd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n # %%\n-presence_of_ment_611 = df_dropped[\n+presence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM']\n\n```\n\nEdit 4 (2025-12-19T19:17:07.625Z):\n```week-01_eda.py\n@@ -23,5 +23,5 @@\n pd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n # %%\n-presence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM']\n+presence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM'].\n\n```\n\nEdit 5 (2025-12-19T19:17:09.065Z):\n```week-01_eda.py\n@@ -23,5 +23,5 @@\n pd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n # %%\n-presence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM'].\n+presence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM'].value_\n\n```",
+    "excerpt": "```week-01_eda.py\n# %%\nemployment_counts = df_dropped['QS1_25_EMPLOYMENT'].value_counts()\nprint(employment_counts)\n\nindigenous_counts = df_dropped['QS1_4_INDIGENOUS'].value_counts()\nprint(indigenous_counts)\n\n<|editable_region_start|>\n# %%\ndf['QS1_25_EMPLOYMENT_abrivated'] = df['QS1_25_EMPLOYMENT'].replace({\n    'Working (paid work for at least 1 hr/week)': 'Working',\n    'Studying or in education/training': 'Studying',\n    'Neither of the above': 'Neither',\n    'Both': 'Both'\n})\n\ndf['QS1_4_INDIGENOUS_abrivated'] = df['QS1_4_INDIGENOUS'].replace({\n    \"I don't identify as a member of these communities\": 'Non-Indigenous',\n    'First Nations (North American Indian)': 'First Nations',\n    'Prefer not to say': 'Prefer not to say',\n    'Unsure': 'Unsure',\n    'Métis': 'Métis',\n    'Inuk (Inuit)': 'Inuk'\n})\n\npd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n# %%\npresence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM'].value_c<|user_cursor_is_here|>\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "df",
+        "type": "DataFrame [1247, 156]",
+        "value": "Columns:\n* QS1_1_AGE: int64\n* QS1_2_PROV: object\n* QS1_4_INDIGENOUS: object\n* QS1_25_EMPLOYMENT: object\n* QS1_25_EMPLOYMENT_abrivated: object\n* QS1_4_INDIGENOUS_abrivated: object\n* QS2_3_PRESENCEOFM: object\n* QS2_9_PRESENCEOFA: object"
+      },
+      {
+        "name": "df_dropped",
+        "type": "DataFrame [1247, 85]",
+        "value": "Columns:\n* QS1_1_AGE: int64\n* QS1_2_PROV: object\n* QS1_4_INDIGENOUS: object\n* QS1_25_EMPLOYMENT: object\n* QS2_3_PRESENCEOFM: object\n* QS2_9_PRESENCEOFA: object"
+      },
+      {
+        "name": "employment_counts",
+        "type": "Series [4]"
+      },
+      {
+        "name": "indigenous_counts",
+        "type": "Series [6]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n# %%\ndf['QS1_25_EMPLOYMENT_abrivated'] = df['QS1_25_EMPLOYMENT'].replace({\n    'Working (paid work for at least 1 hr/week)': 'Working',\n    'Studying or in education/training': 'Studying',\n    'Neither of the above': 'Neither',\n    'Both': 'Both'\n})\n\ndf['QS1_4_INDIGENOUS_abrivated'] = df['QS1_4_INDIGENOUS'].replace({\n    \"I don't identify as a member of these communities\": 'Non-Indigenous',\n    'First Nations (North American Indian)': 'First Nations',\n    'Prefer not to say': 'Prefer not to say',\n    'Unsure': 'Unsure',\n    'Métis': 'Métis',\n    'Inuk (Inuit)': 'Inuk'\n})\n\npd.crosstab(df['QS1_4_INDIGENOUS_abrivated'], df['QS1_25_EMPLOYMENT_abrivated'])\n\n# %%\npresence_of_ment_611 = df_dropped['QS2_3_PRESENCEOFM'].value_counts()\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "function-stub-completion",
+    "jittered_noop"
+  ]
+}

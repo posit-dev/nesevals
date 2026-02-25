@@ -1,0 +1,36 @@
+{
+  "input": {
+    "edit_history": "## Edit History\nEdit 1 (2026-01-07T19:12:01.103Z):\n```conda_packages.py\n@@ -1,4 +1,5 @@\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n+        return \"\\n\".join(packages)\n```\n\nEdit 2 (2026-01-07T19:12:03.287Z):\n```conda_packages.py\n@@ -1,5 +1,7 @@\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n-        return \"\\n\".join(packages)\n+        return \"\\n\".join(\n+            packages\n+        )\n```\n\nEdit 3 (2026-01-07T19:12:05.014Z):\n```conda_packages.py\n@@ -1,7 +1,7 @@\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n         return \"\\n\".join(\n-            packages\n+            pkg for pkg in packages\n         )\n```\n\nEdit 4 (2026-01-07T19:12:08.556Z):\n```conda_packages.py\n@@ -1,7 +1,8 @@\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n         return \"\\n\".join(\n-            pkg for pkg in packages\n+            f\"{pkg}=={pins[pkg]}\" if pkg in pins else pkg\n+            for pkg in packages\n         )\n```\n\nEdit 5 (2026-01-07T19:12:10.922Z):\n```conda_packages.py\n@@ -1,8 +1,8 @@\n         with open(pin_loc) as f:\n             loaded: dict[str, str] = json.load(f)\n         pins = loaded | pins_override\n         packages = sorted(packages, key=lambda x: (x not in pins, x))\n         return \"\\n\".join(\n             f\"{pkg}=={pins[pkg]}\" if pkg in pins else pkg\n-            for pkg in packages\n+            for pkg in \n         )\n```",
+    "excerpt": "```conda_packages.py\n    @staticmethod\n    def conda_packages_to_str(\n        packages: t.Iterable[str] = ALL,\n        pin_loc: str = JSON_NAME,\n        pins_override: dict[str, str] = PINS_OVERRIDE,\n        version: str = \"3.12\",\n    ):\n        packages = set(packages)\n        with open(pin_loc) as f:\n            loaded: dict[str, str] = json.load(f)\n        pins = loaded | pins_override\n        packages = sorted(packages, key=lambda x: (x not in pins, x))\n<|editable_region_start|>\n        return \"\\n\".join(\n            f\"{pkg}=={pins[pkg]}\" if pkg in pins else pkg\n            for pkg in <|user_cursor_is_here|>\n        )\n<|editable_region_end|>\n```\n",
+    "variables": [
+      {
+        "name": "conda_packages_to_str",
+        "type": "function"
+      },
+      {
+        "name": "ALL",
+        "type": "list [~40]"
+      },
+      {
+        "name": "pin_loc",
+        "type": "str"
+      },
+      {
+        "name": "loaded",
+        "type": "dict [~15]"
+      },
+      {
+        "name": "pins",
+        "type": "dict [~15]"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n        return \"\\n\".join(\n            f\"{pkg}=={pins[pkg]}\" if pkg in pins else pkg\n            for pkg in packages\n        )\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "gpt-5.2",
+    "live-session-context",
+    "jittered_noop",
+    "cursor_only"
+  ]
+}

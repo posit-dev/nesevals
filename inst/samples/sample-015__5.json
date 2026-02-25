@@ -1,0 +1,46 @@
+{
+  "input": {
+    "edit_history": "Edit 1 (2025-01-14T10:22:31.445Z):\n```5.py\n@@ -42,9 +42,9 @@\n # -------------------------------\n df = pd.read_csv('chebyshev_dataset.csv')\n \n # Split input and output\n-X = df[['order', 'ripple', 'cutoff']].values\n+X = df[[]].values\n y = df.drop(columns=['order', 'ripple', 'cutoff']).values\n \n # Normalize using loaded scalers\n X_scaled = scaler_X.transform(X)\n```\n\nEdit 2 (2025-01-14T10:22:33.891Z):\n```5.py\n@@ -42,9 +42,9 @@\n # -------------------------------\n df = pd.read_csv('chebyshev_dataset.csv')\n \n # Split input and output\n-X = df[[]].values\n+X = df[['order']].values\n y = df.drop(columns=['order', 'ripple', 'cutoff']).values\n \n # Normalize using loaded scalers\n X_scaled = scaler_X.transform(X)\n```\n\nEdit 3 (2025-01-14T10:22:35.204Z):\n```5.py\n@@ -42,9 +42,9 @@\n # -------------------------------\n df = pd.read_csv('chebyshev_dataset.csv')\n \n # Split input and output\n-X = df[['order']].values\n+X = df[['order', ]].values\n y = df.drop(columns=['order', 'ripple', 'cutoff']).values\n \n # Normalize using loaded scalers\n X_scaled = scaler_X.transform(X)\n```",
+    "excerpt": "```5.py\n# -------------------------------\n# Load dataset and preprocess\n# -------------------------------\ndf = pd.read_csv('chebyshev_dataset.csv')\n<|editable_region_start|>\n\n# Split input and output\nX = df[['order', <|user_cursor_is_here|>]].values\ny = df.drop(columns=['order', 'ripple', 'cutoff']).values\n\n# Normalize using loaded scalers\nX_scaled = scaler_X.transform(X)\n<|editable_region_end|>\ny_scaled = scaler_y.transform(y)\n```\n",
+    "variables": [
+      {
+        "name": "torch",
+        "type": "<module>"
+      },
+      {
+        "name": "pd",
+        "type": "<module>"
+      },
+      {
+        "name": "np",
+        "type": "<module>"
+      },
+      {
+        "name": "ChebyshevNet",
+        "type": "<type>"
+      },
+      {
+        "name": "model",
+        "type": "ChebyshevNet"
+      },
+      {
+        "name": "scaler_X",
+        "type": "StandardScaler"
+      },
+      {
+        "name": "df",
+        "type": "DataFrame [500, 203]",
+        "value": "Columns:\n* order: int64\n* ripple: float64\n* cutoff: float64\n* freq_0: float64\n* freq_1: float64\n* freq_2: float64\n* ... (197 more freq columns)"
+      }
+    ]
+  },
+  "output": "<|editable_region_start|>\n\n# Split input and output\nX = df[['order', 'ripple']].values\ny = df.drop(columns=['order', 'ripple', 'cutoff']).values\n\n# Normalize using loaded scalers\nX_scaled = scaler_X.transform(X)\n<|editable_region_end|>",
+  "tags": [
+    "synthetic",
+    "claude-opus-4-5-20251101",
+    "live-session-context",
+    "jittered",
+    "jitter:start=-1",
+    "jitter:end=-1"
+  ]
+}
