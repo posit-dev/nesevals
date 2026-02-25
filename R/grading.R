@@ -21,6 +21,7 @@
 #'   are not saved to disk.
 #' @param max_active Integer. Maximum number of simultaneous LLM grading
 #'   requests.
+#' @inheritParams completions_generate
 #'
 #' @returns A data frame with columns `sample_id`, `replicate`, `processable`,
 #'   `exact_match`, `score` (integer, 0--5), `reasoning` (character), and
@@ -30,7 +31,8 @@ completions_grade <- function(
   completions,
   samples,
   name = attr(completions, "name"),
-  max_active = 5L
+  max_active = 5L,
+  results_dir = NULL
 ) {
   lookups <- build_sample_lookups(samples)
   targets <- lookups$targets
@@ -118,7 +120,7 @@ completions_grade <- function(
   res$tags <- tags
 
   if (!is.null(name)) {
-    scores_dir <- file.path(pkg_root(), "inst", "results", "scores")
+    scores_dir <- file.path(resolve_results_dir(results_dir), "scores")
     dir.create(scores_dir, recursive = TRUE, showWarnings = FALSE)
     scores_file <- file.path(scores_dir, paste0(name, ".json"))
     jsonlite::write_json(res, scores_file, pretty = TRUE, auto_unbox = TRUE)

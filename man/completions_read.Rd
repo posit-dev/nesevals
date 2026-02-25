@@ -4,13 +4,18 @@
 \alias{completions_read}
 \title{Read saved completions}
 \usage{
-completions_read(name)
+completions_read(name, results_dir = NULL)
 }
 \arguments{
 \item{name}{The name of the result set, e.g.
 \code{"qwen3-8b_diffs_editable-region_zeta-supercomplete"}. This
 corresponds to the filename (without \code{.json}) under
 \verb{inst/results/completions/}.}
+
+\item{results_dir}{Directory where results are stored. When \code{NULL}
+(the default), falls back to \code{getOption("nesevals.results_dir")}, then
+\verb{inst/results/} inside the package source tree, then
+\verb{nesevals-results/} in the current working directory.}
 }
 \value{
 A data frame with columns \code{sample_id}, \code{replicate}, \code{response},

@@ -1,3 +1,27 @@
+test_that("resolve_results_dir uses argument first", {
+  expect_equal(resolve_results_dir("/tmp/custom"), "/tmp/custom")
+})
+
+test_that("resolve_results_dir uses option when set", {
+  withr::local_options(nesevals.results_dir = "/tmp/custom-results")
+  expect_equal(resolve_results_dir(), "/tmp/custom-results")
+})
+
+test_that("resolve_results_dir falls back to package root", {
+  pkg_dir <- normalizePath(withr::local_tempdir())
+  file.create(file.path(pkg_dir, "DESCRIPTION"))
+  withr::local_dir(pkg_dir)
+  withr::local_options(nesevals.results_dir = NULL)
+  expect_equal(resolve_results_dir(), file.path(pkg_dir, "inst", "results"))
+})
+
+test_that("resolve_results_dir falls back to working directory", {
+  tmp_dir <- normalizePath(withr::local_tempdir())
+  withr::local_dir(tmp_dir)
+  withr::local_options(nesevals.results_dir = NULL)
+  expect_equal(resolve_results_dir(), file.path(tmp_dir, "nesevals-results"))
+})
+
 test_that("completions_name derives name from params", {
   expect_equal(
     completions_name(

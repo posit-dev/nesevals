@@ -8,7 +8,8 @@ completions_grade(
   completions,
   samples,
   name = attr(completions, "name"),
-  max_active = 5L
+  max_active = 5L,
+  results_dir = NULL
 )
 }
 \arguments{
@@ -27,6 +28,11 @@ are not saved to disk.}
 
 \item{max_active}{Integer. Maximum number of simultaneous LLM grading
 requests.}
+
+\item{results_dir}{Directory where results are stored. When \code{NULL}
+(the default), falls back to \code{getOption("nesevals.results_dir")}, then
+\verb{inst/results/} inside the package source tree, then
+\verb{nesevals-results/} in the current working directory.}
 }
 \value{
 A data frame with columns \code{sample_id}, \code{replicate}, \code{processable},

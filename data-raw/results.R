@@ -27,7 +27,11 @@ rows <- lapply(config_names, function(cfg) {
   )
 
   n_total <- length(comp)
-  n_processable <- sum(vapply(scores, function(s) isTRUE(s$processable), logical(1)))
+  n_processable <- sum(vapply(
+    scores,
+    function(s) isTRUE(s$processable),
+    logical(1)
+  ))
   n_exact <- sum(vapply(scores, function(s) isTRUE(s$exact_match), logical(1)))
 
   # Mean score: 0 for non-processable completions
@@ -45,13 +49,17 @@ rows <- lapply(config_names, function(cfg) {
 
   input_tokens <- vapply(
     comp,
-    function(x) if (!is.null(x$tokens_input)) as.double(x$tokens_input) else NA_real_,
+    function(x) {
+      if (!is.null(x$tokens_input)) as.double(x$tokens_input) else NA_real_
+    },
     double(1)
   )
 
   output_tokens <- vapply(
     comp,
-    function(x) if (!is.null(x$tokens_output)) as.double(x$tokens_output) else NA_real_,
+    function(x) {
+      if (!is.null(x$tokens_output)) as.double(x$tokens_output) else NA_real_
+    },
     double(1)
   )
 

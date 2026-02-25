@@ -14,7 +14,8 @@ completions_generate(
     "rewrite_region_5bt"),
   include_variables = TRUE,
   n_replicates = 1L,
-  context_lines = 1L
+  context_lines = 1L,
+  results_dir = NULL
 )
 }
 \arguments{
@@ -43,6 +44,11 @@ which system prompt file to use from \verb{inst/prompts/}.}
 
 \item{context_lines}{Integer. Number of context lines for before/after and
 narrative edit history formats.}
+
+\item{results_dir}{Directory where results are stored. When \code{NULL}
+(the default), falls back to \code{getOption("nesevals.results_dir")}, then
+\verb{inst/results/} inside the package source tree, then
+\verb{nesevals-results/} in the current working directory.}
 }
 \value{
 Invisibly, a data frame with columns \code{sample_id}, \code{replicate},

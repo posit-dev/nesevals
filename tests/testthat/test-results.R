@@ -2,10 +2,17 @@ test_that("nes_results dataset has expected structure", {
   expect_s3_class(nes_results, "data.frame")
 
   expected_cols <- c(
-    "model", "prompt", "edit_history", "output_format",
-    "n_completions", "n_processable", "n_exact",
-    "mean_score", "median_latency_ms",
-    "mean_input_tokens", "mean_output_tokens"
+    "model",
+    "prompt",
+    "edit_history",
+    "output_format",
+    "n_completions",
+    "n_processable",
+    "n_exact",
+    "mean_score",
+    "median_latency_ms",
+    "mean_input_tokens",
+    "mean_output_tokens"
   )
   expect_named(nes_results, expected_cols)
 
@@ -24,7 +31,7 @@ test_that("nes_results dataset has expected structure", {
 
 test_that("nes_results dataset has one row per config in inst/results/", {
   n_configs <- length(list.files(
-    file.path(pkg_root(), "inst", "results", "completions")
+    file.path(resolve_results_dir(), "completions")
   ))
   expect_equal(nrow(nes_results), n_configs)
 })

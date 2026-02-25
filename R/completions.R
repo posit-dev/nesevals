@@ -23,6 +23,10 @@
 #' @param n_replicates Integer. Number of completions to generate per sample.
 #' @param context_lines Integer. Number of context lines for before/after and
 #'   narrative edit history formats.
+#' @param results_dir Directory where results are stored. When `NULL`
+#'   (the default), falls back to `getOption("nesevals.results_dir")`, then
+#'   `inst/results/` inside the package source tree, then
+#'   `nesevals-results/` in the current working directory.
 #'
 #' @returns Invisibly, a data frame with columns `sample_id`, `replicate`,
 #'   `response` (character), `latency` (numeric, in seconds),
@@ -50,7 +54,8 @@ completions_generate <- function(
   ),
   include_variables = TRUE,
   n_replicates = 1L,
-  context_lines = 1L
+  context_lines = 1L,
+  results_dir = NULL
 ) {
   use_ellmer <- inherits(model, "Chat")
 
@@ -245,7 +250,7 @@ completions_generate <- function(
     output_format,
     prompt
   )
-  results_dir <- file.path(pkg_root(), "inst", "results")
+  results_dir <- resolve_results_dir(results_dir)
 
   completions_dir <- file.path(results_dir, "completions")
   dir.create(completions_dir, recursive = TRUE, showWarnings = FALSE)
@@ -424,15 +429,14 @@ extract_region_from_window <- function(text, excerpt) {
 #'   `"qwen3-8b_diffs_editable-region_zeta-supercomplete"`. This
 #'   corresponds to the filename (without `.json`) under
 #'   `inst/results/completions/`.
+#' @inheritParams completions_generate
 #'
 #' @returns A data frame with columns `sample_id`, `replicate`, `response`,
 #'   `latency`, `tokens_input`, and `tokens_output`.
 #' @export
-completions_read <- function(name) {
+completions_read <- function(name, results_dir = NULL) {
   path <- file.path(
-    pkg_root(),
-    "inst",
-    "results",
+    resolve_results_dir(results_dir),
     "completions",
     paste0(name, ".json")
   )
@@ -508,6 +512,21 @@ warmup_endpoint <- function(endpoint_url, api_key) {
     }
   )
   Sys.sleep(1)
+}
+
+resolve_results_dir <- function(results_dir = NULL) {
+  if (!is.null(results_dir)) {
+    return(results_dir)
+  }
+  opt <- getOption("nesevals.results_dir")
+  if (!is.null(opt)) {
+    return(opt)
+  }
+  root <- tryCatch(pkg_root(), error = function(e) NULL)
+  if (!is.null(root)) {
+    return(file.path(root, "inst", "results"))
+  }
+  file.path(getwd(), "nesevals-results")
 }
 
 pkg_root <- function() {

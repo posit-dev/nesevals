@@ -306,4 +306,3 @@ test_that("format_edit_history_narrative snapshot with real sample 2", {
   input <- samples$input[[2]]
   expect_snapshot(cat(format_edit_history_narrative(input$edit_history)))
 })
-
