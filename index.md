@@ -4,6 +4,8 @@ nesevals provides tooling for evaluating next edit suggestion (NES)
 scaffolds across different edit history formats, output formats, and
 models.
 
+![](reference/figures/README-plot-1.png)
+
 ## Installation
 
 Install the package with:
@@ -39,5 +41,3 @@ glimpse(nes_results)
 #> $ mean_input_tokens  <dbl> 1358, 1050, 1181, 1155, 1128, 1127, 921, 905, 1097,…
 #> $ mean_output_tokens <dbl> 140, 169, 108, 107, 95, 119, 219, 219, 225, 130, 12…
 ```
-
-![](reference/figures/README-results-plot-1.png)
