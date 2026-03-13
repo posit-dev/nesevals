@@ -7,8 +7,8 @@
 #'
 #' @param samples A data frame of evaluation samples in the same format as
 #'   [nesevals::nes_samples].
-#' @param model Either a string naming a Baseten model (`"qwen3-8b"` or
-#'   `"zeta"`) or an ellmer [ellmer::Chat] object (e.g. from
+#' @param model Either a string naming a Baseten model (`"qwen3-8b"`,
+#'   `"qwen3-l4"`, or `"zeta"`) or an ellmer [ellmer::Chat] object (e.g. from
 #'   [ellmer::chat_openai()] or [ellmer::chat_claude()]). When a Chat object
 #'   is provided, the model name is derived from `chat$get_model()`. The
 #'   `"tool_calling"` output format is not supported with Chat objects.
@@ -35,7 +35,7 @@
 #' @export
 completions_generate <- function(
   samples,
-  model = c("qwen3-8b", "zeta"),
+  model = c("qwen3-8b", "qwen3-l4", "zeta"),
   prompt = c(
     "zeta-supercomplete",
     "qwen-supercomplete",
