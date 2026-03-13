@@ -1,0 +1,34 @@
+model_name: qwen3-l4
+model_metadata:
+  tags:
+    - openai-compatible
+environment_variables:
+  INCLUDE_STOP_WORDS: true
+resources:
+  accelerator: L4
+  cpu: "1"
+  memory: 10Gi
+  use_gpu: true
+secrets:
+  hf_access_token: null
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      repo: Qwen/Qwen3-8B
+      revision: main
+      source: HF
+    max_seq_len: 5000
+    max_batch_size: 32
+    num_builder_gpus: 1
+    quantization_type: fp8_kv
+    tensor_parallel_count: 1
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 1
+      lookahead_windows_size: 1
+      enable_b10_lookahead: true
+  runtime:
+    enable_chunked_context: true
+    kv_cache_free_gpu_mem_fraction: 0.85
