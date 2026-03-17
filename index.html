@@ -51,7 +51,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 <p>nesevals provides tooling for evaluating next edit suggestion (NES) scaffolds across different edit history formats, output formats, and models.</p>
-<p><img src="reference/figures/README-plot-1.png" alt="A scatter plot titled 'NES Scaffold Performance vs. Latency'. The x-axis shows median latency in milliseconds starting at 0, and the y-axis shows mean model-graded quality score. The chart shows that Qwen3-8B (Baseten) achieves competitive scores at very low latency (under 200ms), while Claude Haiku 4.5 (Anthropic) achieves the highest score (around 4.5) at a much higher latency (~1500ms). GPT-OSS 20B (Groq) reaches a score near 4.3 at moderate latency (~550ms). GPT-4.1 Nano and GPT-5 Nano (both OpenAI) cluster around a score of 3.5 at high latency. Zeta (Baseten) has the lowest score near 1.4. A group of additional Qwen3-8B scaffolds (Baseten) clusters at low latency with scores between roughly 3.1 and 3.4." width="100%"></p>
+<p><img src="reference/figures/README-plot-1.png" alt="A scatter plot titled 'NES Scaffold Performance vs. Latency'. The x-axis shows median latency in milliseconds starting at 0, and the y-axis shows mean model-graded quality score. The chart shows that Qwen3-8B (Baseten) achieves competitive scores at very low latency (under 200ms), while Claude Haiku 4.5 (Anthropic) achieves the highest score (around 4.5) at a much higher latency (~1500ms). GPT-OSS 20B (Groq) reaches a score near 4.3 at moderate latency (~550ms). GPT-5.4 Mini (OpenAI) scores around 4.1 at ~1200ms latency. GPT-4.1 Nano, GPT-5 Nano, and GPT-5.4 Nano (all OpenAI) cluster around scores of 3.5–3.75 at high latency. Zeta (Baseten) has the lowest score near 1.4. A group of additional Qwen3-8B scaffolds (Baseten) clusters at low latency with scores between roughly 3.1 and 3.4." width="100%"></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -71,19 +71,19 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/posit-dev/nesevals" class="external-link">nesevals</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">nes_results</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 18</span></span>
+<span><span class="co">#&gt; Rows: 20</span></span>
 <span><span class="co">#&gt; Columns: 11</span></span>
 <span><span class="co">#&gt; $ model              &lt;chr&gt; "claude-haiku-4-5-20251001", "openai/gpt-oss-20b", …</span></span>
 <span><span class="co">#&gt; $ prompt             &lt;chr&gt; "rewrite-region", "rewrite-region", "rewrite-region…</span></span>
 <span><span class="co">#&gt; $ edit_history       &lt;chr&gt; "narrative", "narrative", "narrative", "narrative",…</span></span>
 <span><span class="co">#&gt; $ output_format      &lt;chr&gt; "rewrite_region", "rewrite_region", "rewrite_region…</span></span>
-<span><span class="co">#&gt; $ n_completions      &lt;int&gt; 80, 80, 85, 240, 240, 80, 80, 240, 240, 240, 240, 2…</span></span>
-<span><span class="co">#&gt; $ n_processable      &lt;int&gt; 80, 80, 85, 240, 240, 80, 80, 240, 240, 240, 240, 2…</span></span>
-<span><span class="co">#&gt; $ n_exact            &lt;int&gt; 54, 46, 55, 123, 123, 32, 30, 120, 114, 111, 93, 10…</span></span>
-<span><span class="co">#&gt; $ mean_score         &lt;dbl&gt; 4.49, 4.28, 4.11, 4.03, 3.96, 3.52, 3.50, 3.41, 3.3…</span></span>
-<span><span class="co">#&gt; $ median_latency_ms  &lt;dbl&gt; 1476, 550, 1138, 144, 144, 1370, 1576, 158, 156, 16…</span></span>
-<span><span class="co">#&gt; $ mean_input_tokens  &lt;dbl&gt; 1358, 1050, 1335, 1181, 1155, 1128, 1127, 921, 905,…</span></span>
-<span><span class="co">#&gt; $ mean_output_tokens &lt;dbl&gt; 140, 169, 128, 108, 107, 95, 119, 219, 219, 225, 13…</span></span></code></pre></div>
+<span><span class="co">#&gt; $ n_completions      &lt;int&gt; 80, 80, 85, 85, 240, 240, 85, 80, 80, 240, 240, 240…</span></span>
+<span><span class="co">#&gt; $ n_processable      &lt;int&gt; 80, 80, 85, 85, 240, 240, 84, 80, 80, 240, 240, 240…</span></span>
+<span><span class="co">#&gt; $ n_exact            &lt;int&gt; 54, 46, 55, 54, 123, 123, 44, 32, 30, 120, 114, 111…</span></span>
+<span><span class="co">#&gt; $ mean_score         &lt;dbl&gt; 4.49, 4.28, 4.11, 4.07, 4.03, 3.96, 3.75, 3.52, 3.5…</span></span>
+<span><span class="co">#&gt; $ median_latency_ms  &lt;dbl&gt; 1476, 550, 1138, 1034, 144, 144, 1228, 1370, 1576, …</span></span>
+<span><span class="co">#&gt; $ mean_input_tokens  &lt;dbl&gt; 1358, 1050, 1335, 1133, 1181, 1155, 1139, 1128, 112…</span></span>
+<span><span class="co">#&gt; $ mean_output_tokens &lt;dbl&gt; 140, 169, 128, 109, 108, 107, 111, 95, 119, 219, 21…</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
