@@ -7,7 +7,8 @@
 #' The expected environment variables are:
 #'
 #' * `NESEVALS_ZETA_URL` -- endpoint URL for the Zeta model
-#' * `NESEVALS_QWEN3_8B_URL` -- endpoint URL for the Qwen3-8B model
+#' * `NESEVALS_QWEN3_8B_URL` -- endpoint URL for the Qwen3-8B model (H100)
+#' * `NESEVALS_QWEN3_L4_URL` -- endpoint URL for the Qwen3-8B model (L4)
 #'
 #' A convenient place to set these is your `.Renviron` file (see
 #' [usethis::edit_r_environ()]).
@@ -16,7 +17,7 @@
 #' features that will use these models, you may want to ping the endpoints
 #' to wake the instance up (it will take a few minutes).
 #'
-#' @param model Character. One of `"zeta"` or `"qwen3-8b"`.
+#' @param model Character. One of `"zeta"`, `"qwen3-8b"`, or `"qwen3-l4"`.
 #'
 #' @returns A single character string: the endpoint URL.
 #'
@@ -27,13 +28,14 @@
 #' }
 #'
 #' @keywords internal
-model_url <- function(model = c("qwen3-8b", "zeta")) {
+model_url <- function(model = c("qwen3-8b", "qwen3-l4", "zeta")) {
   model <- match.arg(model)
 
   env_var <- switch(
     model,
     "zeta" = "NESEVALS_ZETA_URL",
-    "qwen3-8b" = "NESEVALS_QWEN3_8B_URL"
+    "qwen3-8b" = "NESEVALS_QWEN3_8B_URL",
+    "qwen3-l4" = "NESEVALS_QWEN3_L4_URL"
   )
 
   url <- Sys.getenv(env_var)

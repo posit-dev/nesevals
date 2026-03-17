@@ -1,0 +1,12 @@
+{
+  "name": "qwen3-l4_narrative_rewrite-region-5bt_rewrite-region-5bt",
+  "model": "qwen3-l4",
+  "prompt": "rewrite-region-5bt",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region_5bt",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-03-13 10:27:23.535617"
+}
