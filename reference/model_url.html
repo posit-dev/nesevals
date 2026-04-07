@@ -4,6 +4,9 @@ variables so that they do not need to be stored in the package source.
 The expected environment variables are:
 NESEVALS_ZETA_URL – endpoint URL for the Zeta model
 NESEVALS_QWEN3_8B_URL – endpoint URL for the Qwen3-8B model
+NESEVALS_GEMMA4_26B_A4B_URL – endpoint URL for the Gemma 4 26B A4B model
+NESEVALS_GEMMA4_26B_A4B_FP8_URL – endpoint URL for the Gemma 4 26B A4B
+FP8 model
 
 
 A convenient place to set these is your .Renviron file (see
@@ -15,6 +18,9 @@ variables so that they do not need to be stored in the package source.
 The expected environment variables are:
 NESEVALS_ZETA_URL – endpoint URL for the Zeta model
 NESEVALS_QWEN3_8B_URL – endpoint URL for the Qwen3-8B model
+NESEVALS_GEMMA4_26B_A4B_URL – endpoint URL for the Gemma 4 26B A4B model
+NESEVALS_GEMMA4_26B_A4B_FP8_URL – endpoint URL for the Gemma 4 26B A4B
+FP8 model
 
 
 A convenient place to set these is your .Renviron file (see
@@ -59,6 +65,9 @@ to wake the instance up (it will take a few minutes)."></head><body>
 variables so that they do not need to be stored in the package source.</p>
 <p>The expected environment variables are:</p><ul><li><p><code>NESEVALS_ZETA_URL</code> – endpoint URL for the Zeta model</p></li>
 <li><p><code>NESEVALS_QWEN3_8B_URL</code> – endpoint URL for the Qwen3-8B model</p></li>
+<li><p><code>NESEVALS_GEMMA4_26B_A4B_URL</code> – endpoint URL for the Gemma 4 26B A4B model</p></li>
+<li><p><code>NESEVALS_GEMMA4_26B_A4B_FP8_URL</code> – endpoint URL for the Gemma 4 26B A4B
+FP8 model</p></li>
 </ul><p>A convenient place to set these is your <code>.Renviron</code> file (see
 <code>usethis::edit_r_environ()</code>).</p>
 <p>The endpoints will go to sleep after 15 minutes. As you begin working on
@@ -68,7 +77,9 @@ to wake the instance up (it will take a few minutes).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">model_url</span><span class="op">(</span>model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"qwen3-8b"</span>, <span class="st">"zeta"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">model_url</span><span class="op">(</span></span>
+<span>  model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"qwen3-8b"</span>, <span class="st">"zeta"</span>, <span class="st">"gemma4-26b-a4b"</span>, <span class="st">"gemma4-26b-a4b-fp8"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -76,7 +87,8 @@ to wake the instance up (it will take a few minutes).</p>
 
 
 <dl><dt id="arg-model">model<a class="anchor" aria-label="anchor" href="#arg-model"></a></dt>
-<dd><p>Character. One of <code>"zeta"</code> or <code>"qwen3-8b"</code>.</p></dd>
+<dd><p>Character. One of <code>"zeta"</code>, <code>"qwen3-8b"</code>,
+<code>"gemma4-26b-a4b"</code>, or <code>"gemma4-26b-a4b-fp8"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -89,6 +101,8 @@ to wake the instance up (it will take a few minutes).</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">model_url</span><span class="op">(</span><span class="st">"zeta"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">model_url</span><span class="op">(</span><span class="st">"qwen3-8b"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">model_url</span><span class="op">(</span><span class="st">"gemma4-26b-a4b"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">model_url</span><span class="op">(</span><span class="st">"gemma4-26b-a4b-fp8"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

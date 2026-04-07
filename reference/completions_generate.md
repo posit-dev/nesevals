@@ -9,7 +9,7 @@ along with response latency. Results are written to JSON files under
 ``` r
 completions_generate(
   samples,
-  model = c("qwen3-8b", "zeta"),
+  model = c("qwen3-8b", "zeta", "gemma4-26b-a4b", "gemma4-26b-a4b-fp8"),
   prompt = c("zeta-supercomplete", "qwen-supercomplete", "rewrite-window",
     "tool-calling", "rewrite-region", "rewrite-region-5bt"),
   edit_history_format = c("diffs", "before_after", "narrative"),
@@ -31,8 +31,8 @@ completions_generate(
 
 - model:
 
-  Either a string naming a Baseten model (`"qwen3-8b"` or `"zeta"`) or
-  an ellmer
+  Either a string naming a Baseten model (`"qwen3-8b"`, `"zeta"`,
+  `"gemma4-26b-a4b"`, or `"gemma4-26b-a4b-fp8"`) or an ellmer
   [ellmer::Chat](https://ellmer.tidyverse.org/reference/Chat.html)
   object (e.g. from
   [`ellmer::chat_openai()`](https://ellmer.tidyverse.org/reference/chat_openai.html)
