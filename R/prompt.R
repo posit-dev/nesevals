@@ -275,9 +275,13 @@ format_request_body <- function(
       list(role = "user", content = user_content)
     ),
     max_tokens = 500L,
-    temperature = 0.2,
-    chat_template_kwargs = list(enable_thinking = FALSE)
+    temperature = 0.2
   )
+
+  # Qwen3 requires thinking mode to be explicitly disabled
+  if (startsWith(model, "qwen")) {
+    body$chat_template_kwargs <- list(enable_thinking = FALSE)
+  }
 
   if (output_format == "tool_calling") {
     body$tools <- list(edit_tool_definition())

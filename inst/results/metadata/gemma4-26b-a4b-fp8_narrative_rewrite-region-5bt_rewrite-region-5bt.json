@@ -1,0 +1,12 @@
+{
+  "name": "gemma4-26b-a4b-fp8_narrative_rewrite-region-5bt_rewrite-region-5bt",
+  "model": "gemma4-26b-a4b-fp8",
+  "prompt": "rewrite-region-5bt",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region_5bt",
+  "include_variables": true,
+  "n_replicates": 1,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-04-07 16:05:48.535351"
+}

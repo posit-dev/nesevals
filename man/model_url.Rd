@@ -4,10 +4,13 @@
 \alias{model_url}
 \title{Model endpoint URLs}
 \usage{
-model_url(model = c("qwen3-8b", "zeta"))
+model_url(
+  model = c("qwen3-8b", "zeta", "gemma4-26b-a4b", "gemma4-26b-a4b-fp8")
+)
 }
 \arguments{
-\item{model}{Character. One of \code{"zeta"} or \code{"qwen3-8b"}.}
+\item{model}{Character. One of \code{"zeta"}, \code{"qwen3-8b"},
+\code{"gemma4-26b-a4b"}, or \code{"gemma4-26b-a4b-fp8"}.}
 }
 \value{
 A single character string: the endpoint URL.
@@ -20,6 +23,9 @@ The expected environment variables are:
 \itemize{
 \item \code{NESEVALS_ZETA_URL} -- endpoint URL for the Zeta model
 \item \code{NESEVALS_QWEN3_8B_URL} -- endpoint URL for the Qwen3-8B model
+\item \code{NESEVALS_GEMMA4_26B_A4B_URL} -- endpoint URL for the Gemma 4 26B A4B model
+\item \code{NESEVALS_GEMMA4_26B_A4B_FP8_URL} -- endpoint URL for the Gemma 4 26B A4B
+FP8 model
 }
 
 A convenient place to set these is your \code{.Renviron} file (see
@@ -33,6 +39,8 @@ to wake the instance up (it will take a few minutes).
 \dontrun{
 model_url("zeta")
 model_url("qwen3-8b")
+model_url("gemma4-26b-a4b")
+model_url("gemma4-26b-a4b-fp8")
 }
 
 }

@@ -6,7 +6,7 @@
 \usage{
 completions_generate(
   samples,
-  model = c("qwen3-8b", "zeta"),
+  model = c("qwen3-8b", "zeta", "gemma4-26b-a4b", "gemma4-26b-a4b-fp8"),
   prompt = c("zeta-supercomplete", "qwen-supercomplete", "rewrite-window",
     "tool-calling", "rewrite-region", "rewrite-region-5bt"),
   edit_history_format = c("diffs", "before_after", "narrative"),
@@ -22,8 +22,8 @@ completions_generate(
 \item{samples}{A data frame of evaluation samples in the same format as
 \link{nes_samples}.}
 
-\item{model}{Either a string naming a Baseten model (\code{"qwen3-8b"} or
-\code{"zeta"}) or an ellmer \link[ellmer:Chat]{ellmer::Chat} object (e.g. from
+\item{model}{Either a string naming a Baseten model (\code{"qwen3-8b"}, \code{"zeta"},
+\code{"gemma4-26b-a4b"}, or \code{"gemma4-26b-a4b-fp8"}) or an ellmer \link[ellmer:Chat]{ellmer::Chat} object (e.g. from
 \code{\link[ellmer:chat_openai]{ellmer::chat_openai()}} or \code{\link[ellmer:chat_anthropic]{ellmer::chat_claude()}}). When a Chat object
 is provided, the model name is derived from \code{chat$get_model()}. The
 \code{"tool_calling"} output format is not supported with Chat objects.}
