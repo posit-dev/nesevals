@@ -258,6 +258,10 @@ test_that("snapshot: qwen3-8b + narrative + rewrite_region_5bt", {
   expect_snapshot(cat(body$messages[[2]]$content))
 })
 
+test_that("snapshot: rewrite-region-short system prompt", {
+  expect_snapshot(cat(read_prompt("rewrite-region-short")))
+})
+
 test_that("format_user_query rewrite_region_5bt uses 5-backtick fences", {
   input <- list(
     edit_history = "Edit 1 (2025-01-01T00:00:00Z):\nfile.py\n```diff\n@@ -1,3 +1,3 @@\n foo\n-bar\n+baz\n qux\n```",
