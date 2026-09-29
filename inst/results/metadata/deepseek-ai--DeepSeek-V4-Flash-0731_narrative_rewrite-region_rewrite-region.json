@@ -1,0 +1,12 @@
+{
+  "name": "deepseek-ai--DeepSeek-V4-Flash-0731_narrative_rewrite-region_rewrite-region",
+  "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+  "prompt": "rewrite-region",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region",
+  "include_variables": true,
+  "n_replicates": 1,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-09-29 16:49:19.793463"
+}
