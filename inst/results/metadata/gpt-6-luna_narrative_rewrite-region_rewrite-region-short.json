@@ -1,0 +1,12 @@
+{
+  "name": "gpt-6-luna_narrative_rewrite-region_rewrite-region-short",
+  "model": "gpt-6-luna",
+  "prompt": "rewrite-region-short",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region",
+  "include_variables": true,
+  "n_replicates": 3,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-09-29 17:14:10.124317"
+}
