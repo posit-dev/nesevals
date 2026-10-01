@@ -1097,3 +1097,10 @@
           ols.fit(X_scaled, y)
       `````
 
+# snapshot: rewrite-region-short system prompt
+
+    Code
+      cat(read_prompt("rewrite-region-short"))
+    Output
+      Predict the user's next code edit. Rewrite the given region with that edit applied, reproducing every other line of the region exactly, and output only the region, wrapped in a four-backtick (````) code fence. The region may start or end mid-statement; keep those partial lines as they are.
+

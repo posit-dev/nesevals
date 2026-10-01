@@ -13,8 +13,9 @@
 #'   is provided, the model name is derived from `chat$get_model()`. The
 #'   `"tool_calling"` output format is not supported with Chat objects.
 #' @param prompt One of `"zeta-supercomplete"`, `"qwen-supercomplete"`,
-#'   `"rewrite-window"`, `"tool-calling"`, or `"rewrite-region"`. Determines
-#'   which system prompt file to use from `inst/prompts/`.
+#'   `"rewrite-window"`, `"tool-calling"`, `"rewrite-region"`,
+#'   `"rewrite-region-5bt"`, or `"rewrite-region-short"`. Determines which
+#'   system prompt file to use from `inst/prompts/`.
 #' @param edit_history_format One of `"diffs"`, `"before_after"`, or
 #'   `"narrative"`.
 #' @param output_format One of `"editable_region"`, `"window"`,
@@ -42,7 +43,8 @@ completions_generate <- function(
     "rewrite-window",
     "tool-calling",
     "rewrite-region",
-    "rewrite-region-5bt"
+    "rewrite-region-5bt",
+    "rewrite-region-short"
   ),
   edit_history_format = c("diffs", "before_after", "narrative"),
   output_format = c(

@@ -1,0 +1,12 @@
+{
+  "name": "zai-org--GLM-5.3-Flash_narrative_rewrite-region_rewrite-region",
+  "model": "zai-org/GLM-5.3-Flash",
+  "prompt": "rewrite-region",
+  "edit_history_format": "narrative",
+  "output_format": "rewrite_region",
+  "include_variables": true,
+  "n_replicates": 1,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-09-29 11:39:37.19118"
+}

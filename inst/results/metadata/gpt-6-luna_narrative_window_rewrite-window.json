@@ -1,0 +1,12 @@
+{
+  "name": "gpt-6-luna_narrative_window_rewrite-window",
+  "model": "gpt-6-luna",
+  "prompt": "rewrite-window",
+  "edit_history_format": "narrative",
+  "output_format": "window",
+  "include_variables": true,
+  "n_replicates": 1,
+  "context_lines": 1,
+  "n_samples": 85,
+  "generated_at": "2026-09-29 17:01:25.248589"
+}

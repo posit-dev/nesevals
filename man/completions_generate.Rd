@@ -8,7 +8,7 @@ completions_generate(
   samples,
   model = c("qwen3-8b", "zeta", "gemma4-26b-a4b", "gemma4-26b-a4b-fp8"),
   prompt = c("zeta-supercomplete", "qwen-supercomplete", "rewrite-window",
-    "tool-calling", "rewrite-region", "rewrite-region-5bt"),
+    "tool-calling", "rewrite-region", "rewrite-region-5bt", "rewrite-region-short"),
   edit_history_format = c("diffs", "before_after", "narrative"),
   output_format = c("editable_region", "window", "tool_calling", "rewrite_region",
     "rewrite_region_5bt"),
@@ -29,8 +29,9 @@ is provided, the model name is derived from \code{chat$get_model()}. The
 \code{"tool_calling"} output format is not supported with Chat objects.}
 
 \item{prompt}{One of \code{"zeta-supercomplete"}, \code{"qwen-supercomplete"},
-\code{"rewrite-window"}, \code{"tool-calling"}, or \code{"rewrite-region"}. Determines
-which system prompt file to use from \verb{inst/prompts/}.}
+\code{"rewrite-window"}, \code{"tool-calling"}, \code{"rewrite-region"},
+\code{"rewrite-region-5bt"}, or \code{"rewrite-region-short"}. Determines which
+system prompt file to use from \verb{inst/prompts/}.}
 
 \item{edit_history_format}{One of \code{"diffs"}, \code{"before_after"}, or
 \code{"narrative"}.}
