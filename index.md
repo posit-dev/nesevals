@@ -23,6 +23,7 @@ scores between roughly 3.1 and
 Install the package with:
 
 ``` r
+
 # if needed:
 # install.packages("pak")
 
@@ -35,6 +36,7 @@ The package ships with a data frame `nes_results` that summarizes
 experimental results:
 
 ``` r
+
 library(dplyr)
 library(nesevals)
 

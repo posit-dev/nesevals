@@ -11,7 +11,7 @@ completions_generate(
   samples,
   model = c("qwen3-8b", "zeta", "gemma4-26b-a4b", "gemma4-26b-a4b-fp8"),
   prompt = c("zeta-supercomplete", "qwen-supercomplete", "rewrite-window",
-    "tool-calling", "rewrite-region", "rewrite-region-5bt"),
+    "tool-calling", "rewrite-region", "rewrite-region-5bt", "rewrite-region-short"),
   edit_history_format = c("diffs", "before_after", "narrative"),
   output_format = c("editable_region", "window", "tool_calling", "rewrite_region",
     "rewrite_region_5bt"),
@@ -45,8 +45,9 @@ completions_generate(
 - prompt:
 
   One of `"zeta-supercomplete"`, `"qwen-supercomplete"`,
-  `"rewrite-window"`, `"tool-calling"`, or `"rewrite-region"`.
-  Determines which system prompt file to use from `inst/prompts/`.
+  `"rewrite-window"`, `"tool-calling"`, `"rewrite-region"`,
+  `"rewrite-region-5bt"`, or `"rewrite-region-short"`. Determines which
+  system prompt file to use from `inst/prompts/`.
 
 - edit_history_format:
 
